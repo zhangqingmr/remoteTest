@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html class=" windows desktop">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta name="renderer" content="webkit">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/examOld.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+
+
+    <title>考试试卷</title>
+
+</head>
+
+<body>
+
+    <div>
+        <nav class="navbar navbar-default">
+            <div class="container" style="position: relative;">
+                <div class="navbar-header">
+                    <a class="navbar-brand  have-img" href="javascript:;">
+
+                        <span class="text-responsive">考试信息</span>
+
+                    </a>
+                </div>
+
+            </div>
+        </nav>
+
+
+
+        <div class="container" id="app">
+            <!-- 考试介绍页面-->
+            <div id='examPro' v-show="viewM">
+                <div class="row content-panel introduction">
+                    <div class="col-xs-12 col-md-8 col-md-offset-2 logo">
+                        <h1>试卷一{{exam.title}}</h1>
+                    </div>
+                    <div class="col-xs-12 col-md-8 col-md-offset-2 content">
+                        <div class="title text-center">
+                            <img src="images/tip_pic.png" draggable="false">
+                            <h4>考试说明</h4>
+
+                        </div>
+
+                        <ul class="system-introduce">
+                            <li>
+                                <p>
+                                    <span>考试次数:</span>
+                                    <span >
+                                            {{exam.examNumber}}次
+                                    </span>
+                                   
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <span>考试限时:</span>
+                                    <span>
+                                        {{exam.examTime}}分钟
+                                    </span>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <span>及格分数:</span>
+                                    <span>
+                                        60%
+                                    </span>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <span class="left">考试规则:</span>
+                                    <span>
+                                        允许返回修改答案
+                                    </span>
+                                </p>
+                            </li>
+                            <li>
+                                <p>如果考试异常中断，请退出并及时按同样步骤进入，继续考试</p>
+                            </li>
+                        </ul>
+
+
+                        <div id='stepNext'  @click.stop="viewChange(false)" href="javascript:;" class="btn btn-blue goToExam">进入考试</div>
+                    </div>
+                </div>
+            </div>
+            <div id='examMain' v-show="!viewM">
+                <div class="row ie8-do">
+                    <div class="col-xs-12 col-sm-12 col-md-12 exam-title">
+
+                        <h2>{{exam.title}}</h2>
+
+                    </div>
+                </div>
+
+                <div class="row ie8-do">
+                    <div class="col-xs-12  col-sm-7 col-md-8 col-lg-8 ie8-do-left">
+                        <div class="row question" v-for="(question,index) in questionAll">
+                            <div class="col-xs-12  col-sm-12 col-md-12">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="row-box">
+
+                                                    <p class="ques-title">
+                                                        <span class="ques-number">
+                                                            {{index+1}}/{{allCount}}
+                                                        </span>
+                                                        <span class="ques-type ques-single">{{question.qtypName}}</span>
+                                                        <span>{{question.title}}</span>
+                                                        <span class="ques-score">({{question.score}}分)</span>
+                                                    </p>
+                                                  
+                                        
+                                            <!-- 问答题 5-->
+                                                    <div class="ques-answers" v-if="question.qtype=='5'">
+                                                        <textarea v-model="question.rightAnswer" class="form-control essay_question_textarea" rows="8" placeholder="请在这里输入答案">
+                                                        </textarea>
+                                                    </div>
+                                                    <!-- 不定项 6-->
+                                                    <div class="ques-answers" v-if="question.qtype=='6'">
+                                                        <ul class="clear-list-style mt0-and-mb10 option-list">
+                                                            <li class="btn btn-option" v-for="(option,index) in question.options" :class="['btn','btn-option',option.checked?'btn-option-selected':'']"  @click.stop="changeUi(option,question)" :op-id="option.opid">
+                                                                <i :class="['fa',option.checked?'fa-check-square-o':'fa-square-o']"> </i> {{option.sort}}.
+                                                                <span>{{option.title}}</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                        <!-- 多选题 2-->
+                                                    <div class="ques-answers" v-if="question.qtype=='2'">
+                                                        <ul class="clear-list-style mt0-and-mb10 option-list">
+                                                            <li  v-for="(option,index) in question.options" :class="['btn','btn-option',option.checked?'btn-option-selected':'']"  @click.stop="changeUi(option,question)" :op-id="option.opid">
+                                                                <i :class="['fa',option.checked?'fa-check-square-o':'fa-square-o']"> </i> {{option.sort}}.
+                                                                <span>{{option.title}}</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                    <!-- 填空题 4-->
+                                                    <div class="ques-answers" v-if="question.qtype==4">
+                                                        
+                                                        <ol class="mt0-and-mb10 fillblanklist">
+                                                            <!--Regular list-->
+                                                            <li class="input-con" v-for="(option,index) in question.options"     @click.stop="changeUi(option,question)" :op-id="option.opid">
+                                                                <input type="text" class="form-control" placeholder="请在这里输入答案"> </li>
+                                                          
+                                                        </ol>
+                                                    </div>
+                                    <!-- 单选题 判断题1-->
+                                                    <div class="ques-answers" v-if="question.qtype=='1'||question.qtype=='3'">
+                                                        <ul class="clear-list-style mt0-and-mb10 option-list">
+                                                            <li :class="['btn','btn-option',option.checked?'btn-option-selected':'']" v-for="(option,index) in question.options"   @click.stop="changeUi(option,question)" :op-id="option.opid">
+                                                                <i :class="['fa',option.checked?'fa-check-circle-o':'fa-circle-o']"> </i> {{option.sort}}.
+                                                                <span> {{option.title}}</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4 ie8-do-right">
+                        <div class="exam-metas  affix">
+
+                            <div class="timer text-center">
+                                <div class="time-left">
+                                    <div>
+                                        <span class="timeImg">
+                                            <img src="images/time.png" class="icon">
+                                        </span>
+                                        <br> 总剩余时间
+                                    </div>
+                                    <div>
+                                        <strong>
+                                            <span class="time">28:59</span>
+                                        </strong>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="page">
+                                    <span class="text-left">页码:</span>
+                                    <strong>
+                                        <span class="val" style="text-align: left;">1 / {{allCount}}</span>
+                                    </strong>
+                                </div>
+
+                                <div class="finish-ratio">
+                                    <span class="text-left">完成率:</span>
+                                    <strong>
+                                        <span class="ratio" style="text-align: left;">0.00%</span>
+                                    </strong>
+                                </div>
+                                <div class="questions-card">
+                                    <span>
+                                        <strong>
+                                            题卡
+                                        </strong>
+                                    </span>
+                                </div>
+                                <div class="questions-lists pre-scrollable">
+                                    <div class="q-list col-xs-12 col-sm-12 col-md-12" style="padding: 0px 8px 0px 0px;">
+                                        <ul>
+                                            <a href="javascript:" v-for="(question,index) in questionAll">
+                                                <li :id="question.qid" class="">
+                                                    {{index+1}}
+                                                </li>
+                                            </a>
+
+                                            
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="question-lists-tips">
+                                    <span>
+                                        已做
+                                        <i class="fa fa-square did" aria-hidden="true"></i>
+                                    </span>
+                                    <span>
+                                        未做
+                                        <i class="fa fa-square-o undone" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row ie8-do">
+                    <div class="col-xs-5  col-sm-7 col-md-8 col-lg-8 exam-submit-action ">
+                        <div class="submit-buttons">
+                            <span class="action">
+                                <a class="btn btn-blue submitExam">
+                                    <!--Regular if95-->
+                                    交卷
+                                    <i class="fa  fa-arrow-circle-right"></i>
+                                </a>
+                            </span>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+
+    </div>
+
+
+    <script>
+            var reqparams = new Object();  
+    　      var url = location.search; //获取url中"?"符后的字串  
+  
+    
+            if(url.indexOf("?") != -1)
+          　　{  
+          　　 var str = url.substr(1);  
+          　　　strs = str.split("&");  
+          　　　for(var i = 0; i < strs.length; i ++)  
+  
+            　　 {  
+                  
+                    reqparams[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);  
+            
+            　　  }  
+  
+          　　} 
+            var exid=reqparams["exid"];  //修改 查看必须传id
+            if(exid!=null&&exid!=""&exid!=undefined){
+                $.ajax({
+                  url:"/seeyon/userExamController.do?method=getUserExamPaper",
+                  type:"post",
+                  data:{"exid":exid},
+                  success:function(data){
+                    
+                    var res=JSON.parse(data);
+                   
+                    var code=res.code;
+                    if(code==0){
+                        app.exam=res.data;
+                        app.questionAll=res.data.question
+
+                    }else{
+                        alert(res.mgs)
+                    }
+                     
+                     
+                  },
+                });
+               
+                
+               
+              }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                questionAll: [],
+                exam: {
+                    'exid': '', "examRecordid":"", "title":"", "examNumber":"", "examTime":"", "examRule":"", "passScord":"", "examScord":"", "userScord":"","question":[],'examRecordid':''},
+                viewM: true,
+                colorSize:0,
+                
+            },
+            methods: {
+                viewChange: function (m) {
+                    this.viewM = m
+                },
+                changeUi:function(option,question){
+
+                    var b=option.checked
+                    var  qtype=question.qtype;
+                    var  qid=question.qid;
+                    console.log(qtype)
+                    if(b){
+                        option.checked=false
+                    }else{
+                        //单选和判断时候，制空其他的
+                        if(qtype==1||qtype==3){
+                           
+                            for(var i=0;i<question.options.length;i++){
+                               
+                                question.options[i].checked=false
+                                }
+                        }else{
+
+                        }
+                        option.checked=true
+                    }
+                    var  num=0;
+
+                    //给右侧数字赋ID，为qid，然后传入的问题的option中有选中，则Num+1
+                    for(var i=0;i<question.options.length;i++){
+                          if(question.options[i].checked==true){
+                              num=num+1;
+                          }
+
+                    }
+                    //单选题，num为1时候有class，colorSize+1  不是的时候去掉，同时colorSize-1
+                    if(qtype==1||qtype==3){
+                        if(num==1){
+                            var m= $("#"+qid).hasClass('selected');
+                           if(!m){
+                            $("#"+qid).addClass('selected');
+                            app.colorSize=app.colorSize+1;
+                           }
+                        }else{
+                            $("#"+qid).removeClass('selected');
+                            app.colorSize=app.colorSize-1;
+                        }
+                    }
+                     //多选题，num为2时候有class，colorSize+1  不是的时候去掉，同时colorSize-1
+                    if(qtype==2){
+                         if(num>=2){
+                            var m= $("#"+qid).hasClass('selected');
+                           if(!m){
+                            $("#"+qid).addClass('selected');
+                            app.colorSize=app.colorSize+1;
+                           }
+                        }else{
+                            $("#"+qid).removeClass('selected');
+                            app.colorSize=app.colorSize-1;
+                        }
+                    }
+                     //不定项，num为1时候有class，colorSize+1  不是的时候去掉，同时colorSize-1
+                    if(qtype==6){
+                        if(num>=1){
+                            var m= $("#"+qid).hasClass('selected');
+                           if(!m){
+                            $("#"+qid).addClass('selected');
+                            app.colorSize=app.colorSize+1;
+                           }
+                        }else{
+                            $("#"+qid).removeClass('selected');
+                            app.colorSize=app.colorSize-1;
+                        }
+                    }
+                },
+                viewXr:function(){
+                    for(var i=0;i<questionAll.length;i++){
+                        var qid=questionAll[i].qid
+                        var checkNum=0;
+                        for(var k=0;k<questionAll[i].options.length;k++){
+                            var obj=questionAll[i].options[k];
+                            if(obj.checked==true){
+                                checkNum=checkNum+1;
+                            } 
+                        }
+                        if((qid==1||qid==3)&checkNum==1){
+                            $('#'+qid).addClass('selected');
+                            app.colorSize++;
+                        }
+                        if(qid==2&checkNum>=2){
+                            $('#'+qid).addClass('selected');
+                            app.colorSize++;
+                        }
+                        if(qid==6&checkNum>=1){
+                            $('#'+qid).addClass('selected');
+                            app.colorSize++;
+                        }
+                    }
+                }
+            },
+            computed: {
+                allCount: function () {
+                    return this.questionAll.length;
+                },
+                rate:function(){
+                    var m=this.app.colorSize/this.questionAll.length
+                    return m;
+                }
+            },
+            mounted:function(){
+
+            }
+        })
+    
+
+        var a={}
+        var obj={}
+        
+        
+        a.paper_baseinfo=app.exam;
+    
+        obj._json_params=JSON.stringify(a);
+        setTimeout(() => {
+        var a={}
+        var obj={}
+        
+        app.exam.question=app.questionAll
+        a.answer_baseinfo=app.exam;
+    
+        obj._json_params=JSON.stringify(a);
+        $.ajax({
+                  url:"/seeyon/userExamController.do?method=answerExam",
+                  type:"post",
+                  data:obj,
+                  success:function(data){
+                    
+                    var res=JSON.parse(data);
+                   
+                    var code=res.code;
+                    if(code==0){
+                        alert('提交成功')
+                    }else{
+                        alert(res.mgs)
+                    }
+                     
+                     
+                  },
+                });
+            
+        }, 5000);
+    </script>
+
+</body>
+
+</html>

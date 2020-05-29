@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>学习平台后台管理</title>
+
+    <link href="common/css/bootstrap.min.css" rel="stylesheet">
+    <link href="common/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="common/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="common/css/animate.css" rel="stylesheet">
+    <link href="common/css/style.css" rel="stylesheet">
+
+    <link href="common/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="common/img/profile_small.jpg" />
+                             </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">admin</strong>
+                             </span> <span class="text-muted text-xs block">管理员 </span> </span> </a>
+
+                    </div>
+                    <div class="logo-element">
+                        学习平台
+                    </div>
+                </li>
+                <li class="active">
+                    <a  ><i class="fa fa-desktop"></i> <span class="nav-label">学习管理</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li class="active"><a href="#" onclick='menu("course-admin/courselist.html")'>课程管理</a></li>
+                        <li><a href="#" onclick='menu("course-admin/resourceAdmin.html")'>资料管理</a></li>
+
+                    </ul>
+                </li>
+                <li >
+                    <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">学习分析</span> </span></a>
+
+                </li>
+                <li >
+                    <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">考试管理</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="#">试题管理</a></li>
+                        <li><a href="#">题库管理</a></li>
+
+                    </ul>
+                </li>
+                <li >
+                    <a href="#"><i class="fa fa-table"></i> <span class="nav-label">考生管理</span> </a>
+
+                </li>
+                <li >
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">考试阅卷</span> </a>
+
+                </li>
+                <li >
+                    <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">考试分析</span> </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    <form role="search" class="navbar-form-custom" action="search_results.html">
+                        <div class="form-group">
+                            <input type="text" placeholder="学习平台后台管理" class="form-control" name="top-search" id="top-search">
+                        </div>
+                    </form>
+                </div>
+
+                <div >
+                    <iframe id="content" src="" frameborder="0" width="100%" height="100%" style="height:auto"> </iframe>
+                </div>
+
+            </nav>
+        </div>
+
+
+    </div>
+
+</div>
+</div>
+<script src="common/js/jquery-2.1.1.js"></script>
+<script type="text/javascript">
+    /** iframe自动适应页面 **/
+    function menu(url){
+        document.getElementById("content").src = url;
+    }
+    function computeHeight(){
+        var ht = $(window).height();//获取浏览器窗口的整体高度；
+        var topHeader = $(".navbar-header").height(); //获取头部高度，定义一个变量名为topHeader
+        $("#content").css("min-height", (ht-topHeader-6)); //设置iframe高度
+    }
+
+    computeHeight();
+    //默认跳转至概览页面
+    menu("course-admin/courselist.html");
+    $(window).resize(function() {
+        computeHeight();
+
+    })
+
+</script>
+
+<!-- Mainly scripts -->
+
+<script src="common/js/bootstrap.min.js"></script>
+<script src="common/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="common/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="common/js/inspinia.js"></script>
+
+
+
+</body>
+
+</html>

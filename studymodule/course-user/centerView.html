@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>选课中心-查看课程</title>
+
+<!-- Stylesheets -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+<link href="../course-admin/css/layui.css" rel="stylesheet">
+
+
+<!-- Fav Icons -->
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<script src="../course-admin/js/vue.js"></script>
+<script src="../course-admin/js/layui.js"></script>
+<style>
+    .product-tab-box .tabs-content .tab{
+        display: block;
+    }
+    .span-zq{
+        color: red;vertical-align: sub
+    }
+    .div-zq{
+        border: 1px solid #e2e2e2;
+        height: 100px;
+        text-align: center;
+        vertical-align: middle;
+        display: inline-block;
+        line-height: 100px
+    }
+    .left-zq{
+        float: left;
+    }
+    .return{
+        display: inline-block;
+        position: absolute;
+        top:25px;
+        left: 30px;
+        z-index: 2000;
+        padding-right: 20px;
+        color:#c1c1c1;
+    border-right: 1px solid #c1c1c1;
+    margin-right: 20px;
+    font-weight: bold
+    }
+    .return:hover{
+        color: #43bc60;text-decoration: underline;
+    }
+    .layui-card-body:hover{
+        cursor:pointer;
+        background-color: #c1c1c1
+    }
+   
+</style>
+<style  type="text/css">
+    [v-cloak] {
+        display: none;
+    }
+</style>
+</head>
+</head>
+
+<body>
+
+<div class="page-wrapper" id="app" v-cloak>
+    
+    <!-- 加载-->
+    <div class="preloader"></div>
+
+    <header class="main-header">
+
+
+        <!-- 基础课程头-->
+	
+	    <section class="newsletter-section">
+            <div class="return" onclick="window.history.back(-1); " style='color: white;font-size:20px;border-right: 1px solid white;'><   &nbsp返回</div>
+        <div class="container">
+            <div class="inner-container">
+                <div class="row clearfix">
+                    
+                    <!--Form Column-->
+                    <div class="form-column col-lg-9">
+                        <div class="inner-column">
+
+                            <div class="title-content">
+                                
+                                <h4>{{course.title}}</h4>
+                            </div><!-- /.title-content -->
+                            
+                            <!--Subscribe Form-->
+
+                            
+                        </div>
+                    </div>
+
+                    <!--Right Column-->
+
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+         <!-- 主题内容-->
+    <section id="shop-area" class="single-shop-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="shop-content">
+                        <!-- 图片区域+ 加入-->
+                        <div class="single-shop-content">
+                            <div class="row">
+                               
+                                <div class="col-lg-6">
+                                    <div class="img-holder">
+                                        <img src="https://fs.youkaoshi.cn/papercover/others/others_10.png" alt="" v-if="course.imgurl ==''">
+                                        <img :src="course.imgurl" alt="" v-else>
+                                    </div>   
+                                </div>
+                                 
+                                <div class="col-lg-6">
+                                    <div class="content-box">
+
+                                        <div class="text">
+                                            
+                                        </div>
+                                        <div class="location-box">
+                                            <p></p>
+              
+                                      
+                                        </div>
+                                        <div class="addto-cart-box" style="    margin-left: 20px;">
+                                            <a style="font-size: 30px;
+                                            vertical-align: -30px;">{{course.title}}</a>
+                                            <button style="float: right;" id='study' class="btn-one thm-bg-clr addtocart" type="submit" @click="join(course.coid)">加入学习</button>
+                                        </div>
+                                          
+                                    </div>
+                                    <div class="content-box">
+                                        <div style="margin-top:60px;margin-left: 20px">
+                                            <h3>课程达标</h3>
+                                                <div><span class='span-zq'>*&nbsp;</span><span class='span-font'>课程包含<span>{{allResource}}</span>个课程资源</span></div>
+                                                <div><span class='span-zq'>*&nbsp;</span><span>总学时需要达到 {{gsTime(course.duration)}} 以上，学完课程会获得{{course.points}}学分奖励</span></div>
+                                                <div><span class='span-zq'>*&nbsp;</span><span>完成课程时长后才能完成此课程</span></div>
+                                        </div>
+                                       
+
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 课程内容-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="product-tab-box tabs-box">
+                                    <ul class="tab-btns tab-buttons clearfix">
+                                        <li  class="tab-btn " @click="changeWhere($event)"><span>课程简介</span></li>
+                                        <li  class="tab-btn " @click="changeWhere($event)"><span>课程章节</span></li>
+										 
+                                    </ul>
+                                    <div class="tabs-content " style="min-height: 150px">
+                                        <div class="tab " v-show="where">
+                                            <div class="product-details-content">
+                                                <div class="desc-content-box">
+                                                    <p>{{course.description}}</p>
+                                                </div>
+                                            </div>    
+                                        </div>
+                                        <div class="tab " v-show="!where">
+                                            <div class="review-box-holder">
+                                                <div class="row" v-for="(champter,index) in list">
+                                                    
+                                                    <div class="col-xl-12">
+                                                        <div class="layui-card" style='width: 100%;text-align: left'>
+                                                                <div :id="champter.chid" class="layui-card-header" style='background: #e2e2e2'>{{champter.title}}</div>
+                                                                <div v-for="(resource,index) in champter.resourceList" :data-src="resource.down" :id="resource.rsid" @click="viewResource(resource.rsid,resource.reType)"  class="layui-card-body row">
+                                                                        <span class='col-md-10'>{{resource.title}} </span>
+                                                                        
+                                                                        <span class='col-md-2' style="text-align: center" >时长：{{gsTime(resource.duration)}}</span>
+                                                                        
+                                                                       
+                                                                </div>
+                                                        </div>
+                                                        
+                                                        
+                                                    </div>
+                                                
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>      
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div> 
+                </div>
+            
+            </div>
+        </div>
+    </section>
+    <!--End shop area-->
+
+    <!-- Newsletter section -->
+    
+
+
+</div>
+<!--End pagewrapper--> 
+
+<!-- Scroll Top Button -->
+<button class="scroll-top scroll-to-target" data-target="html">
+    <span class="icon-arrow-2"></span>
+</button>
+    
+
+<!-- jequery plugins -->
+
+<script src="js/jquery.js"></script>
+<script src="js/popover.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script src="js/wow.js"></script>
+<script src="js/owl.js"></script>
+<script src="js/validate.js"></script>
+<script src="js/mixitup.js"></script>
+<script src="js/isotope.js"></script>
+<script src="js/appear.js"></script>
+<script src="js/jquery.fancybox.js"></script>
+<script src="js/jquery.background-video.js"></script>
+<script src="js/jquery.mCustomScrollbar.min.js"></script>
+<script src="js/jquery.bootstrap-touchspin.js"></script>
+<script src="js/jquery-ui.js"></script>
+
+<script src="js/script.js"></script>
+
+     <script type="text/javascript">
+        document.write('<script src="/seeyon/adminlayout/common/js/common.js?ver='+Math.random()+'"  type="text/javascript"><\/script>');
+     </script>
+     <script  type="text/javascript">
+         　　version("/seeyon/studymodule/course-user/js/centerView.js")
+     </script>   
+
+</body>
+</html>

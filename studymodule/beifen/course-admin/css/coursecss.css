@@ -1,0 +1,21 @@
+body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;overflow: hidden;}
+
+.course-wrapper {
+    /*overflow: hidden;*/
+    /*padding-top: 56.25%;*/
+    /*position: relative;*/
+}
+
+.course-wrapper iframe {
+    border: 0;
+    width: 100%;
+}
+
+/* 4x3 Aspect Ratio */
+.course-wrapper-4x3 {
+    padding-top: 75%;
+}
+
+.page-bar{
+    display: none;
+}

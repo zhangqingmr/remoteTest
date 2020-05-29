@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" class="windows desktop landscape">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta name="renderer" content="webkit">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+
+
+    <title>视频统计分析</title>
+    <link href="css/layui.css" rel="stylesheet" type="text/css">
+    <script src="js/layui.js"></script>
+
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+
+    <script src="js/vue.js"></script>
+    <link rel="stylesheet" href="css/default/style.min.css" />
+    <link rel="stylesheet" href="css/course_online.css">
+     <link rel="stylesheet" href="css/layui.css">
+     <link rel="stylesheet" href="css/layout.css">
+     <script src='js/vue.js'></script>
+	
+     <script src='js/layui.js'></script>
+    
+</head>
+
+<body style="text-align: center">
+    <h1 style='text-align: center;margin-top: 30px'>学习人员记录</h1>
+    
+    <div id='tablestudy' style="width:80%;margin-left: 10%;margin-top:40px">
+            <table class="table table-striped">
+                    <thead>
+                            <tr>
+                                    <td class="success" style="text-align: center">姓名</td>
+                                    <td  class="success"style="text-align: center" >学习时间</td>
+                            </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(member,index) in memberAll">
+                            <td class="active" style="text-align: center">{{member.memberName}}</td>
+                            <td class="info" style="text-align: center">{{member.updateTime}}</td>
+                    </tr>
+                    </tbody>
+            </table>
+    </div>
+    <div id='pageSize' style="margin:0 auto;position: absolute;bottom: 50px;left: 50%;margin-left: -100px"></div>
+    <script>
+        	layui.use('laypage', function(){
+
+			var laypage = layui.laypage;
+                        var reqparams = new Object();  
+                　      var url = location.search; //获取url中"?"符后的字串  
+
+
+                        	function pageFenye(count,fileId){
+				laypage.render({
+						elem: 'pageSize' //注意，这里的 test1 是 ID，不用加 # 号
+						,count:count //数据总数，从服务端得到
+						
+						,layout: ['count', 'prev', 'page', 'next', ]
+						,jump: function(obj,first){
+							
+						if(!first){
+								$.ajax({
+								url:"/seeyon/resource.do?method=getStudyResourceHistoryPo&fileId="+fileId+"&page="+obj.curr+"&limit=10",
+								type:"get",
+								success:function(data){
+								        var app =JSON.parse(data)
+									tablestudy.memberAll=app;
+								},
+							});
+						}
+						}
+      
+					});
+                                //$('.layui-laypage-count').css('padding','0px 15px')
+                                var s=$('#pageSize').width()/2
+                                console.log(s)
+                                $('#pageSize').css('margin-left',-s)
+			}
+
+                
+                        if(url.indexOf("?") != -1)
+                        　　{  
+                        　　 var str = url.substr(1); 
+                        　strs = str.split("&"); 
+                        　　　for(var i = 0; i < strs.length; i ++)  
+                        　　 {     reqparams[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);  
+                        　　  }  
+
+                        　　} 
+                        var fileId=reqparams["fileId"];  //修改 查看必须传id
+                        if(fileId!=null&&fileId!=""&fileId!=undefined){
+                        $.ajax({
+                        url:"/seeyon/resource.do?method=getStudyResourceHistoryPo",
+                        type:"post",
+                        data:{"fileId":fileId,'page':1,"limit":'10'},
+                        success:function(data){
+                                var obj=JSON.parse(data);
+                                
+                                if (obj!= undefined && obj != null && obj != "false") {			
+                                
+                                tablestudy.memberAll=obj;
+                                pageFenye(obj.length,fileId)
+                                }
+                        },
+                        });
+                        
+          }
+        var  tablestudy=new Vue({
+            el:'#tablestudy',
+            data:{
+                memberAll:[
+                {'memberName':'oa','updateTime':'2019-09-12 16:44:52'},
+                {'memberName':'oa','updateTime':'2019-09-12 16:44:52'},
+                {'memberName':'oa','updateTime':'2019-09-12 16:44:52'},
+                {'memberName':'oa','updateTime':'2019-09-12 16:44:52'},
+                {'memberName':'oa','updateTime':'2019-09-12 16:44:52'},
+                {'memberName':'oa','updateTime':'2019-09-12 16:44:52'},
+                {'memberName':'oa','updateTime':'2019-09-12 16:44:52'},
+                {'memberName':'oa','updateTime':'2019-09-12 16:44:52'},
+                {'memberName':'oa','updateTime':'2019-09-12 16:44:52'},
+                {'memberName':'oa','updateTime':'2019-09-12 16:44:52'},
+
+                ],
+                
+            }
+        })
+})
+    </script>
+   
+</body>
+</html>

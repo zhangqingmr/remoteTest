@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html class=" windows desktop">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+     <meta http-equiv="Expires" content="0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/examOld.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+
+
+    <title>训练分析</title>
+    <style  type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+          
+    .return{
+        display: inline-block;
+        position: absolute;
+        top:14px;
+        left: 30px;
+        z-index: 2000;
+        padding-right: 20px;
+        color:  #fff;;
+    border-right: 1px solid #c1c1c1;
+    margin-right: 20px;
+    font-weight:300
+    }
+    .return:hover{
+        color: #43bc60;text-decoration: underline;
+    }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <nav class="navbar navbar-default">
+                <div class="return" onclick="window.location.href='/seeyon/trainmodule/train-user/trainMy2.html' "><   &nbsp返回</div>
+            <div class="container" style="position: relative;">
+                <div class="navbar-header">
+                    <a class="navbar-brand  have-img" href="javascript:;">
+
+                        <span class="text-responsive">训练信息</span>
+
+                    </a>
+                </div>
+
+            </div>
+        </nav>
+
+
+
+        <div class="container" id="app" v-cloak>
+            <div >
+                
+                <div id="printableArea">
+                    <div class="row exam-title">
+                        <div class="col-xs-12  col-sm-12 col-md-12 text-center">
+                            <h2>{{exam.title}}</h2>
+                        
+                        </div>
+                    </div>
+
+                   
+
+                    <div class="result-info-container info-container-print clearfix">
+                        <div class="tabbable tabbable-custom">
+                            <ul class="nav nav-tabs">
+
+                                <li class="active ">
+                                    <a href="javascript:">答题分析</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="print-tab-content">
+                                
+                                
+                                <div class="active" style="margin-bottom: 50px;">
+
+                                    <div class="row">
+                                        <div class="col-xs-12  col-sm-12 col-md-12 answers-list">
+                                            <div class="row question" v-for="(question,index) in questionAll"  >
+                                                <div class="col-xs-12  col-sm-12 col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="row-box">
+                                                                <p class="ques-title">
+                                                                    <span class="ques-number">
+                                                                        {{index+1}}/{{allNumber}}
+                                                                    </span>
+                                                                    <span class="ques-type ques-single">{{question.qtypName}}</span>
+                                                                    <span v-html="question.title"></span>
+                                                                   
+                                                                </p>
+                                                                <!-- 选项 -->
+                                                                <div class="question-option-list">
+                                                                    <ol>    
+                                                                        <li v-for="(option,index) in question.optionList"  v-if='question.qtype==1||question.qtype==3||question.qtype==2||question.qtype==6'>
+                                                                            <span>{{option.title}}</span>
+                                                                        </li>
+                                                                    
+                                                                    </ol>
+                                                                </div>
+                                                                <!-- 正确错误答案 -->
+                                                                <div class="ques-answers">
+                                                                   
+                                                                    <div class="test_result wrong" v-if='question.qtype==1||question.qtype==3||question.qtype==2||question.qtype==6'>
+                                                                       
+                                                                        <div class="rightAnswer">
+                                                                            <div class="left">
+                                                                                <span>正确答案
+                                                                                    <span class="colon">: </span>
+                                                                                </span>
+                                                                                <strong>{{question.rightAnswer}}</strong>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="userAnswer">
+                                                                            <span>考生答案
+                                                                                <span class="colon">: </span>
+                                                                            </span>
+                                                                            <strong :class="question.answerState==2?'true':'false'">
+                                                                                {{question.userAnswer}}
+                                                                                <i :class="['fa',question.answerState==2?'fa-true':'fa-false']" aria-hidden="true"></i>
+                                                                            </strong>
+                                                                        </div>
+                                                                       
+                                                                        
+
+                                                                        <div style="clear: both;"></div>
+                                                                    </div>
+                                                                    <!-- 填空题样式 -->
+                                                                    <div class="test_result fillinblank wrong" v-if='question.qtype==4'>
+                                                                        <!--Regular if68-->
+                                                                        <div class="rightAnswer">
+                                                                            <h3>正确答案 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;考生答案 <i :class="['fa',question.answerState==2?'fa-true':'fa-false']" aria-hidden="true"></i> </h3>
+                                                                            <p>
+                                                                                <ul class="fillinblank">
+                                                                                    <li v-for="(option,index) in question.optionList">{{option.title}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{option.answer}}
+                                                                                           
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </p>
+                                                                        </div>
+                                                                     
+
+                                                                    </div>
+                                                                     <!-- 问答题样式 -->
+                                                                    <div class="test_result essay wrong" v-if='question.qtype==5'>
+                                                                        <!--Regular if122-->
+                                                                        <div class="rightAnswer">
+                                                                                <h3>关键字</h3>
+                                                                                <p class="question-analysis"><span v-for="(op,index) in question.optionList">{{op.title}}、</span></p>
+                                                                            </div>
+                                                                            <div class="rightAnswer">
+                                                                                    <h3>参考答案</h3>
+                                                                                    <p class="question-analysis">{{question.rightAnswer}}</p>
+                                                                                </div>
+                                                                        
+                                                                        <div class="userAnswer">
+                                                                            <h3>考生答案 <i  aria-hidden="true" :class="['fa',question.answerState==2?'fa-true':'fa-false']"></i> </h3>
+                                                                            <div class="question-analysis">
+                                                                                <p>{{question.userAnswer}}</p>
+                                                                                <!--Regular if123-->
+                                                                                <!--Regular if124-->
+                                                                                <!--Regular if125-->
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--Regular if126-->
+                                                                            
+                                                                        
+                                                                        <!--Regular if127-->
+                                                                    </div>
+                                                                    <div class="dividing-line"></div>
+                                                                    <div :class="['question-analysis',question.answerState==2?'':'wrong']">
+                                                                        题目解析:
+                                                                        <span>{{question.feedback}}</span>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            
+
+
+
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        document.write('<script src="/seeyon/adminlayout/common/js/common.js?ver='+Math.random()+'"  type="text/javascript"><\/script>');
+     </script>
+     <script  type="text/javascript">
+         　　version("/seeyon/trainmodule/train-user/js/trainFinish.js")
+     </script>   
+
+</body>
+
+</html>

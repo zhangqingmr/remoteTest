@@ -1,0 +1,1267 @@
+.course-detail-header{
+	height: 60px !important;
+}
+.course-detail-header .head-logo{
+	height: 60px !important;
+}
+.course-detail-header .head-logo .head-logo-content{
+	margin-top: 5px;
+}
+#course .course-chapter-play{
+	width: 900px;
+	height: 734px;
+	float: left;
+	background: #fff;
+	position: relative;
+}
+.course-chapter-play .detail-mask{
+	width: 100%;
+	height: 100%;
+    position: absolute;
+    z-index: 9;
+    background-size: contain !important;
+}
+.course-chapter-play .detail-mask .urlimg{
+	width: 81px;
+	height: 81px;
+	display: block;
+	background:url(../images/course/kc_dazanting_icon.png) no-repeat left center;
+	cursor: pointer;
+    position: absolute;
+    left: 50%;
+    margin-left: -40px;
+    top: 50%;
+    margin-top: -40px;
+}
+.course-chapter-play .detail-mask .urlimg:hover{
+	background:url(../images/course/kc_dazanting_icon_pressed.png) no-repeat left center;
+}
+.course-chapter-play .detail-mask .otherimg{
+	width: 81px;
+	height: 81px;
+	display: block;
+	background:url(../images/course/kc_wenben_icon.png) no-repeat left center;
+	cursor: pointer;
+    position: absolute;
+    left: 50%;
+    margin-left: -40px;
+    top: 50%;
+    margin-top: -40px;
+}
+.course-chapter-play .detail-mask .otherimg:hover{
+	background:url(../images/course/kc_wenben_icon_pressed.png) no-repeat left center;
+}
+.course-chapter-play .courselist{
+	width: 100%;
+	height: 100%;
+}
+/*ppt pdf doc*/
+.course-images{
+	width: 100%;
+	height: 100%;
+	padding-bottom: 164px;
+}
+.course-images .img-con{
+	width: 100%!important;
+	height: 100%!important;  
+}
+.course-images .img-con .big-image{
+	width: 100%!important;
+	height: 100%!important;
+	position: relative;
+}
+.course-images .img-con .big-image span{
+	max-width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	display:block;
+	background-size: contain !important;
+}
+.course-images .img-con .big-image a{
+	width: 26px;
+	height: 26px;
+    position: absolute;
+    top: 50%;
+    margin-top: -13px;
+}
+.big-image a.prve_btn{
+	left: 10px;
+    background: url(../images/course/kc_zuo_icon.png);
+}
+.big-image a.prve_btn:hover{
+	background: url(../images/course/kc_zuo_icon_pressed.png);
+}
+.big-image a.next_btn{
+	right: 10px;
+    background: url(../images/course/kc_you_icon.png);
+}
+.big-image a.next_btn:hover{
+	background: url(../images/course/kc_you_icon_pressed.png);
+}
+.course-images .small-image{
+	width: auto!important;
+	height: 110px!important;
+	position: relative;
+	padding: 10px 45px;
+	background: #1f1f1f;
+	overflow: hidden;
+}
+.course-images .small-image .small-image-con{
+	position: absolute;
+	height: 90px;
+}
+.course-images .small-image a{
+	position: absolute;
+	top: 10px;
+	width: 45px;
+	height: 90px;
+}
+.course-images .small-image .left-btn{
+	left: 0px;
+    background:#1f1f1f url(../images/course/kc_zuoxia_icon.png) no-repeat right center;
+}
+.course-images .small-image .left-btn:hover{
+    background:#1f1f1f url(../images/course/kc_zuoxia_icon_pressed.png) no-repeat right center;
+}
+.course-images .small-image .right-btn{
+	right: 0px;
+	background:#1f1f1f url(../images/course/kc_youxia_icon.png) no-repeat left center;
+}
+.course-images .small-image .right-btn:hover{
+    background:#1f1f1f url(../images/course/kc_youxia_icon_pressed.png) no-repeat left center;
+}
+.course-images .small-image .small-img{
+	width: 90px;
+	height: 90px;
+	margin: 0 0 10px 10px;
+}
+.course-images .small-image .small-img span{
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	display: block;
+}
+.course-images .small-image .small-img span.activeImg{
+	border: 1px solid #e64c64;
+}
+.course-images .jd-img{
+	width: 100%;
+	height: 4px;
+	background: #ccc;
+	clear: both;
+}
+.course-images .jd-img .jd-bar{
+	height: 4px;
+	background: #e64c66;
+}
+
+/*ppt pdf doc 结束*/
+/*音视频*/
+
+/*音视频 end*/
+/*图文 链接 */
+.course-chapter-play .course-imaText{
+	height: 100%;
+	padding-bottom: 50px;
+}
+.course-chapter-play .course-imaText img{
+	width: 100%;
+}
+.course-chapter-play .course-imaText .imaText{
+	overflow: scroll;
+	height: 100%;
+}
+.course-chapter-play .course-link{
+    width: 100%;
+    height: 100%;
+    padding-bottom: 50px;
+}
+@media screen and (min-width: 1024px){
+	.course-chapter-play .course-imaText .imaText{
+	    width: 740px;
+	    margin: 0 auto;
+	}
+	.course-chapter-play .course-link iframe{
+		width: 740px;
+	    margin: 0 auto;
+	    display: block;
+	}
+}
+/*图文 链接 结束*/
+
+/*课程*/
+.course-chapter-play .course-audio{
+	height: 100%;
+}
+.course-chapter-play .course-vidio{
+	height: 100%;
+}
+.course-chapter-play .course-vidio .course-vidio-con{
+	height: 100%;
+	background: #000;
+}
+.course-chapter-play .course-vidio .course-vidio-con video::-internal-media-controls-download-button {
+    display:none;
+}
+
+.course-chapter-play .course-vidio .course-vidio-con video::-webkit-media-controls-enclosure {
+    overflow:hidden;
+}
+
+.course-chapter-play .course-vidio .course-vidio-con video::-webkit-media-controls-panel {
+    width: calc(100% + 30px); 
+}
+/*课程结束*/
+/*底部条*/
+.course-chapter-play .url-play-btm{
+	display: inline-block;
+	height: 50px;
+	line-height: 50px;
+	color: #ffffff;
+	font-size: 12px;
+	padding-left: 10px;
+}
+.course-chapter-play .url-play-btm i{
+	color: #0096ff;
+	font-size: 14px;
+	padding-left: 10px; 
+	cursor: pointer;
+}
+.course-chapter-play .play-bottom{
+	display: block;
+	width: 100%;
+	height: 50px;
+	background: #000;
+}
+.play-bottom .bottom-page{
+	font-size: 14px;
+	color: #fff;
+	display: inline-block;
+    margin: 15px 0 0 20px;
+}
+.play-bottom .bottom-page i{
+	display: inline-block;
+	width: 50px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	color: #333;
+    background: #fff;
+}
+.play-bottom i.line{
+	border-right: 1px solid #333;
+	width: 5px;
+	height: 20px;
+    display: inline-block;
+    float: right;
+    margin-top: 15px;
+}
+.play-bottom .full-screen{
+	width: 20px;
+	height: 20px;
+    background: url(../images/course/kc_quanping_icon.png);
+    display: inline-block;
+    float: right;
+    margin-right: 16px;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+.play-bottom .full-screen:hover{
+	background: url(../images/course/kc_quanping_icon_pressed.png);
+}
+.play-bottom .small-screen{
+	width: 20px;
+	height: 20px;
+    background: url(../images/course/kc_tuichuquanping_icon.png);
+    display: inline-block;
+    float: right;
+    margin-right: 16px;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+.play-bottom .small-screen:hover{
+	background: url(../images/course/kc_tuichuquanping_iconpressed.png);
+}
+/*底部条 结束*/
+
+
+.clear{
+	clear: both;
+}
+/*页面all*/
+#course{
+	width: 100%;
+}
+/*------------------------课件+评论----------------------*/
+#course .course-main{
+	width: 100%;
+}
+#course .course-main .course-middle{
+	width: 1200px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin: 0 auto;
+}
+#course .main-header{
+	height: 30px;
+}
+/*课件名称*/
+#course .header-title{
+	float: left;
+}
+#course .course-main .header-title span.goExam{
+	width: 80px;
+    line-height: 30px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+}
+#course .header-title .c-return-btn{
+	width: 56px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	display: block;
+	float: left;
+	border-radius: 5px;
+	background:#fff;
+	cursor: pointer;
+}
+/*#course .header-title .c-return-btn:hover{
+	background:#fff;
+	color: #E64C65;
+}*/ 
+#course .header-title span:nth-child(1){
+	color: #fff;
+	float: left;
+	height: 30px;
+	line-height: 30px;
+}
+#course .header-title span:nth-child(2){
+	color: #fff;
+	padding-left: 20px;
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	max-width: 700px;
+	text-overflow:ellipsis;
+	overflow:hidden;
+	white-space:nowrap; 
+}
+/*#course .header-title span:nth-child(1) i{
+	color: #fff;
+	padding-left: 20px;
+}*/
+#course .header-title span:nth-child(3){
+    color: #fff;
+    margin-left: 10px;
+    margin-right: 25px;
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+    float: left;
+}
+#course  .header-share span{
+	color: #fff;
+}
+#course .main-course{
+	margin-top: 20px;
+}
+#course .course-praise{
+    height: 27px;
+}
+#course .detai-line{
+	width: 2px;
+	height: 12px;
+	border-left: 1px solid #999;
+	display: inline-block;
+	margin: 0px 7px 0 7px;
+}
+/*评论*/
+#course .course-comment{
+	width: 280px;
+	float: right;
+	height: 734px;
+	background: #fff;
+}
+#course .comment-title{
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+#course .comment-title .comment-title-left{
+	float: left;
+	margin-left: 10px;
+}
+#course .comment-title .comment-title-right{
+	float: right;
+	font-size: 12px;
+	margin-right: 10px;
+	color: #666666;
+}
+/*课程评分*/
+#course .course-score{
+    height: 50px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 10px;
+}
+#course .course-score .scoreName{
+    line-height: 50px;
+    float: left;
+    display: block;
+    margin: 0 0 0 64px;
+}
+.star-rating {
+    display: inline-block;
+    background: url(../images/course/start-kong.png) no-repeat;
+    background-size:contain;
+    width: 67px;
+    height: 15px;
+    cursor: pointer;
+    position: relative;
+    top: 17px;
+    left: 6px;
+}
+.star-rating li{
+    background: url(../images/course/start-shi.png) no-repeat;
+	display: inline-block;
+    height: 15px;
+    cursor: pointer;
+}
+.empty-box {
+    width: 67px;
+    height: 15px;
+	position: absolute;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.empty-box  div{
+  width: 20%;
+  height: 15px;
+  display: inline-block;
+  
+}
+/*.empty-box {
+    height: 32px;
+	position: absolute;
+    display: inline-block;
+   	width: 150px;
+    height: 15px;
+    position: absolute;
+}*/
+.glyphicon-star-empty::before{
+    content: " "!important;
+    background-image: url(../images/course/mark.png);
+}
+.glyphicon-star::before{
+	content: " "!important;
+	background-image: url(../images/course/mark2.png);
+}
+.glyphicon-star::before{
+	width:15px;
+    height:15px;
+    background-repeat: no-repeat;
+	background-size: contain;
+	display: inline-block;
+}
+.glyphicon-star-empty::before{
+	width:15px;
+    height:15px;
+    background-repeat: no-repeat;
+	background-size: contain;
+	display: inline-block;
+}
+/*评论提交*/
+#course .course-input{
+	padding: 0 10px;
+}
+#course .course-input input{
+	border: 1px solid #E5E5E5;
+	padding: 10px;
+	width: 100%;
+}
+#course .comment-sub{
+	padding: 0 10px;
+	margin-bottom: 30px;
+	position: relative;	
+}
+#course .allowed{
+	cursor: not-allowed;
+}
+.errorText{
+	color: red;
+    font-size: 14px;
+    position: absolute;
+    left: 20px;
+    bottom: -23px;
+    margin: 0;
+}
+#course .comment-submit{
+	height: 120px;
+	width: 100%;
+    margin: 0 auto;
+    position: relative;
+    border:1px solid #dedede;
+    padding: 10px;
+}
+#course .comment-submit textarea{
+	height: 77px;
+	width: 100%;
+    background: #fafafa;
+    border: none;
+    resize:none;
+    outline: none;
+}
+#course .comment-send{
+	width: 50px;
+	height: 24px;
+	display: inline-block;
+	text-align: center;
+	cursor: pointer;
+	line-height: 24px;
+	color: #fff;
+	position: absolute;
+	right: 6px;
+	bottom: 6px;
+}
+#course .comment-send-two{
+	width: 50px;
+	height: 24px;
+	display: inline-block;
+	text-align: center;
+	line-height: 24px;
+	color: #fff;
+	position: absolute;
+	right: 6px;
+	bottom: 6px;
+	background: #CCCCCC;
+}
+/*评论内容*/
+#course .comment-content{
+	margin-top: 20px;
+	padding: 0 10px;
+	overflow: auto;
+	height: 440px;
+}
+#course .comment-content::-webkit-scrollbar {   
+	width: 4px;
+}
+/* 滚动槽 */
+#course .comment-content::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px #cccccc;
+}
+/* 滚动条滑块 */
+/*#course .comment-content::-webkit-scrollbar-thumb {
+	background:#e64d65;
+	-webkit-box-shadow: inset 0 0 6px #e64d65;
+}*/
+/*#course .comment-content::-webkit-scrollbar-thumb:window-inactive { 
+	background: rgb(255,0,0);
+}*/
+#course .comment-list{
+	border-bottom: 1px dashed #dedede;
+	padding-top: 10px;
+}
+#course .comment-list:first-child{
+	padding-top: 0px;
+}
+/*无评论数据*/
+#course .no-comment{
+	min-height: 440px;
+    text-align: center;
+    line-height: 400px;
+}
+/*评论者*/
+#course .commenter{
+	width: 30px;
+	height: 30px;
+	float: left;
+	border-radius: 50%;
+    overflow: hidden;
+}
+#course .comment-header{
+	border-radius: 50%;
+}
+#course .comm-right{
+	padding-left: 40px;
+	padding-right: 5px;
+}
+#course .comm-right-name{
+	height: 30px;
+    line-height: 30px;
+}
+#course .comm-right-name span{
+    text-overflow: ellipsis;
+    overflow: hidden;
+   	width: 9em;
+    white-space: nowrap;
+    display: inline-block;
+}
+#course .comment-start{
+	float: right;
+	margin-top: 8px;
+    margin-right: -5px;
+}
+#course .commenter span:nth-child(1){
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	display: block;
+	float: left;
+	overflow: hidden;
+}
+#course .commenter span:nth-child(1) img{
+	width: 100%;
+	height: 100%;
+}
+#course .commenter span:nth-child(2){
+	float: left;
+	line-height: 30px;
+	padding-left: 5px;
+}
+
+/*评论内容*/
+#course .comment-word{
+    padding: 2px 0 0;
+}
+#course .comment-word span{
+	word-wrap: break-word; 
+}
+#course .comment-bottom{
+	height: 35px;
+	line-height: 35px;
+}
+/*评论日期*/
+#course .comment-date{
+	float: left;
+	line-height: 35px;
+}
+/*回复+点赞*/
+#course .comment-bottom-right{
+	float: right;
+}
+#course .comment-bottom-right span{
+	line-height: 35px;	
+	/*float: left;*/
+	display: inline-block !important;
+}
+.comment-word .puid i{
+	color: #E64C65;
+}
+#course .comment-bottom-right span{
+	/*width: 23px;*/
+	height: 35px;
+	display: block;
+	padding-left: 22px;
+	cursor: pointer;
+	line-height: 35px;
+}
+#course .comment-bottom-right span.pinglun-icon{
+	/*background: url(../images/course/sq_pinglunxiao_icon.png) no-repeat left center;*/
+}
+#course .comment-bottom-right span.dianzan-icon.praise-activate{
+    /*background: url(../images/course/sq_yidianzanxiao_icon.png) no-repeat left 7px;*/
+    padding-left: 20px;
+}
+#course .comment-bottom-right span.dianzan-icon{
+  /*  background: url(../images/course/sq_dianzanxiao_icon.png) no-repeat left 7px;*/
+    padding-left: 20px;
+}
+#course .comment-bottom-right span.dianzan-icon i{
+	font-size: 20px;
+	width: 10px;
+	height: 10px;
+}
+/*------------------详情+章节-----------------------*/
+#course .course-main-bottom{
+	width: 100%;
+	padding-bottom: 50px;
+	overflow: hidden;
+}
+#course .course-main-bottom-main{
+	width: 1200px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+#course .main-bottom-left{
+	width: 224px;
+	float: left;
+}
+/*讲师*/
+.lecturer-total{
+    padding: 20px 0;
+	overflow: hidden;
+}
+.course-lecturer{
+     margin: 0 12px 12px 12px;
+}
+.lecturer-img{
+    background: url(../images/course/jiangshi_icon.png) no-repeat;
+    width: 88px;
+    height: 118px;
+    float: left;
+}
+.lecturer-right{
+	float: left;
+    width: 100px;
+    margin-left: 10px;
+    font-family: "微软雅黑";
+}
+.lecturer-name .name-title{
+	font-size: 16px;
+	color:#333333;
+}
+.lecturer-name .course-type{
+	font-size: 14px;
+	color:#666666;
+}
+.lecturer-text{
+	margin-top: 20px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    color: #666666;
+    font-size: 12px;
+}    
+/*已学习人员*/
+#course .course-learn{
+	padding: 0 20px 20px;
+	border: 1px solid #e5e5e5;
+    padding-bottom: 67px;
+    height: 450px;
+    position: relative;
+}
+#course .course-learn.reset-paddbottom{
+	padding-bottom: 20px;
+}
+#course .course-learn .no-learner{
+    width: 100%;
+    line-height: 100px;
+    text-align: center;
+}
+#course .learn-num{
+	height: 48px;
+	line-height: 48px;
+	border-bottom: 1px solid #dedede;
+}
+#course .learn-header{
+	max-height: 300px;
+    overflow: hidden;
+}
+#course .learn-header ul{
+	margin-bottom: 0;
+}
+#course .fenye {
+    position: absolute;
+    bottom: 15px;
+    width: 83%;
+    margin-top: 25px;
+    text-align: center;
+}
+#course .fenye.fenye-comment{
+	position: inherit;
+    width: inherit;
+    margin-top: 7px;
+}
+#course .pagination-sm>li>a{
+	/*padding: 5px 10px !important;*/
+    width: 31px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    padding: 0 !important;
+    margin: -1px !important;
+}
+/*滚动条*/
+#course .learn-header::-webkit-scrollbar {   
+	width: 3px;
+}
+#course .learn-header::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 2px #eee;
+	color: #cccccc;
+}
+#course .learn-header::-webkit-scrollbar-thumb {
+	background:#e64d65;
+	-webkit-box-shadow: inset 0 0 6px #fdb3be;/*e64d65*/
+}
+#course .learn-header::-webkit-scrollbar-thumb:window-inactive { 
+	background: rgb(255,0,0);
+}
+#course .learn-header ul li{
+	float: left;
+	width: 50px;
+	margin:20px 15px 0 0;
+}
+#course .learn-header ul li:nth-child(3n){
+	margin-right: 0;
+}
+
+
+#course .learn-header ul li a{
+	text-decoration: none;
+	color: #666;
+	width: 50px;
+}
+
+#course .learn-header ul li .user-head{
+	background:#dedede url(../images/default/sy_dbtxmorentu_bg.png) no-repeat;
+	background-size: 100%;
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	display: block;
+	overflow: hidden;
+}
+
+#course .learn-header ul li p{
+    width: 50px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+#course .learn-more{
+	height: 24px;
+	/*width: 100%;*/
+	border: 1px solid #E5E5E5;
+	text-align: center;
+	line-height: 24px;
+    /*margin-top: 20px;*/
+    cursor: pointer;
+
+	position: absolute;
+    left: 20px;
+    bottom: 20px;
+    width: 82%;
+}
+/*------------------右侧-----------------------*/
+#course .main-bottom-right{
+	width: 956px;
+	min-height: 450px;
+	float: right;
+	padding: 30px 20px 0 20px;
+	border: 1px solid #e5e5e5;
+}
+#course .right-text{
+	width: 1200px !important;
+	float: none;
+}
+#course .course-detailall{
+	padding: 0 0 20px 0;
+	border-bottom: 1px dashed #DEDEDE;
+}
+#course .course-nameall{
+	
+}
+#course .coursename{
+	float: left;
+	max-width: 750px;
+}
+#course .collectshou{
+	float: right;
+}
+#course .collectshou span{
+	display: inline-block;
+    position: relative;
+    /*bottom: 8px;*/
+}
+#course .collect{
+	background:url(../images/course/sq_shoucang_icon.png) no-repeat;
+	width: 18px;
+	height: 16px;
+	display: inline-block;
+}
+.course-collect{
+	display: inline-block;
+}
+.collect .activate {
+    width: 0.26rem;
+    height: 0.26rem;
+    background-image: url(../images/course/sq_shoucang_icon_pressed.png);
+}
+#course .comment-ischarge{
+	color: #ff0000;
+	margin-right: 15px;
+}
+#course .consult{
+	width: 120px;
+	height:40px;
+	color: #ffffff;
+	background: #E64D65;
+	text-align: center;
+	line-height: 40px;
+	margin-top: 18px;
+	display: block;
+	cursor: pointer;
+}
+/*星星评分*/
+#course .comment-score{
+    width: 67px;
+    height: 12px;
+    background-image: url("../images/course/start-kong.png");
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 100%;
+    margin-top: 14px;
+    display: inline-block;
+}
+#course .comment-score li{
+	display: block;
+    height: 100%;
+    background-image: url("../images/course/start-shi.png");
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: auto 100%;
+}
+#course .course-grades span:nth-child(3){
+	padding-left: 10px;
+}
+#course .q-title{
+	padding-left: 30px;
+}
+#course .q-name{
+	cursor: pointer;
+}
+#course .q-tx{
+	background: #979797; 
+	border-radius: 2px;
+}
+/*课程简介*/
+#course .course-introduction{
+	padding: 30px 0;
+}
+#course .title-icon{
+	height: 20px;
+	width: 5px;
+	background: #E64C65;
+	display: inline-block;
+}
+#course .introduction-title span{
+	height: 22px;
+	line-height: 22px;
+	display: inline-block;
+	vertical-align: top;
+	/*padding-left: 15px;
+    background: url("../images/course/kc_biaoti_icon.png") no-repeat left center;*/
+}
+#course .introduction-title p{
+	display: inline-block;
+    padding-left: 20px;
+    margin: 0;
+ }
+   
+#course .course-content{
+	margin-top: 15px;
+}
+#course .course-content p,#course .course-content span{
+	word-break: break-all;
+}
+#course .course-content img{
+	max-width: 100%;
+}
+/*课程章节*/
+#course .course-section{
+	padding: 30px 0;
+	border-bottom: 1px dashed #DEDEDE;
+}
+#course .button{
+    width: 70px;
+    height:30px;
+    background: #e64c66;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #FFFFFF;
+    /*padding:7px 15px;*/
+    margin-left: 8px;
+    display: block;
+    float: left;
+    cursor: pointer;
+}
+#course .button-two{
+    color: #FFFFFF;
+    margin-top: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: block;
+    float: left;
+}
+#course .one{
+    margin-left: 20px;
+}
+
+/*章节列表*/
+#course .sectionlist{
+	margin-top: 7px;
+	overflow: hidden;
+}
+#course .sectionall{
+	width: 916px;
+	overflow: hidden;
+	position: relative;
+}
+#course .sectionall ul{
+	overflow: hidden;
+	height: 120px;
+	padding-left: 10px;
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+#course .sectionall ul li{
+	position: relative;
+}
+#course .sectionall ul li a{
+	overflow: hidden;
+   /* display: block;*/
+}
+#course .sectionall ul .progress-borders{
+	overflow: hidden;
+	width: 2px;
+	background: #DEDEDE;
+	position: absolute;
+	height: calc(100% - 5.25em);
+	top: 27px;
+	left: 17px;
+}
+#course .sectionall ul .progress-borders.less-chaplist{
+	height: calc(100% - 3.4em);
+}
+#course .sectionall ul li .progress-session{
+	width: 15px;
+	height: 38px;
+	line-height: 38px;
+	/*float: left;*/
+	display: inline-block;
+	position: relative;
+}
+#course .sectionall ul li .progress-nocompleted{
+	background: url(../images/course/kc_zhangjieweibofang_icon.png) no-repeat center;
+	background-size:92%;
+}
+/*#course .sectionall ul li .progress-going{
+	background: url(../images/course/kc_zhangjiebofangzhong_icon.png) no-repeat center;
+}
+#course .sectionall ul li .progress-completed{
+	background: url(../images/course/kc_zhangjiewancheng_icon.png) no-repeat center;
+}*/
+#course .sectionall ul li .progress-border{
+	background: #DEDEDE;
+	width: 1px;
+	height: 30px;
+	position: absolute;
+	top: 38px;
+    left: 9px;
+}
+#course .sectionall ul li .section-view{
+	/*float: left;*/
+	display: inline-block;
+	width: 92%;
+	height: 38px;
+	line-height: 38px;
+	cursor: pointer;
+	margin-left: 10px;
+}
+#course .section-right{
+	float:right;
+}
+#course .section-right-time{
+	float:left;
+	margin-right: 5px;
+}
+#course .sectionall ul li .section-view .study_time{
+	margin-left: 10px;
+}
+#course .sectionall ul li .section-view i{
+	background:#fe0002;	
+}
+#course .sectionall ul li:last-child .section-view{
+	border: none;	
+}
+#course .sectionall ul li .section-view:hover{
+	background: #F7F7F7;
+}
+#course .sectionall ul li .section-view.actives{
+	background: #F7F7F7;
+}
+#course .sectionall ul li .section-view .sectioname{
+	float: left;
+	padding-left: 10px;
+}
+#course .sectionall ul li .section-view .sectioname-title{
+	white-space: nowrap;
+    max-width: 390px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#course .sectionall ul li .section-view .sectioname.on_study{
+	color: #E64C65;
+}
+#course .sectionall ul li .section-view .sectioname.over_study{
+	color: #999999;
+}
+#course .sectionall ul li .section-view .sectionsize{
+	float: right;
+	margin-right:10px ;
+	display: block;
+}
+#course .sectionall ul li .section-view .section-size{
+	width: 50px;
+	margin-left: 10px;
+    display: inline-block;
+    text-align: right;
+}
+#course .sectionall ul li .section-view .sectionsize .type-iconall{
+	width: 26px;
+	/*height: 16px;*/
+	font-size: 26px;
+	display: inline-block;
+/*	vertical-align: middle;*/
+}
+#course .sectionall ul li .section-view .course-download{
+	width:24px;
+	height: 16px;
+	display: inline-block;
+	vertical-align: middle;
+	background: url(../images/course/xiazai_hui.png) no-repeat;
+	background-size: 70%
+}
+#course .sectionall ul li .section-view .course-download:hover{	
+	width:24px;
+	height: 16px;
+	display: inline-block;
+	vertical-align: middle;
+	background: url(../images/course/xiazai_red.png) no-repeat;
+	background-size: 70%;
+}
+#course .sectionall ul li .section-view .sectionsize .shipin-icon{
+	background: url(../images/course/kc_shipin_icon.png) no-repeat;
+}
+#course .sectionall ul li .section-view .sectionsize .online-icon{
+	background: url(../images/course/mediatype_8_icon.png) no-repeat;
+}
+#course .sectionall ul li .section-view .sectionsize .word-icon{
+	background: url(../images/course/kc_word_icon.png) no-repeat;
+}
+#course .sectionall ul li .section-view .sectionsize .pdf-icon{
+	background: url(../images/course/kc_pdf_icon.png) no-repeat;
+}
+#course .sectionall ul li .section-view .sectionsize .ppt-icon{
+	background: url(../images/course/kc_ppt_icon.png) no-repeat;
+}
+#course .sectionall ul li .section-view .sectionsize .mp3-icon{
+	background: url(../images/course/kc_mpsan_icon.png) no-repeat;
+}
+#course .sectionall ul li .section-view .sectionsize .url-icon{
+	background: url(../images/course/kc_lianjie_icon.png) no-repeat;
+}
+#course .sectionall ul li .section-view .sectionsize .image-icon{
+	background: url(../images/course/kc_tuwen_icon.png) no-repeat;
+}
+#course .sectionall .showAllSec{
+	display: inline-block;
+	width: 99%;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	border: 1px solid #dedede;
+	background: #fafafa;
+	cursor: pointer;
+	color: #333;
+}
+#course .sectionall .showAllSec:hover{
+	background: #f0efef;
+}
+
+.sectiotitle{
+	display: none;
+	position: absolute;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    height: 50px;
+    background-position: 0.8;
+    opacity: 0.8;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    line-height: 50px;
+}   
+.course-chapter-play:hover .sectiotitle{
+	display: block;
+}
+.try_see_tips{
+	position: absolute;
+	top: 0;
+	z-index: 9999;
+	width: 100%;
+	height: 50px;
+	opacity: 0.8;
+	background-color: #000000;
+	color: #ffffff;
+	text-align: center;
+	line-height: 50px;
+}
+/*课程购买提示弹框*/
+.course-buyTips{
+	position: fixed;
+	z-index: 999;
+	left:0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.3);
+}
+.course-buyTips .buy-tips{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -230px;
+	margin-top: -155px;
+	width: 460px;
+	height: 310px;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 0px 0px 15px #999;
+	padding: 0 30px;
+	color: #333;
+	font-size: 16px;
+}
+.course-buyTips .tip-title{
+	line-height: 45px;
+	border-bottom: 1px solid #dedede;
+}
+.course-buyTips .close-tips{
+	float: right;
+	width: 25px;
+	font-size: 26px;
+	color: #7f7f7f;
+	text-align: right;
+	cursor: pointer;
+}
+.course-buyTips .tip-con{
+	width: 100%;
+    height: 190px;
+    padding-top: 132px;
+    text-align: center;
+	background: url(../images/tishidenglu_bg.png) no-repeat center 40px;
+}
+.course-buyTips .tip-btn{
+	width: 345px;
+	height: 45px;
+	line-height: 45px;
+	color: #fff;
+	text-align: center;
+	background: #e64c66;
+	border-radius: 5px;
+	display: block;
+	margin: 0 auto;
+}
+.course-buyTips .tip-btn:hover{
+	color: #fff;
+}
+/*课程购买提示弹框  end*/

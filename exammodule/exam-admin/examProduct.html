@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+     <meta http-equiv="Expires" content="0">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/components.css" id="style_components" rel="stylesheet" type="text/css">
+    <link href="css/plugins.css" rel="stylesheet" type="text/css">
+    <link href="css/layout.css" rel="stylesheet" type="text/css">
+    <link href="css/style.min.css" rel="stylesheet" type="text/css">
+    <link href="css/common.css" rel="stylesheet" type="text/css">
+    <link href="css/doexam.css" rel="stylesheet" type="text/css">
+    <link href="css/select2.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css">
+    
+   
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+   
+    <script src="js/vue.js" type="text/javascript"></script>
+    
+    <script src="js/bootstrap-tagsinput.js"></script>
+      
+    <link href="css/layui.css" rel="stylesheet" type="text/css">
+    <script src="js/layui.js"></script>
+    <style>
+        .up-zq{
+
+        }
+        .down-zq{
+
+        }
+        [v-cloak] {
+        display: none;
+        }
+        .delete-zq{
+
+        }
+        .page-content-wrapper .page-content {
+
+            margin-left: 0;
+
+        }
+        .answers textarea{
+            float: left;
+        }
+        .zq-a{
+            text-align: center; 
+    border: 1px solid;
+    height: 30px;
+    width: 60px;
+    display: inline-block;
+    border-color: gray;
+    border-radius: 5px !important;
+        
+        }
+        .fillinblank-blank{
+        /*float: left;
+        width: 100%;*/
+        margin-right: 180px;
+    }
+    .fillinblank-blank .blank{
+        overflow: hidden;
+        margin-right: 160px;
+    }
+    /*.fillinblank-blank-answer{
+        width: 100px;
+    }*/
+    .fillinblank-blank-score {
+        position: absolute;
+        top: 0;
+        right: 70px;
+        width: 100px;
+    }
+    .fillinblank-option::after {
+        clear: both;
+        display: block;
+        content: '.';
+        height: 0;
+        visibility: hidden;
+    }
+    .fillinblank-option {
+        position: relative;
+        display: block;
+        /*width: 100%;
+        margin-right: 120px;*/
+    }
+    .fillinblank-option .edit-btn-group {
+        position: absolute;
+        top: 5px;
+        right: 0;
+        width: 60px;
+        margin: 0;
+    }
+    .fillinblank-option .edit-btn-group .fa-caret-square-o-up,
+    .fillinblank-option .edit-btn-group .fa-caret-square-o-down,
+    .fillinblank-option .edit-btn-group .fa-arrow-up,
+    .fillinblank-option .edit-btn-group .fa-arrow-down,
+    .fillinblank-option .edit-btn-group .fa-trash {
+        display: inline-block;
+        clear: both;
+    }
+    </style>
+     
+</head>
+
+<body class="">
+
+
+    <div class="page-container ">
+
+        <div class="page-content-wrapper">
+            <div class="page-content " style="min-height:822px">
+                <div class="row">
+                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                        <div class="portlet box blue">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-gift"></i> 新增试题 </div>
+                            </div>
+                            <div class="portlet-body form">
+                               
+                                    <div class="form-body" id="app" v-cloak>
+                                        <div class="form-group">
+                                            <div class="question-type-list" data-last-qtid="2">
+                                                <ul id="listType">
+                                                    <li qtid="1"  class="selected" @click.stop="updateType($event)">
+                                                       单选题
+                                                    </li>
+                                                    <li class="" qtid="2"  @click.stop="updateType($event)">
+                                                        多选题
+                                                    </li>
+                                                    <li qtid="3"  @click.stop="updateType($event)">
+                                                        判断题
+                                                    </li>
+                                                    <li qtid="4"  @click.stop="updateType($event)">
+                                                        填空题
+                                                    </li>
+                                                    <li qtid="5" @click.stop="updateType($event)">
+                                                        问答题
+                                                    </li>
+                                                    
+                                                    <li qtid="6"  @click.stop="updateType($event)">
+                                                        不定项选择题
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        
+
+                                        <div id="questionContainer" >
+                                            <!-- 题干 -->
+                                            <div class="form-group">
+                                                <h2>试题题干</h2>
+                                                <textarea rows="10" cols="67" id="question" tabindex="1" style="width: 880px; height: 250px;" v-model="problem.title"> </textarea>
+
+                                            </div>
+                                            <div class="form-group" v-if="problem.qtype==6">
+                                                    <p class="note note-success">不定项选择题答案选项可以是一个或多个，用户可根据题型自行设定答案选项个数。</p>
+                                            </div>
+                                            <div v-if="problem.qtype==4">
+                                                    <!-- 填空说明 -->
+                                                    <div class="form-group">
+                                                        <h2>要填的空和正确答案</h2>
+                                                        <p class="note note-success">下面列出了填空的个数，您需要在填空上写上正确答案。如果您的题含有不止一个空，您可以点击下面的按钮增加更多的空。<br/>如果您的一个空可以<strong>有多个正确答案</strong>, 正确答案请用竖线 | 分开，例如：大象|象<br/></p>
+                                                    </div>
+                                                    <!-- 填空注释 -->
+                                                    <div class="form-group answers" v-for="(fills,index) in fill">
+                                                        <div class="answer_heading">
+                                                            <h5>({{fills.sort}})</h5>
+                                                            
+                                                        </div>
+                                                        <div class="fillinblank-option" >
+                                                            <div class="fillinblank-blank">
+                                                    
+                                                                    <input  type="text" value="" placeholder="在这里写上该空的答案，如果有多个正确答案，请以竖线（|）分开" v-model="fills.title" class="form-control invalid fillinblank-blank" />
+                                                    
+                                                            </div>
+                                                            <div class="fillinblank-blank-score" title="该空分数">
+                                                                <input  type="number" name='wendazz' tabindex="2" min="0" v-model="fills.score" @change='setTkScore($event,fill)'
+                                                                    placeholder="得分"
+                                                                    class="form-control invalid fillinblank-blank-answer" >
+                                                    
+                                                            </div>
+                                                            <div class="edit-btn-group" data-laiyua="tiankong" :id="fills.opid" :sort="fills.sort"> 
+                                                            
+                                                                <i class="fa fa-arrow-up fa-lg up-zq" aria-hidden="true" title="上移"></i> 
+                                                                <i class="fa fa-arrow-down fa-lg down-zq" aria-hidden="true" title="下移"></i>
+                                                                 <i class="fa fa-trash fa-lg delete-zq" aria-hidden="true" title="删除"></i></div>
+                                                            </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group addnewanswers">
+                                                        <button  id="addTK"  class="btn  btn-default btn-sm"><i class="fa fa-plus-circle"></i> 新增填空</button>
+                                                    </div>
+                                                    
+                                                    <!-- 填空选项 -->
+                                                    <!-- <div class="form-group">
+                                                        <label>
+                                                            <input type="checkbox"  value="1" > 填空的答案无顺序要求    </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>
+                                                            <input type="checkbox" value="1" > 按空得分，只要一空答对就得分    </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>
+                                                            <input type="checkbox"  
+                                                                    >&ensp;忽略大小写    </label>
+                                                    </div> -->
+                                            </div>
+                                            <div v-if="problem.qtype==5">
+                                                    <!-- 问答题 参考答案-->
+                                                    <div class="form-group">
+                                                        <div class="answer_heading">
+                                                            <h5>参考答案</h5>
+                                                        </div>
+                                                        <textarea id="refAnswer"  rows="3" cols="67" tabindex="10" style="width: 580px;height:100px;" v-model="problem.rightAnswer">
+                                                                </textarea>
+                                                    </div>
+                                                    <!-- 问答题 注释 -->
+                                                    <!-- <div class="form-group">
+                                                            <label for="autograde">
+                                                                <input type="checkbox" id="autograde" v-model="problem.isAuto"  >
+                                                                    按关键字自动判分    </label>
+                                                                <p class="note note-success">1. 提前设定关键词，系统通过识别关键词来判断是否回答正确，考后系统自动出分。<br/>2. 如果没有勾选按关键词自动判分，考生答卷需等待管理员后台手工判分。</p>
+                                                    </div> -->
+                                                    <!-- 问答题 忽略大小写 -->
+                                                    <div>
+                                                        <!-- <div class="form-group">
+                                                            <button id="addKeys" class="btn btn-sm blue add-essay-keyword">添加关键字</button>
+                                                        </div>
+                                                        <div class="form-group answers" v-for="(keys,index) in Key">
+                                                                <div class="answer_heading">
+                                                                    <h5>({{keys.sort}})</h5>
+                                                                    
+                                                                </div>
+                                                                <div class="fillinblank-option" >
+                                                                    <div class="fillinblank-blank">
+                                                            
+                                                                            <input  type="text" value="" placeholder="关键字" v-model="keys.title" class="form-control invalid fillinblank-blank" style="width: 30% !important"/>
+                                                            
+                                                                    </div>
+                                                                    <div class="fillinblank-blank-score" title="该空分数" style="right: 64% !important">
+                                                                        <input  type="number" name='tiankongzz' tabindex="2" min="0" v-model="keys.score"
+                                                                            placeholder="得分"
+                                                                            class="form-control invalid fillinblank-blank-answer" >
+                                                            
+                                                                    </div>
+                                                                    <div class="edit-btn-group" style="right: 58% !important" data-laiyua="keywords" :id="keys.opid" :sort="keys.sort">
+                                                                                                       
+                                                                         <i class="fa fa-arrow-up fa-lg up-zq" aria-hidden="true" title="上移"></i> 
+                                                                        <i class="fa fa-arrow-down fa-lg down-zq" aria-hidden="true" title="下移"></i> 
+                                                                         <i class="fa fa-trash fa-lg delete-zq" aria-hidden="true" title="删除"></i></div> 
+                                                                    </div>
+                                                            </div> -->
+                                                    
+                                                        <!-- <label for="keywords-have-score">
+                                                            <input type="checkbox" id="keywords-have-score"  value="1">
+                                                            按关键字给分    
+                                                        </label>
+                                                        <label for="ignore_case">
+                                                            <input type="checkbox" value="1" id="ignore_case"
+                                                                        >&ensp;忽略大小写    
+                                                        </label> -->
+                                                
+                                                    </div>
+                                            </div>
+                                             <!-- 答案选项-->
+                                            <div class="form-group" v-if="problem.qtype!=4&&problem.qtype!=5" >
+                                                <h2>答案选项</h2>
+                                            </div>
+                                             <!-- A-->
+                                            <div class="form-group answers" v-for="(options,index) in option" v-if="problem.qtype==1||problem.qtype==2||problem.qtype==6">
+                                                <div class="answer_heading">
+                                                    <h5 >({{options.sort}})</h5>
+                                                </div>
+                                                <textarea rows="3" cols="67" id="ans0" tabindex="2" style="width: 580px; height: 100px;" v-model="options.title"></textarea>
+
+                                                <div class="edit-btn-group" data-laiyua="selectOp" :id="options.opid" :sort="options.sort">
+                                                    <i class="fa fa-arrow-up fa-lg up-zq" aria-hidden="true" title="上移"></i>
+                                                    <i class="fa fa-arrow-down fa-lg down-zq" aria-hidden="true" title="下移"></i>
+                                                    <i class="fa fa-trash fa-lg delete-zq" aria-hidden="true" title="删除"></i>
+
+                                                </div>
+                                            </div>
+                                            <div v-if="problem.qtype==3">
+                                                    <!-- 判断题 真假项-->
+                                                    <div class="form-group answers" v-for="(judges,index) in judge">
+                                                        <div class="answer_heading">
+                                                            <h5>{{judges.sort}}项</h5>
+                                                        </div>
+                                                        <input  class="form-control" type="text"  id="ansTrue"  tabindex="2" v-model="judges.title" />
+                                                    </div>
+                                                   
+                                            </div>
+                                            
+                                <!-- 以下显示控制完毕 -->
+                                            <!-- 添加新选项-->
+                                            <div class="form-group addnewanswers" v-if="problem.qtype==1||problem.qtype==2||problem.qtype==6">
+                                                <a href="javascript:;" id="addNewOp" class="btn  btn-default btn-sm">
+                                                    <i class="fa fa-plus-circle"></i> 添加新选项</a>
+                                            </div>
+                                            <!-- 允许自定义分数-->
+                                            <div class="form-group" v-if="problem.qtype==1||problem.qtype==2||problem.qtype==6">
+                                                <label>
+                                                    <input type="checkbox"   v-model="problem.optionHaveScore" > 允许选项自定义分数 </label>
+
+                                                <div class="option-scores" v-if="problem.optionHaveScore">
+                                                    <div class="option-score" v-for="(options,index) in option">
+                                                        <label>
+                                                            <span>选项
+                                                                <b>({{options.sort}})</b>分数:</span>
+                                                            <span>
+                                                                <input   class="form-control" type="number" placeholder="得分 " v-model="options.score" @change='setScore($event,option)'> </span>
+                                                        </label>    
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+
+                                             <!-- 正确答案-->
+                                            <div class="form-group" v-if="problem.qtype!=4&&problem.qtype!=5">
+                                                
+                                                <div class="answer_heading">
+                                                    <h5>正确答案</h5>
+                                                </div>
+                                                  <!-- ABCD--> 
+                                                <ul class="TestAnswer singleSelect" v-if="problem.qtype==1||problem.qtype==2||problem.qtype==6">
+                                                    <li v-for="(options,index) in option" >
+                                                        <span ><input type="checkbox" style='vertical-align: -2px' name="optionselect" v-model="options.isRight" @change='setScore($event,option)'>&nbsp;{{options.sort}} </span>
+                                                    </li>
+                                                    
+                                                </ul>
+
+                                                  <!-- 真假-->
+                                                <ul class="TestAnswer singleSelect" v-if="problem.qtype==3">
+                                                            <li v-for="(judges,index) in judge">
+                                                                <span ><input type="checkbox" style='vertical-align: -2px' name="optionselect" v-model="judges.isRight" @change='setScore($event,judge)' >&nbsp;{{judges.sort}} </span>
+                                                            </li>
+                                                            
+                                                </ul>
+                                            </div>
+                                            <!-- 题目解析 -->
+                                            <div class="form-group">
+                                                <div class="answer_heading">
+                                                    <h5>题目解析</h5>
+                                                </div>
+                                                <textarea  rows="3" cols="67" id="rightfeedback" tabindex="10" style="width: 580px; height: 100px;" v-model="problem.feedback"></textarea>
+                                                
+                                            </div>
+
+                                            <!--   试题类别 -->
+                                            <div class="form-group">
+                                                <div class="answer_heading">
+                                                    <h5>试题类别</h5>
+                                                </div>
+
+                                                <div class="input-group" id="choose-category">
+                                                    <input type="text" class="form-control" style="cursor: pointer"   v-model="problem.catname">
+                                                    <span class="input-group-btn">
+                                                        <button id="selectfenlei" class="btn btn-default" type="button">选择分类</button>
+                                                    </span>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <!--   可获得分数 -->
+                                            <div class="form-group">
+                                                <div class="answer_heading">
+                                                    <h5>可获得分数</h5>
+                                                </div>
+                                                <input class="form-control" type="number" id="points"  maxlength="5" step="1"  size="5" tabindex="13" v-model="problem.score">
+                                            </div>
+                                            <!--   选项随机顺序 -->
+                                            <div class="form-group" v-if="problem.qtype!=4&&problem.qtype!=5">
+                                                <div class="answer_heading">
+                                                    <h5>选项随机顺序</h5>
+                                                </div>
+                                                <div>
+                                                    <span>
+                                                        <input type="checkbox"  id="ra_1"   v-model="problem.randomOptions">
+                                                        <label for="ra_1">是否随机</label>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <!--   试题标签 -->
+                                            <div class="form-group labels-container">
+                                                <div class="answer_heading" style="margin-bottom: 10px">
+                                                    <h5>试题标签：</h5>
+                                                    <a type="btn" id="easy-zq" data-id="1" data-text="简单" title="点击添加&quot;简单&quot;标签" class="btn default label-simple">简单</a>
+                                                    <a type="btn" id="more-zq" data-id="2" data-text="较难" title="点击添加&quot;较难&quot;标签" class="btn default label-medium">较难</a>
+                                                    <a type="btn" id="difficult-zq" data-id="3" data-text="很难" title="点击添加&quot;很难&quot;标签" class="btn default label-difficult">很难</a>
+                                                    <span class="label-tips" style="color: #bbb;margin-left: 10px;vertical-align: middle">可以手动输入标签，然后按回车</span>
+                                                </div>
+                                              
+                                                <input type="text" id="taginput"  v-model="problem.labels" placeholder="输入后，按enter添加标签" size="11" data-role="tagsinput" style="width: 300px;height:80px;position: relative;">
+                                            </div>
+                                        </div>
+                                    <div class="form-actions">
+                                        <button id="savelink"  class="btn blue">保存</button>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+  
+  
+  
+       	<link rel="stylesheet" href="assets/sceditor/minified/themes/default.min.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="assets/sceditor/uploadifive.css" type="text/css" media="all" />
+
+		<script src="assets/sceditor/minified/jquery.sceditor.xhtml.min.js"></script>
+		<script src="assets/sceditor/languages/cn.js"></script>
+		
+		<script src="assets/sceditor/jquery.uploadifive.min.js"></script>
+<script src="assets/sceditor/minified/cmd.js"></script>
+
+  
+    <script type="text/javascript" src="js/common.js"></script>
+
+    <script type="text/javascript">
+        document.write('<script src="/seeyon/adminlayout/common/js/common.js?ver='+Math.random()+'"  type="text/javascript"><\/script>');
+     </script>
+     <script  type="text/javascript">
+         　　version("/seeyon/exammodule/exam-admin/js/examProduct.js")
+     </script>   
+   
+
+    <script >
+     		
+      
+    </script>
+	
+</body>
+
+</html>

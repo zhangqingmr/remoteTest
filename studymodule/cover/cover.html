@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link  href="css/cropper.css" rel="stylesheet">
+<link href="../../commonmodule/bootstrap/bootstrap.css" rel="stylesheet">
+<link href="../../commonmodule/bootstrap/bootstrap-responsive.css" rel="stylesheet">
+<script src="js/jquery-2.0.0.min.js"></script>
+<script src="js/cropper.js"></script>
+<script src="js/canvas-to-blob.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	// 定义说明：  1：画布  2：图片 3：剪切框
+	$('#image').cropper({
+		
+		aspectRatio: 4/3,//调整剪切框宽高比例
+		/*
+		0：没有限制，3可以移动到2外。 
+		1 : 3只能在2内移动。 
+		2：2图片 不全部铺满1 （即缩小时可以有一边出现空隙） 
+		3：2图片填充整个1*/
+	    viewMode:1,//可以使用0,1,2,3；
+		
+		/*
+		crop’: 可以产生一个新的裁剪框3 
+		‘move’: 只可以移动3 
+		‘none’: 什么也不处理*/
+		dragMode:"move",//定义cropper的拖拽模式  
+		//默认值true,是否允许移除当前的剪裁框，并通过拖动来新建一个剪裁框区域。
+		dragCrop: false,
+		//是否允许可以移动后面的图片。
+		//movable:false,
+		//是否允许改变剪裁框的大小。
+		resizable:false,
+		//当点击两次时可以在“crop”和“move”之间切换拖拽模式  这样就可以防止重新进行剪切框的重置了
+		toggleDragModeOnDblclick:false,
+
+		
+		
+		
+		//剪切后以供预览的元素(容器)
+	    preview:"#show",
+		//
+		rotatable:false,
+
+		//是否通过拖拽来移动剪裁框。
+		cropBoxMovable:false,//
+		//是否通过拖动来调整剪裁框的大小
+		cropBoxResizable:false,
+		ready:function(){
+			$('#image').cropper('getData', true)
+		}
+	});
+
+	//触发input file
+	  $('#upload_btn').click(function() {
+	    $('#oldImg').trigger('click');
+	  });
+	  var fileName; //选择上传的文件名
+	  $('#oldImg').change(function(){
+		  if(this.files){
+			var file = this.files[0];
+			fileName = file.name;
+		  }
+	      var reader = new FileReader();
+	      //reader回调，重新初始裁剪区
+	      reader.onload = function(){
+	          // 通过 reader.result 来访问生成的 DataURL
+	          var url = reader.result;
+	          //选择图片后重新初始裁剪区
+	          $('#image').cropper('reset', true).cropper('replace', url);
+	      };
+	      reader.readAsDataURL(file);
+	  });
+	  
+	  /*
+	   * 上传图片
+	   */
+	  $('#image_save').click(function() {
+	      var type = $('#image').attr('src').split(';')[0].split(':')[1];
+	      var canVas = $('#image').cropper("getCroppedCanvas", {minWidth:400});
+	      //将裁剪的图片加载到face_image
+	      $('#image').attr('src', canVas.toDataURL());
+	      canVas.toBlob(function(blob) {
+	          var formData = new FormData();
+	          formData.append("file", blob, fileName);
+	      }, type);
+	  });
+
+	  //取消
+	  $("#image_cancel").click(function() {
+	    //清空上传文件的值
+	    $(_pageId + inputFileId).val('');
+	  });
+	  
+	// 确定按钮点击事件  
+	    $("#image_save").on("click", function() {
+	    	var imgUrl = "";  
+	        if ($("#image").attr("src") == null) {  
+	            return false;  
+	        } else {  
+	            var cas = $('#image').cropper('getCroppedCanvas',{imageSmoothingEnabled:true,minWidth:400});// 获取被裁剪后的canvas  
+	            var base64 = cas.toDataURL('image/jpeg'); // 转换为base64  
+	      		//$("#finalImg").prop("src", base64);// 显示图片  
+	            uploadFile(encodeURIComponent(base64))//编码后上传服务器  
+	            //closeTailor();// 关闭裁剪框  
+	            }  
+	        });
+	      
+	        // 关闭裁剪框  
+	        function closeTailor() {  
+	            $(".tailoring-container").toggle();  
+	        }  
+	      
+	        //ajax请求上传  
+	        function uploadFile(file) {  
+	
+	            $.ajax({  
+	                url : '/seeyon/pictureCover.do?method=getImg',  
+	                type : 'POST',  
+	                data : {
+	                	file:file,
+	                	fileName:fileName
+	                },  
+	                async : true,  
+	                success : function(data) {  
+	                   // alert(data);
+	                   $("#imgPath").val(data);
+	                   $("#uploadFlag").val("true");
+	           			
+	                }  
+	            });
+	          
+	            
+	        }  
+
+});
+
+</script>
+</head>
+<body>
+	<table style="margin:50px;">
+    	<tr>
+        	<td >
+            	<div  style="width: 400px;height: 300px;border-style:dashed;border-width:1px; ">
+	  				<img id="image" src="">
+				</div>
+    		</td>
+        	<td style="vertical-align:top; padding-left:80px;">
+            <div >
+            <div id="show" 
+					style="overflow: hidden;float:rigth;width: 200px;height: 150px; border-style:dashed;border-width:1px; padding:0; margin:0; ">
+				</div>
+            <div style="padding-top:50px; margin-top:50px;" align="right";>
+            		<input type="hidden" id="imgPath" name="imgPath" value="" />
+					<input id="oldImg" type="file" accept="image/*,camera" capture="camera" style="opacity: 0;"/>
+	 				<input type="hidden" id="uploadFlag" name="uploadFlag" value = "false">
+	 				<button id="upload_btn" class="btn btn-primary" style="margin-right:30px;">上传图片</button>
+  					<button id="image_save" class="btn btn-primary"  style="margin-right:30px;">保存</button>
+                </div>
+                </div> 
+            	
+                </td>
+    		</td>
+            
+            	
+        </tr>
+    </table>
+	
+	
+	
+	
+</body>
+</html>

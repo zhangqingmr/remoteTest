@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" class=" windows desktop">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+     <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta name="renderer" content="webkit">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap-select.min.css" rel="stylesheet">
+
+  
+    <link href="css/components.min.css" rel="stylesheet" id="style_components" type="text/css">
+    <link href="css/layout.css" rel="stylesheet" type="text/css">
+
+    <link href="css/style.min.css" rel="stylesheet" type="text/css">
+    <link href="css/plugins.min.css" rel="stylesheet" type="text/css">
+    <link href="css/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color">
+
+
+    <link href="css/sweetalert.css" rel="stylesheet" type="text/css">
+   
+    <link href="css/bootstrap-switch.min.css" rel="stylesheet" type="text/css">
+
+    <link href="css/summernote.css" rel="stylesheet" type="text/css">
+
+    
+    <title>在线学习系统</title>
+  
+
+    <meta property="og:site_name" content="">
+    <meta property="og:description" content="在线学习系统">
+    
+    
+    <script async="" src="js/analytics.js"></script><script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="css/jquery.bootstrap-touchspin.css" rel="stylesheet" type="text/css">
+    <link href="css/zq.css" rel="stylesheet" type="text/css">
+    <link href="css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css">
+    <script src="js/vue.js"></script>
+    <script src="js/jquery.bootstrap-touchspin.js"></script>
+    <script src="js/jquery.bootstrap-touchspin.min.js"></script>
+    <script src="js/bootstrap-tagsinput.js"></script>
+  
+    <link href="css/layui.css" rel="stylesheet" type="text/css">
+    <script src="js/layui.js"></script>
+    
+    
+    
+    <style>
+        .page-zq{}      
+        .page-btn{}      
+        .input-zq{}   
+        .input-zq1{}   
+        .deleteChampter{} 
+        .fileinput-zq{}
+        .panel-update{
+            min-height: 600px;
+        }
+        .fa-zj{
+
+        }
+        .fa-resource{}
+        .li-zq{}
+        .layui-layer-btn-r{
+            background-color: white
+        }
+  </style>
+  <style  type="text/css">
+    [v-cloak] {
+        display: none;
+    }
+</style>
+    
+</head>
+
+<body>
+    <div id="app" v-cloak data-details="">
+        <div class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+            <div class="page-wrapper">
+                  
+                    <div class="clearfix">
+                    </div>
+                    <div class="page-container" style="margin-top: 0px !important;">
+                                <!--Regular if5-->
+                                <div class="page-content-wrapper">
+                                        <div class="page-content" style="margin-left: 0px !important; min-height: 821px;">
+                                     
+                                            <div>
+                                                    <div class="row" style="margin-top: 20px;">
+                                                                <div class="col-md-12">
+                                                                <div class="portlet light portlet-fit bordered">
+                                                                        <div class="mt-element-step">
+                                                                            <div class="row step-thin">
+                                                                                <div class="col-lg-4 bg-grey mt-step-col active nav-item" data-index="1"> 
+                                                                                    <div class="mt-step-number first bg-white font-grey">1</div>
+                                                                                    <div class="mt-step-title uppercase font-grey-cascade">编辑课程信息</div>
+                                                                                    <div class="mt-step-content font-grey-cascade">编辑课程基本信息</div>
+                                                                                </div>
+                                                                                <div class="col-lg-4 bg-grey mt-step-col  nav-item" data-index="2">
+                                                                                    <div class="mt-step-number bg-white font-grey">2</div>
+                                                                                    <div class="mt-step-title uppercase font-grey-cascade">编辑课程章节</div>
+                                                                                    <div class="mt-step-content font-grey-cascade">编辑章节小节信息</div>
+                                                                                </div>
+                                                                                <div class="col-lg-4 bg-grey mt-step-col  nav-item" data-index="3">
+                                                                                    <div class="mt-step-number bg-white font-grey">3</div>
+                                                                                    <div class="mt-step-title uppercase font-grey-cascade">编辑课程设置</div>
+                                                                                    <div class="mt-step-content font-grey-cascade">编辑课程设置</div>
+                                                                                </div>
+                                                                        
+                                                                            </div>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                    </div>
+                                                    
+                                                    <div  id="base1" >
+                                                        <!-- 第一步-->
+                                                                 <div class="page-zq" data-num="1">
+                                                                    <div class="row baseinfo-affix">
+                                                                        <div class="col-sm-12 col-sm-12 col-md-12 col-lg-12">
+                                                                            <div id="baseinfo" class="baseinfo-panel affix" data-spy="affix" data-offset-top="60">
+                                                                                <div class="portlet portlet-fit blue-dark box">
+                                                                                    <div class="portlet-title">
+                                                                                        <div class="caption">
+                                                                                            封面介绍
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="portlet-body">
+                                                                                        <div class="cover-container">
+                                                                                            <div class="base-img">
+                                                                                                <img :src="course.imgurl">
+                                                                                                <div>
+                                                                                                    <a id="updatePage" data-toggle="modal" href="javascript:;">
+                                                                                                        <span class="btn blue btn-outline btn-file">
+                                                                                                            <span class="fileinput-new"> 修改封面 </span>
+                                                                                                        </span>
+                                                                                                    </a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            
+                                                                                            <div class="base-option-buttons">
+                                                                                                <button id='viewCourse' type="button" class="btn grey-cascade">预览课程</button>
+                                                                                                <button id="saveBtn" type="button" class="btn btn-info">保存</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="course-info-panel" style="margin-left: 290px;">
+                                                                                <div class="portlet light portlet-fit bordered">
+                                                                                    <div class="portlet-title">
+                                                                                        <span class="caption-subject font-dark sbold uppercase">基本信息</span>
+                                                                                    </div>
+                                                                                    <div class="portlet-body" style="padding-top: 0px;">
+                                                                                        <h3>课程标题：</h3>
+                                                                                        <input type="text" name="name" v-model="course.title" data-required="1" class="form-control" placeholder="请输入标题" style="max-width: 420px; padding-left: 8px;">
+
+                                                                                        <h3>课程类别</h3>
+                                                                                        <div class="cate-group" style="max-width: 420px;">
+                                                                                            <a class="input-group" id="choose-category" href="javascript:;">
+                                                                                                <input type="text" class="form-control"  v-model="course.catName" style="cursor: pointer; padding-left: 16px;">
+                                                                                                <span class="input-group-btn">
+                                                                                                    <button id="selectFenlei" type="button" class="btn btn-default">选择分类</button>
+                                                                                                </span>
+                                                                                            </a>
+                                                                                        </div>
+
+                                                                                        <h3>课程介绍</h3>
+                                                                                        <textarea rows="10" v-model="course.description" cols="170" style="resize:none"></textarea>
+                                                                                        
+                                                                                        
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                        
+                                                                    </div>
+
+                                                                   
+                                                                 </div>
+                                                        <!-- 第2步-->
+                                                                 <div class="page-zq" id="base2" style="display: none" data-num="2">
+                                                                        <div class="course-container">
+                                                                                    <div class="newcourse-con">
+                                                                                       
+                                                                                                <div class="editor-panel">
+                                                                                                    <div class="editor-container">
+                                                                                                        <div class="portlet light portlet-fit bordered">
+                                                                                                            <div class="portlet-title">
+                                                                                                                <span class="caption-subject font-dark sbold uppercase">编辑框</span>
+                                                                                                            </div>
+                                                                                                            <div  v-if="!isview"class="no-chapter-panel" >
+                                                                                                                    <img src="images/chapter_tips.png">
+                                                                                                                    <div class="">
+                                                                                                                        没有章节信息，点击左上角的【新建章节】按钮添加章节吧
+                                                                                                                        <!-- <button class="page-btn" type="button" class="btn btn-info"></button>新建章节</button>按钮添加章节吧 -->
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            
+                                                                                                            <div  v-show="isview&&isZj">
+                                                                                                                <div class="info-panel">
+                                                                                                                    <div class="title">
+                                                                                                                        <h3>标题</h3>
+                                                                                                                        <input  type="text" class="form-control input-zq" v-model="selected.title"> 
+                                                                                                                    </div>
+                                                                                                                </div>
+
+                                                                                                                <div class="chapter-info-panel panel-update" >
+                                                                                                                    <div class="chapter-intro"  >
+                                                                                                                        <h3>课程描述</h3>
+                                                                                                                        <textarea class="form-control input-zq" maxlength="1020" rows="2"  v-model="selected.description"></textarea>
+                                                                                                                    </div>
+                                                                                                                    
+                                                                                                                    <div class="chapterinfo-list">
+                                                                                                                            <ul class="sort-list" id="list-int">
+                                                                                                                                    <li class="lo dragItem" cid="7168" pos="0" parentid="7165"v-for="(resource,index) in selected.resourceList">
+                                                                                                                                        <i class="fa fa-play"></i> 
+                                                                                                                                        <div class="drag-item" pid="7168" data-type="7" data-id="7168" style="background-color: rgb(237, 240, 250);">
+                                                                                                                                            <a>{{resource.title}}</a>
+                                                                                                                                        </div>
+                                                                                                                                        <!-- <a class="delete-handle" v-on:click="">
+                                                                                                                                            <div class="badge badge-default">X</div>
+                                                                                                                                        </a> -->
+                                                                                                                                    </li>
+                                                                                                                            </ul>
+                                                                                                                    </div>
+                                                                                                                
+                                                                                                                    <div id="container" style='margin-top:10px'>
+                                                                                                                                <span id="upload_resource" class="btn btn-info btn-file fileinput-zq">
+                                                                                                                                    <span class="fileinput-exists">上传课件</span>
+                                                                                                                                    
+                                                                                                                                </span>
+                                                                                                                                <!-- <span class="btn btn-info btn-file fileinput-zq">
+                                                                                                                                    <span class="fileinput-exists deleteChampter" id="delete-section">删除章节</span>
+                                                                                                                                    
+                                                                                                                                </span> -->
+                                                                                                                                
+                                                                                                                    </div>
+                                                                                                                    
+                                                                                                                   
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div  v-show="hasResource&&(!isZj)">
+                                                                                                                <div class="info-panel">
+                                                                                                                    <div class="title">
+                                                                                                                        <h3>标题</h3>
+                                                                                                                        <input  type="text" class="form-control input-zq1" v-model="selectResource.title"> 
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div class="course-time" style="margin-left: 60px;margin-top:60px">
+                                                                                                                    <h3>资源预计时长</h3>
+                                                                                                                    <div style="position: relative;">
+                                                                                                                        <div style="margin: 10px 0px 0px 155px;">
+                                                                                                                            <span>分钟</span>
+                                                                                                                        </div>
+                                                                                                                        <div style="width: 150px; position: absolute; top: -5px; left: 0px;">
+                                                                                                                                <input id="demo1" type="text" value="" name="demo1" v-model="selectResource.duration" >
+                                    
+                                                                                                                        </div>
+                                                                                                                        
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                
+                                                                                                                <div class="course-time" style="margin-left: 60px;margin-top:60px">
+                                                                                                                    <h3>资源积分设置</h3>
+                                                                                                                    <div style="position: relative;">
+                                                                                                                        <div style="margin: 10px 0px 0px 155px;">
+                                                                                                                            <span>分</span>
+                                                                                                                        </div>
+                                                                                                                        <div style="width: 150px; position: absolute; top: -5px; left: 0px;">
+                                                                                                                                <input id="demo2" type="text" value="" name="demo2" v-model="selectResource.points">
+                                                                                                                        </div>
+                                                                                                    
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div class="course-time" style="margin-left: 50%;margin-top:60px">
+                                                                                                                        <button  class="btn btn-info" id='saveRs-zq1'>保存资源</button>
+                                                                                                                </div>
+                                                                                                               
+                                                                                                            </div>
+                                                                                                            
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                               
+                                                                                                <div class="chapter-panel affix-top" data-spy="affix" data-offset-top="120">
+                                                                                                    <div class="portlet portlet-fit blue-dark box">
+                                                                                                        <div class="portlet-title">
+                                                                                                            <div class="caption ">
+                                                                                                                新建章节
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="portlet-body chapter-body">
+                                                                                                            <div class="chapter-container">
+                                                                                                                <button type="button" class="btn btn-info page-btn">新建章节</button>
+                                                                                                                <div class="portlet-body chapter-scrollbar" style="height: 620px;">
+                                                                                                                    <ul class="drag-container" id="chapter-list">
+                                                                                                                        <!--Regular list--> 
+                                                                                                                            <!--Regular if31-->
+                                                                                                                            <li v-for="(chapter,index) in list" type="0" class="lo dragItem li-zq" >
+                                                                                                                                                        <div  v-on:click="viewZj(chapter,index)" class="drag-item drag-chapter"  style="background-color: rgb(181, 201, 253);">
+                                                                                                                                                            <span class="title">{{chapter.title}}</span>
+                                                                                                                                                        </div>
+                                                                                                                        
+                                                                                                                                                        <a data-action="expand" style="display: none;">
+                                                                                                                                                            <i class="fa fa-plus-square" style="float: left; margin-top: -45px; margin-left: 5px;"></i>
+                                                                                                                                                        </a>
+                                                                                                                                                        <a data-action="collapse">
+                                                                                                                                                            <i class="fa fa-minus-square" style="float: left; margin-top: -45px; margin-left: 5px;"></i>
+                                                                                                                                                        </a>
+                                                                                                                        
+                                                                                                                                                    <div class="drag-chapter-tools">
+                                                                                                                                                    
+                                                                                                                                                            <a v-on:click="removeZj(index)"><i class="fa fa-remove fa-zj"></i></a>
+                                                                                                                                                        </div> 
+                                                                                                                        
+                                                                                                                                                        <!--Regular if32-->
+                                                                                                                                                            <ol class="lb_item" style="">
+                                                                                                                                                                <!--Regular list--> 
+                                                                                                                                                                    <!--Regular if33-->
+                                                                                                                                                                        <li  v-for="(resource,index) in chapter.resourceList" type="7" v-on:click="viewResource(resource,index)" class="lc dragItem show-drag-tools" cid="7168" parentid="7165" pos="0">
+                                                                                                                                                                                <div class="drag-item" data-type="7" data-id="7168" data-parentid="7165" style="">
+                                                                                                                                                    
+                                                                                                                                                                                    <!--Regular if34--><!--Regular if35--><!--Regular if36--><!--Regular if37--><!--Regular if38-->
+                                                                                                                                                                                        <i class="fa fa-file-excel-o" style="float: left; margin-left: -10px; margin-top: 3px;"></i>
+                                                                                                                                                                                    
+                                                                                                                                                    
+                                                                                                                                                                                    <span class="section-ware-title" >{{resource.title}}</span>
+                                                                                                                                                                                </div>
+                                                                                                                                                    
+                                                                                                                                                                                <div class="edit-tools drag-item-tools">
+                                                                                                                                                                                    <div class="drag-tools-box">
+                                                                                                                                                                                        <a><i class="fa fa-edit"></i></a>
+                                                                                                                                                                                        <a  v-on:click.stop="removeResource(chapter.resourceList,index,chapter)"><i class="fa fa-remove fa-resource"></i></a>
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                </div>
+                                                                                                                                                                        </li>
+                                                                                                                                                                    
+                                                                                                                                                                
+                                                                                                                                                            </ol>
+                                                                                                                                                            
+                                                                                                                                
+                                                                                                
+                                                                                                                            </li>
+                                                                                                                        
+                                                                                            
+                                                                                                                        
+                                                                                                                    </ul>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                
+                                                                                    </div>
+                                                                        </div>
+                                                                        
+                                                                </div>
+                                                        <!-- 第3步-->
+                                                                <div class="page-zq" id="base3" style="display: none" data-num="3">
+                                                                    <div class="course-info-panel">
+                                                                    <div class="portlet light portlet-fit bordered">
+                                                                        <div class="portlet-title">
+                                                                            <span class="caption-subject font-dark sbold uppercase">基本设置</span>
+                                                                        </div>
+                                                                        <div class="portlet-body" style="padding-top: 0px; padding-bottom: 50px;">
+                                                                           
+                                                                            <h3>课程标签</h3>
+                                                                           
+                                                                    
+                                                                                
+                                                                                
+                                                                                <input type="text" id="tagainput"  v-model="course.keywords" placeholder="输入后，按enter添加标签" size="11" data-role="tagsinput" style="width: 300px;position: relative;">
+                                                                            
+                                                                            
+                                                                           
+                                                                            <div class="select-public" style="margin-top:20px">
+                                                                                <h3>课程难度级别</h3>
+                                                                                <select class="bs-select" v-model="course.level">
+                                                                                    <option value="0">初级</option>
+                                                                                    <option value="1">中级</option>
+                                                                                    <option value="2">高级</option>
+                                                                                </select>
+                                                                            </div>
+                                                                
+                                                                            
+                                                                
+                                                                            <div class="course-time" style="margin-top:30px">
+                                                                                <h3>课程预计时长</h3>
+                                                                                <div style="position: relative;">
+                                                                                    <div style="margin: 10px 0px 0px 155px;">
+                                                                                        <span>分钟</span>
+                                                                                    </div>
+                                                                                    <div style="width: 150px; position: absolute; top: -5px; left: 0px;">
+                                                                                            <input id="demo_vertical" type="text" value="" name="demo_vertical" v-model="course.duration">
+
+                                                                                    </div>
+                                                                                    <!--
+                                                                                    <div style="position: absolute; top: -5px; margin-left: 200px;">
+                                                                                        <div style="width: 155px; position: absolute;">
+                                                                                                <input id="demo_vertical1" type="text" value="" name="demo_vertical1" v-model="course.duration">
+
+                                                                                        </div>
+                                                                                        <div style="margin-left: 160px; margin-top: 6px;">
+                                                                                            <span>分钟</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                -->
+                                                                                </div>
+                                                                            </div>
+                                                                            
+                                                                            <div class="course-time" style="margin-top:30px">
+                                                                                <h3>课程积分设置</h3>
+                                                                                <div style="position: relative;">
+                                                                                    <div style="margin: 10px 0px 0px 155px;">
+                                                                                        <span>分</span>
+                                                                                    </div>
+                                                                                    <div style="width: 150px; position: absolute; top: -5px; left: 0px;">
+                                                                                            <input id="demo_vertical2" type="text" value="" name="demo_vertical2" v-model="course.points">
+                                                                                    </div>
+                                                                
+                                                                                </div>
+                                                                            </div>
+                                                                
+                                                                        
+                                                                            
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+                                                                </div>
+                                                        <!-- 上下页-->
+                                                                <div class="footer course-step-two">
+                                                                        <button type="button" id="course_btn1" class="btn grey-cascade" style="display: none">上一步</button>
+                                                                        <button type="button" id="course_btn2" class="btn yellow-casablanca right-btn">下一步</button>
+                                                                </div>
+                                                    </div>
+                                                 
+                                                    
+                                                     
+                                            </div>
+                                        <div class="clearfix"></div>
+                                        </div>
+                                </div>
+                                <a href="javascript:;" class="page-quick-sidebar-toggler">
+                                    <i class="icon-login"></i>
+                                </a>
+                                <div class="page-quick-sidebar-wrapper" data-close-on-body-click="false">
+                                    <div class="page-quick-sidebar">
+                                        <ul class="nav nav-tabs">
+                                            <li class="dropdown">
+                                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> More
+                                                    <i class="fa fa-angle-down"></i>
+                                                </a>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <li>
+                                                        <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
+                                                            <i class="icon-settings"></i> Settings
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                    </div>
+                    <div class="page-footer" style="display: none;">
+                                   <div class="page-footer-inner"> 
+                                  </div>
+                                 <div class="scroll-to-top">
+                <i class="icon-arrow-up"></i>
+                                </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/lang.js"></script>
+
+  
+</div>
+<script type="text/javascript">
+    document.write('<script src="/seeyon/adminlayout/common/js/common.js?ver='+Math.random()+'"  type="text/javascript"><\/script>');
+ </script>
+ <script  type="text/javascript">
+    　　version("/seeyon/studymodule/course-admin/js/adminMain2.js")
+</script> 
+<script  type="text/javascript">
+    　　version("/seeyon/studymodule/course-admin/js/adminMain1.js")
+</script> 
+
+<script src="js/js.cookie.min.js" type="text/javascript"></script>
+<script src="js/sweetalert.min.js" type="text/javascript"></script>
+<script src="js/ui-sweetalert.min.js" type="text/javascript"></script>
+<script src="js/bootstrap-switch.min.js" type="text/javascript"></script>
+
+<script src="js/summernote.js" type="text/javascript"></script>
+<script src="js/summernote-zh-CN.js" type="text/javascript"></script>
+<script>
+    
+</script>
+
+ <script  type="text/javascript">
+     　　version("/seeyon/studymodule/course-admin/js/adminMain.js")
+ </script> 
+</body></html>

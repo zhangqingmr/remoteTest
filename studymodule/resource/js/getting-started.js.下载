@@ -1,0 +1,136 @@
+//需要重新编辑此js用户更改上传
+// 文件上传
+var fileName;
+var reid ;
+var filePath;
+var fileSize;
+var catId;
+var fileType;
+
+var fileMimeType="audio/x-mpeg,video/mp4,image/bmp,image/gif,image/png,image/jpeg,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/x-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation"
+
+var reqparams = new Object(); 
+var url = location.search; //获取url中"?"符后的字串 
+if(url.indexOf("?") != -1) { 
+　　 var str = url.substr(1); 
+　　　strs = str.split("&"); 
+　　　for(var i = 0; i < strs.length; i ++) {
+		reqparams[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]); 
+　　 	} 
+} 
+jQuery(function() {
+    var $ = jQuery,
+        $list = $('#fileBody'),
+        $btn = $('#ctlBtn'),
+        state = 'pending',
+        uploader;
+    uploader = WebUploader.create({
+
+        // 不压缩image
+        resize: false,
+        // swf文件路径
+        swf: BASE_URL + '/js/Uploader.swf',
+        // 文件接收服务端。
+        server: '/seeyon/resource.do?method=chunkUpload',
+        //
+       fileSingleSizeLimit:314572800,
+        // 选择文件的按钮。可选。
+        // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+      
+        pick: '#picker',
+		accept:{
+				title: 'resources',
+    			extensions: 'gif,jpg,jpeg,bmp,png,mp3,mp4,doc,docx,xls,xlsx,ppt,pptx,pdf',
+    			mimeTypes: fileMimeType
+			}
+    });
+
+    // 当有文件添加进来的时候
+    uploader.on( 'fileQueued', function( file ) {
+    	$("#uploadFlag").val("false");
+         console.log(314572800)
+        console.log(file.size)
+    	fileName = file.name;
+		fileType = file.type;
+		fileSize = file.size;
+        $("#fileBody").append("<tr id='"+file.id+"'><td>"+file.name+"</td><td>"+file.size+"</td>"+
+	"<td class='state'><div class='progress progress-striped active'><div class='progress-bar' role='progressbar' style='width: 0%'></div></div></td><td>&nbsp;</td></tr>");
+    });
+
+    // 文件上传过程中创建进度条实时显示。
+    uploader.on( 'uploadProgress', function( file, percentage ) {
+        var $li = $( '#'+file.id ),
+            $percent = $li.find('.progress .progress-bar');
+
+        // 避免重复创建
+        if ( !$percent.length ) {
+            $percent = $('<div class="progress progress-striped active">' +
+              '<div class="progress-bar" role="progressbar" style="width: 0%">' +
+              '</div>' +
+            '</div>').appendTo( $li ).find('.progress-bar');
+        }
+
+        $percent.css( 'width', percentage * 100 + '%' );
+    });
+
+   
+    uploader.on( 'uploadSuccess', function( file,response ) {
+		var oldId = $("#rsId").val();
+       
+		reid = response["reid"];
+		fileName = file.name;
+		fileType = file.type;
+		fileSize = file.size;
+		 $("#uploadFlag").val("true");
+        $( '#'+file.id ).find('td.state').text('已上传');
+        $("#rsId").val(oldId+reid+",");
+    });
+
+    uploader.on( 'uploadError', function( file ) {
+        $( '#'+file.id ).find('td.state').text('上传出错');
+        $("#uploadFlag").val("false");
+    });
+
+    uploader.on( 'uploadComplete', function( file ) {
+        
+	$.ajax({
+		url: "/seeyon/resource.do?method=uploadComplate",
+		type:"POST",
+		dataType:"json",
+		data:{
+			reid:reid,
+			fileName:fileName,
+			catId:reqparams["catId"],
+			reType:fileType,
+			fileSize:fileSize
+		},
+		success: function(){
+			$( '#'+file.id ).find('.progress').fadeOut();
+		}
+	});
+    });
+
+    uploader.on( 'all', function( type ) {
+        if ( type === 'startUpload' ) {
+            state = 'uploading';
+        } else if ( type === 'stopUpload' ) {
+            state = 'paused';
+        } else if ( type === 'uploadFinished' ) {
+            state = 'done';
+        }
+
+        if ( state === 'uploading' ) {
+            $btn.text('暂停上传');
+        } else {
+            $btn.text('开始上传');
+        }
+    });
+
+    $btn.on( 'click', function() {
+        if ( state === 'uploading' ) {
+            uploader.stop();
+        } else {
+            uploader.upload();
+        }
+    });
+});

@@ -1,0 +1,270 @@
+.form.form-box {
+    border: solid 1px #e5e5e5;
+}
+
+.note p {
+    word-break: break-all;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        z-index: 1;
+        position: absolute;
+        width: 250px;
+        margin-top: 51px;
+    }
+
+    .categories-panel {
+        width: 250px;
+        float: left;
+    }
+
+    .questions-panel, .exams-panel {
+        margin-left: 260px;
+    }
+
+    .exams-panel > div.portlet,
+    .questions-panel > div.portlet {
+        float: left;
+        width: 100%;
+    }
+
+    .exams-panel > .row:first-child::after {
+        clear: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .categories-panel .portlet-body {
+        overflow: auto;
+        max-height: 235px;
+    }
+
+    .affix {
+        position: static;
+        top: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .categories-panel .affix {
+        top: 18px;
+        width: 250px;
+    }
+}
+
+@media (min-width: 992px) {
+    .categories-panel .affix {
+        top: 62px;
+        width: 250px;
+    }
+
+    .page-sidebar-wrapper{
+        position: fixed;
+    }
+}
+.sidebar .sidebar-nav.navbar-collapse {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.sidebar .nav > li {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.sidebar .nav > li.posterity { /*去除子分类边框*/
+    border: none;
+}
+
+.sidebar .nav > li > a > span:first-of-type {
+    padding-left: 4px;
+    display: block;
+    max-width: 8em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sidebar .nav > li > a > span:last-of-type {
+    position: absolute;
+    top: 11px;
+    right: 6px;
+}
+
+.sidebar ul li > a > p {
+    padding: 0;
+    margin: 0;
+}
+
+.active > a > .fa.fa-angle-right:before { /*实现管理列表箭头切换*/
+    content: "\f107";
+}
+
+.sidebar .sidebar-action {
+    display: inline-block;
+    padding: 10px 10px;
+}
+
+.sidebar {
+    width: auto;
+    position: static;
+    margin-top: 0;
+}
+
+.categories-panel .navbar-toggle {
+    border-color: #fff;
+    padding: 5px 7px;
+    margin: 7px 10px 7px 0;
+}
+
+.categories-panel .icon-bar {
+    width: 16px;
+}
+
+.categories-panel .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.category-list {
+    background-color: #fff;
+    border-color: #fff;
+}
+
+.category-list .nav > li > a:hover span:last-of-type {
+    display: inline-block;
+}
+
+.category-list .nav > li > a span:last-of-type {
+    display: none;
+    text-indent: 0;
+}
+
+.category-list .nav > li > a > i.fa-angle-right {
+    float: left;
+    text-align: right;
+}
+
+.category-list li i.fa {
+    cursor: pointer;
+    color: #5b9bd1;
+}
+
+.category-list li i.fa:hover {
+    color: #225eb7;
+}
+
+.category-list li > a.selected {
+    text-decoration: none;
+    color: #3175af;
+    background-color: #eee;
+}
+
+.category-list .category-default {
+    text-indent: 2.8em;
+}
+
+.category-list .nav > li > a {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.category-list a i.fa-check-square-o,
+.category-list a i.fa-square-o,
+.category-list a i.fa-dot-circle-o {
+    font-size: 1.25em;
+    float: left;
+    margin-top: 2px;
+}
+
+.category-list a i.fa- {
+    float: left;
+    width: 1em;
+}
+
+.btn-group .category-mv-ul {
+    margin-top: 1px;
+    box-shadow: none;
+    max-width: 240px;
+    overflow-x: auto;
+}
+
+.btn-group .category-mv-ul li {
+    border: none;
+}
+
+.category-list .categories-alert {
+    display: none;
+    margin: 5px;
+    padding: 10px;
+}
+
+.category-list .c-indent {
+    width: 0.8em;
+}
+
+.v-spacing {
+    padding-bottom: 14px;
+}
+
+.dialog-content {
+    max-height: 600px;
+    overflow-y: auto;
+    margin-bottom: 50px;
+    margin-top: 35px;
+}
+.uaqbtns {
+    padding: 5px;
+    margin-top: 10px;
+}
+.uaqbtns-new{
+    padding-right: 25px;
+    padding-bottom: 18px;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+}
+.uaqbtns button{
+    margin-right: 10px;
+}
+.uaqbtns button:last-child{
+    margin-right:0px;
+}
+#categories-tree>ul {
+    padding-right: 24px;
+}
+.vertical-middle {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+form#member-reg .dropdown-menu {
+    max-height: 350px;
+}
+.page-sidebar-wrapper{
+    z-index: 999;
+}
+
+
+.t-plan > i {
+    font-size: 13px !important;
+    font-style: normal  !important;
+}
+
+select{
+    -moz-appearance: none;
+}
+.bbcode-em-dot {
+    position: relative;
+}
+
+.bbcode-em-dot:before {
+    content: ".";
+    position: absolute;
+    top: 5px;
+    left: 25%;
+    font-size:30px;
+}

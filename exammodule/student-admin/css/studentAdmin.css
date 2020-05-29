@@ -1,0 +1,991 @@
+
+a {
+    text-decoration: none;
+}
+
+.page-content {
+    background-color: #eee;
+}
+
+.page-bar {
+    margin-bottom: 0;
+}
+
+.categories-tree-window div[name='group-tree'] {
+    height: 240px;
+    overflow: auto;
+}
+
+.bootstrap-tagsinput {
+    width: 100%;
+    min-height: 34px;
+}
+
+.url-context {
+    width: 100%;
+    overflow: hidden;
+}
+
+.uc-left pre {
+    border-radius: 2px !important;
+    margin-bottom: 20px;
+    background: #fff;
+}
+
+.uc-left a {
+    border-radius: 2px !important;
+}
+
+.stuUrl-share {
+    height: 450px;
+    display: none;
+}
+
+.stuUrl-share p {
+    font-size: 14px;
+    margin: 15px 0 15px 0;
+}
+
+.stuUrl-share p span {
+    color: #4a82de;
+}
+
+.share-button a {
+    max-height: 20px;
+}
+
+.img-share {
+    max-width: 42px;
+    margin-left: 30px;
+}
+
+.ewmMain a {
+    height: 30px;
+    line-height: 14px;
+    margin-left: 20px;
+    background-color: #fff !important;
+    border: 1px solid #ddd;
+    border-radius: 2px !important;
+}
+
+.ewmMain img {
+    width: 150px;
+}
+
+.share-close {
+    width: 100%;
+    text-align: center;
+}
+
+.share-button {
+    margin-top: 15px;
+}
+
+.head-menu {
+    height: 50px;
+    text-align: right;
+    line-height: 50px;
+}
+
+.head-menu span {
+    float: left;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.students-group {
+    float: left;
+    width: 250px;
+    /*margin-right: 10px;*/
+    /*min-height: 500px;*/
+    border-top: 1px solid #b1bdbd;
+    /*padding: 5px;*/
+    /*background-color: #fff;*/
+}
+
+.students-list {
+    margin-left: 260px;
+    overflow: hidden;
+    min-height: 500px;
+    border: 1px solid #bbbbbb;
+    background-color: #fff;
+}
+
+.s-list-menu {
+    float: left;
+    width: 97%;
+    height: 100%;
+    padding-right: 10px;
+    margin-left: 1.5%;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #bbb;
+}
+
+.loginField-tips {
+    float: left;
+    width: 100%;
+    height: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: red;
+}
+
+.s-list-menu-r {
+    float: right;
+}
+
+.s-list-menu>span {
+    float: left;
+    display: block;
+    margin-left: 0;
+    margin-top: 20px;
+}
+
+.s-list-menu-r>span {
+    float: left;
+    display: block;
+    margin-left: 5px;
+    margin-top: 20px;
+}
+
+#stu-group {
+    max-width: 91px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.students-search {
+    position: relative;
+    margin-top: 20px;
+    margin-left: 10px;
+    float: right;
+}
+
+.ss-select {
+    float: left;
+    width: 80px;
+    margin-right: -1px;
+}
+
+.ss-select select {
+    width: 80px;
+    height: 35px;
+    border-radius: 5px 0 0 5px !important;
+    outline: none;
+    padding-left: 10px;
+    border-right: none;
+    border-color: #ccc;
+}
+
+.ss-input {
+    width: 120px;
+    margin: 0 35px 0 80px;
+}
+
+.ss-button {
+    float: right;
+    width: 35px;
+    right: 0
+}
+
+input[name="search"] {
+    height: 35px;
+    width: 100%;
+    padding-left: 10px;
+    border-color: #ccc !important;
+}
+
+input[name="search"]::-webkit-input-placeholder {
+    color: #dadada;
+    font-size: 12px;
+}
+
+input[name="search"]:focus {
+    outline: none !important;
+    border-color: #ddd;
+}
+
+.ss-button>button {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    border: none;
+}
+
+.s-list-main {
+    width: 97%;
+    margin: 91px auto 0 auto;
+    padding-bottom: 55px;
+    /*min-height: 890px;*/
+    overflow: hidden;
+}
+
+.slm-detail {
+    height: 95px;
+    padding-left: 15px;
+    margin-bottom: 25px;
+    /*border-bottom: 1px solid #bbb;*/
+    float: left;
+    width: 100%;
+}
+
+.slm-detail:last-child {
+    border-bottom: none;
+}
+
+.slm-detail>span {
+    float: left;
+    margin-right: 5px;
+    margin-top: 37px;
+}
+
+.slm-detail-main {
+    overflow: hidden;
+    height: 95px;
+    border: 1px solid #ccc;
+    padding: 14px;
+}
+
+.slm-detail-main img {
+    float: left;
+    width: 65px;
+    height: 65px;
+    border-radius: 30.5px !important;
+    cursor: pointer;
+}
+
+.slm-detail-main-button {
+    float: right;
+    width: 100px;
+    padding-top: 5px;
+}
+
+.slm-detail-main-button span:last-child {
+    display: block;
+    margin-top: 5px;
+}
+
+.slm-detail-main-button span:last-child a {
+    text-decoration: none;
+    color: grey;
+}
+
+.slm-detail-main-button span:last-child a:last-child {
+    margin-left: 29px;
+}
+
+.slm-detail-main-content {
+    margin: 0 100px 0 75px;
+    padding-top: 5px;
+}
+
+.slm-detail-main-content span {
+    position: relative;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.slm-detail-main-content span i {
+    cursor: pointer;
+}
+
+.slm-detail-main-content span p {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #bbb;
+    font-size: 12px;
+}
+
+.slm-detail-main-content span p:first-child {
+    float: left;
+    max-width: 70%;
+}
+
+.slm-detail-main-content span p:last-child {
+    position: absolute;
+    left: 74%;
+    max-width: 25%;
+}
+
+
+.slm-detail-main {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.slm-detail:hover .slm-detail-main {
+    border-color: #0095ff;
+}
+
+
+.slm-detail .slm-detail-main-content span:first-child a {
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #222;
+}
+
+
+.slm-detail:hover .slm-detail-main-content span:first-child a {
+    color: #0095ff;
+}
+
+
+
+.slm-detail:hover .slm-detail-main-button {
+    opacity: 1;
+}
+
+.slm-detail .slm-detail-main-button {
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.sl-checks {
+    padding: 0 0 10px 15px;
+    margin-bottom: 10px;
+    height: 34px;
+    line-height: 34px;
+}
+
+#allChecked {
+    float: left;
+    margin-right: 5px;
+    margin-top: 11px;
+}
+
+.btn-group>.dropdown-menu {
+    /*width: 100%;*/
+}
+
+.btn-group>.dropdown-menu li {
+    /*text-align: left;*/
+}
+
+.dropdown-menu li>a {
+    padding: 8px 7px;
+}
+
+.field-list {
+    width: 710px;
+    margin: 0 auto;
+    max-height: 600px;
+    overflow-y: auto;
+    padding: 10px 25px;
+}
+
+.field-menu {
+    width: 670px;
+    height: 70px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.field-list>ul {
+    width: 660px;
+    margin: 0;
+    padding: 0;
+}
+
+.field-list>ul>li {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-bottom: 1px solid #bbb;
+    list-style-type: none;
+}
+
+.field-list>ul>li:last-child {
+    border-bottom: none;
+}
+
+.field-list>ul>li span {
+    float: left;
+}
+
+.field-list>ul>li a {
+    float: right;
+    margin-left: 10px;
+    margin-top: 8px;
+    background-color: #fff !important;
+    border: 1px solid #bbb;
+    border-radius: 5px !important;
+    height: 30px;
+    line-height: 15px;
+}
+
+.fm-left {
+    float: left;
+    height: 55px;
+}
+
+.fm-left span input {
+    float: left;
+}
+
+.fm-right {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+}
+
+.fm-right a {
+    margin-left: 10px;
+}
+
+.paginations {
+    height: 65px;
+    position: absolute;
+    right: 45px;
+    bottom: 10px;
+}
+
+.pagination {
+    float: right;
+}
+
+.pagination>li>a {
+    height: 25px;
+    line-height: 10px;
+    margin-left: 3px;
+    border-radius: 5px !important;
+}
+
+/*查询重复值样式*/
+
+ul.douplicate-value {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.douplicate-value li {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px 10px;
+    cursor: pointer;
+    border: 1px solid #eee;
+}
+
+ul.douplicate-value li:hover {
+    background-color: #eee;
+}
+
+ul.douplicate-value li span.value {
+    min-width: 140px;
+    display: inline-block;
+}
+
+/*查询重复值样式*/
+
+/*选择考生登录字段*/
+
+.stu-login-select {
+    width: 200px;
+    height: 35px;
+    border-radius: 5px !important;
+    outline: none;
+    padding-left: 15px;
+}
+
+.stu-login-select option {
+    height: 35px;
+}
+
+/*选择考生登录字段*/
+
+/*无考生页面*/
+
+.noStu-tips {
+    width: 700px;
+    margin: 5% auto;
+    overflow: hidden;
+    border: 2px dashed #ddd;
+}
+
+.noStu-tips>img {
+    width: 75px;
+    margin: 15px 0 0 15px;
+}
+
+.nt-img-tips {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.nt-img-tips>h3 {
+    font-weight: bold;
+}
+
+.nt-img-tips>img {
+    width: 150px;
+}
+
+.nt-actions {
+    text-align: center;
+    margin-bottom: 100px;
+    margin-top: 20px;
+}
+
+.nt-actions a {
+    height: 25px;
+    line-height: 10px;
+    /* margin-left: 20px; */
+    /* background-color: #fff !important; */
+    border: 1px solid #ddd;
+    border-radius: 2px !important;
+}
+
+.nt-actions {
+    margin-top: 0;
+}
+
+.snt-actions p:first-child {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/*无考生页面*/
+
+/*搜索无结果页面*/
+
+.nt-actions {
+    margin-top: 0;
+}
+
+.snt-actions p:first-child {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px
+}
+
+.snt-actions p:last-child {
+    margin-top: 30px;
+    color: #aaa;
+}
+
+/*搜索无结果页面*/
+
+@media (min-width: 768px) {
+    .students-group .affix {
+        top: 18px;
+        width: 250px;
+    }
+}
+
+@media (min-width: 992px) {
+    .students-group .affix {
+        top: 62px;
+        width: 250px;
+    }
+}
+
+@media screen and (min-width: 1370px) and (max-width: 1650px) {
+    .s-list-menu-r {
+        width: 100%;
+    }
+    .s-list-menu {
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 1555px) {
+    .s-list-menu-r {
+        width: 100%;
+    }
+    .s-list-menu {
+        height: 100%;
+    }
+    .students-search {
+        float: left;
+    }
+
+}
+
+@media screen and (min-width: 501px) and (max-width: 767px) {
+    .students-group .affix {
+        width: 100%;
+        top: 0;
+    }
+    .students-list {
+        margin-left: 0;
+    }
+    .s-list-menu-r>span:first-child {
+        width: 100%;
+    }
+    .students-group {
+        float: none;
+        width: 100%;
+    }
+    .s-list-menu {
+        height: 100%;
+    }
+    .btn-group {
+        /*width: 100%;*/
+    }
+    .students-search {
+        margin-left: 10px;
+    }
+    /*字段设置*/
+    .field-list {
+        width: 100%;
+        padding: 0 18px;
+    }
+    .field-lis>ul {
+        width: 100%;
+    }
+    .field-menu {
+        width: 100%;
+    }
+    .noStu-tips {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 500px) {
+    .students-group .affix {
+        width: 100%;
+        top: 0;
+    }
+    .students-list {
+        margin-left: 0;
+    }
+    .s-list-main {
+        overflow: auto;
+    }
+    .slm-detail {
+        width: 450px;
+    }
+    .head-menu {
+        height: 98px;
+    }
+    .students-group {
+        float: none;
+        width: 100%;
+    }
+    .s-list-menu {
+        height: 100%;
+    }
+    .btn-group {
+        width: 100%;
+    }
+    .students-search {
+        margin-left: 10px;
+    }
+    /*字段设置*/
+    .field-list {
+        width: 100%;
+        padding: 0 18px;
+    }
+    .field-list>ul {
+        width: 100%;
+    }
+    .field-list>ul>li {
+        height: 90px;
+    }
+    .field-menu {
+        width: 100%;
+    }
+    /*学生列表*/
+    .s-list-menu {
+        width: 100%;
+    }
+    .sl-checks,
+    .slm-detail {
+        padding-left: 0;
+    }
+    .slm-detail-main {
+        padding: 14px 0;
+    }
+    .slm-detail-main-content span {
+        font-size: 12px;
+    }
+    .noStu-tips {
+        width: 100%;
+    }
+}
+
+.sosh-pop {
+    z-index: 999999 !important;
+}
+
+#register input[type=checkbox] {
+    position: relative;
+    width: 21px;
+    height: 30px;
+    -webkit-appearance: none;
+    outline: none;
+    vertical-align: middle;
+}
+
+#register input[type=checkbox]:focus {
+    outline: none;
+}
+
+#register input[type=checkbox]::before {
+    content: '';
+    position: absolute;
+    width: 21px;
+    height: 30px;
+    background: url("/components/com_exams/assets/img/multi-select_before.png") no-repeat;
+    background-size: 21px 21px;
+}
+
+#register input[type=checkbox]:checked::before {
+    background: url("/components/com_exams/assets/img/multi-select_after.png") no-repeat;
+    background-size: 21px 21px;
+    content: '';
+}
+
+.reg_type {
+    padding: 10px 20px;
+    border-radius: 4px !important;
+    font-size: 16px;
+    margin-right: 20px;
+    text-align: center;
+    background-color: #fff;
+    color: #7d7d7d;
+    border: 1px solid #7d7d7d;
+}
+
+.reg_type:focus {
+    outline: none;
+}
+
+.in {
+    color: rgba(54, 170, 253, 1) !important;
+    border: 1px solid rgba(54, 170, 253, 1);
+}
+
+.fields {
+    font-size: 14px;
+    padding: 0px;
+    box-shadow: 0px 0px 7px 0px rgba(170, 170, 170, 1);
+    border: 1px solid rgba(54, 170, 253, 1);
+}
+
+.tile__name {
+    background: #36AAFD;
+    padding: 10px 0;
+    color: #fff;
+    border: 0;
+}
+
+.bottom {
+    text-align: center;
+    background: #36AAFD;
+    padding: 10px 0;
+    color: #fff;
+    border: 0;
+    float: left;
+    width: 100%;
+}
+
+.bottom a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.bottom li {
+    list-style: none;
+}
+
+.fields {
+    width: 40%;
+}
+
+.fields .list li {
+    width: 90%;
+    margin: 10px auto;
+    border-radius: 2px !important;
+    color: rgba(16, 16, 16, 1);
+    font-size: 16px;
+    text-align: left;
+    box-shadow: 0px 2px 8px 0px rgba(205, 205, 205, 0.35);
+    border: 1px solid rgba(228, 228, 228, 1);
+    background: #fff !important;
+}
+
+.fields .list {
+    width: 100%;
+    height: 380px;
+    overflow-y: auto;
+}
+
+.available {
+    width: 54%;
+    margin-right: 0px;
+    margin-bottom: 60px;
+}
+
+#available_fields li {
+    width: 30%;
+    margin: 10px 1.66667%;
+    float: left;
+}
+
+.fields.available .list li.disabled {
+    background: rgba(54, 170, 253, 1) !important;
+    color: #fff !important;
+}
+
+#selected_fields .js-remove {
+    padding-top: 3px;
+}
+
+.fields .list li .fa {
+    padding-top: 5px;
+}
+
+#register {
+    min-height: 600px;
+}
+
+.wechat-tip label {
+    padding: 10px 0;
+    font-size: 16px;
+}
+
+.field-label {
+    width: 70px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: top
+}
+
+#selected_fields .field-label {
+    width: auto;
+}
+
+.wechat-tip img {
+    width: auto;
+    height: 340px;
+    margin-left: 100px;
+}
+
+.reg_type_img {
+    vertical-align: middle;
+    margin-bottom: 3px;
+}
+
+.enableReg_checkbox:hover {
+    cursor: pointer;
+}
+
+.js-remove {
+    color: red;
+}
+
+#available_fields li {
+    padding: 10px 2px;
+    line-height: 24px;
+    font-size: 14px;
+}
+
+.download-upload-photo-tool h1 {
+    font-size: 30px;
+}
+
+.download-upload-photo-tool {
+    min-width: 500px;
+    text-align: center;
+}
+
+.download-upload-photo-tool .tutorial {
+    margin-top: 50px;
+}
+
+.fields.selected .fa-edit {
+    display: inline-block;
+}
+
+.introTip {
+    border-radius: 4px !important;
+}
+
+.guide-mask {
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    position: fixed;
+    opacity: 0;
+    transition: 0.2s all;
+    background: rgba(0, 0, 0, .7)
+}
+
+.guide-mask-white {
+    border-radius: 4px !important;
+    background: transparent;
+    border: 1px dashed #fff;
+    background: #364150;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 0 40px 0 35px;
+    line-height: 2.2;
+}
+
+.guide-img {
+    position: absolute;
+    visibility: visible;
+    width: 100%;
+    max-width: 500px;
+    z-index: 9999999;
+    transition: 0.2s all;
+    cursor: pointer;
+}
+
+
+
+.categories-tree-window {
+    display: none;
+}
+
+.categories-tree-window div[name="categories-tree"] {
+    height: 240px;
+    overflow: auto;
+}
+
+.categories-tree-window .categories-search,
+.categories-tree-window [name="categories-tree"] {
+    margin-bottom: 12px;
+}
+
+.bootstrap-tagsinput {
+    max-height: 68px;
+    overflow-y: auto;
+    line-height: 27px;
+}
+
+.selectedCount {
+    font-size: 14px;
+    color: #333333;
+}
+
+
+
+
+
+.categories-tree-window {
+    display: none;
+}
+
+.categories-tree-window div[name="categories-tree"] {
+    height: 240px;
+    overflow: auto;
+}
+
+.categories-tree-window .categories-search,
+.categories-tree-window [name="categories-tree"] {
+    margin-bottom: 12px;
+}
+

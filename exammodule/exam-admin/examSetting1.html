@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en" >
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+     <meta http-equiv="Expires" content="0">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    
+    <link href="css/layout.css" rel="stylesheet" type="text/css">
+  
+    
+    <title>试卷设置</title>
+    <link href="css/common.css" rel="stylesheet" type="text/css">
+   
+   
+    <link href="css/layui.css" rel="stylesheet" type="text/css">
+   
+    <link href="css/awesome-bootstrap-checkbox.min.css" rel="stylesheet" type="text/css">
+      
+    <link href="css/examSetting.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
+    <script src='js/jquery.min.js'></script>
+    <script src='js/vue.js'></script>
+    <script src='js/bootstrap-datetimepicker.js'></script>
+    <script src='js/bootstrap-datetimepicker.js'></script>
+    <script src='js/bootstrap-datetimepicker.zh-CN.js'></script>
+    
+    
+    <style>
+        .page-content-wrapper .page-content{
+            margin-left:0px
+        }
+    </style>
+       <style  type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+
+   
+</head>
+
+<body>
+    
+    <div class="page-container ">
+
+        <div class="page-content-wrapper">
+            <div class="page-content " style="min-height:922px">
+
+             
+                    
+                <div class="row " id='app' v-cloak style="background-color: #F3F4F8;">
+                    
+                    <div class="col-md-12" style="padding-left: 0;background-color: white;marign-left: 20px;marign-top: 20px;">
+                        <div class="col-md-12 clearfix" style="padding-left: 0;overflow-y: hidden">
+                             <!--中间部分-->
+
+                            <div style="float: left;width:100%;border-right: 10px solid #F3F4F8;border-left:  solid #F3F4F8">
+                                <div class="list-box">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                                            <div id="exam-form" >
+                                                <div data-li-nav="permission" class="item_box">
+                                                    <div class="clearfix nex-line-margin"></div>
+
+                                                    <!--试卷开放时间-->
+                                                    <div class="settings-box">
+                                                        <!--蓝色方块-->
+                                                        <div style="margin-bottom: 20px;">
+                                                            <div class="blue-div"></div>
+                                                            <p id="idPeriodOfValidity" class="blue-div-p">有效期限</p>
+                                                        </div>
+
+                                                        <div style="position:relative;">
+
+                                                            <div>
+                                                                <span class="form-field-title no-input" style="">当前：</span>
+
+                                                                <div class="form-check abc-radio abc-radio-primary" style="">
+                                                                    <!--限定时间-->
+                                                                    <div>
+                                                                        <input class="form-check-input radio-align-middle" type="radio" id="availabel" name="availabel"  v-model='exam.isForever' value="false"
+                                                                            data="1">
+                                                                        <label for="availabel" class="fontStyle radio-align-middle">试卷开放时间</label>
+                                                                    </div>
+                                                                    <div style="margin-top: 10px" class="clearheight5"></div>
+                                                                    <!--永久-->
+                                                                    <div>
+                                                                        <input style="margin-left: 67px" class="form-check-input radio-align-middle" type="radio" id="forever" name="availabel" v-model='exam.isForever' value="true"
+                                                                            data="2">
+                                                                        <label for="forever" class="fontStyle radio-align-middle">永久有效</label>
+                                                                    </div>
+                                                                    <div style="margin-top: 10px" class="clearheight5"></div>
+                                                                    <!--不可用-->
+                                                                   
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                            </div>
+
+
+                                                            <!--限定时间选择-->
+                                                            <div id="availabel-time-settings" v-show="exam.isForever==false||exam.isForever=='false'">
+                                                                <div class="field-group ">
+                                                                    <div class="input-group " style='overflow: hidden;' >
+                                                                            <input  class="form-control blue-border" id='time1' style="width: 160px;" >
+                                                                            <div style="float: left;display: inline-block;height: 34px;
+                                                                            line-height: 34px;margin:0 10px">至</div>
+                                                                            <input class="form-control blue-border" id='time2' style="width: 160px;" >
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix nex-line-margin"></div>
+
+                                                    <!--答题次数-->
+                                                    <div class="settings-box">
+                                                        <!--蓝色方块-->
+                                                        <div style="margin-bottom: 20px;">
+                                                            <div class="blue-div"></div>
+                                                            <p id="idAttempts" class="blue-div-p">
+                                                                答卷次数 </p>
+                                                        </div>
+                                                        <div>
+                                                            <div class="form-check abc-radio abc-radio-primary">
+                                                              
+
+                                                               
+                                                                <div class="clearheight5"></div>
+                                                                <div class="clearheight5"></div>
+
+                                                                <!--多次-->
+                                                                <div>
+                                                                    <input class="tab_20 form-check-input radio-align-middle" type="radio" name="attempts"  id="num_attempts" value='false' v-model='exam.isUnlimited'>
+                                                                    <label for="num_attempts" class="fontStyle radio-align-middle">
+                                                                        考试次数： </label>
+                                                                    <span v-show="exam.isUnlimited==false||exam.isUnlimited=='false'"><input  type="text" class="blue-border" name="attempts_allowed" size="3" style="width: 50px;margin-top: -5px;height: 26px;padding: 0 5px;"
+                                                                        value="1" v-model='exam.sumNumber' id="num_attempts_count" maxlength="3"> 次</span>
+                                                                    <label id="retainScoresLabel" for="num_attempts" class="fontStyle">
+                                                                        <!--                                                            <span class="hint">-->
+                                                                        <!--</span>-->
+                                                                    </label>
+                                                                </div>
+                                                                <div class="clearheight5"></div>
+                                                                <div class="clearheight5" ></div>
+                                                                 <!--多次-->
+                                                                 <div>
+                                                                        <input class="tab_20 form-check-input radio-align-middle" type="radio" value='true' v-model='exam.isUnlimited'  id="num_attempts" >
+                                                                        <label for="num_attempts" class="fontStyle radio-align-middle">
+                                                                            无限次 </label>
+                                                                        
+                                                                        <label id="retainScoresLabel" for="num_attempts" class="fontStyle">
+                                                                            <!--                                                            <span class="hint">-->
+                                                                            <!--</span>-->
+                                                                        </label>
+                                                                    </div>
+                                                                <div class="clearheight5"></div>
+                                                                <div class="clearheight5"></div>
+
+
+                                                            </div>
+
+                                                            <div class="clearheight"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix nex-line-margin"></div>
+
+                                                    <!--考试时间-->
+                                                    <div class="one_full settings-box" style="margin-top: 100px;">
+                                                        <!--蓝色方块-->
+                                                        <div style="margin-bottom: 20px;">
+                                                            <div class="blue-div"></div>
+                                                            <p id="idTakenTime" class="blue-div-p">答题时间控制</p>
+                                                        </div>
+
+                                                        <div style="margin-left: 10px">
+                                                            <!--答卷时长-->
+                                                            <div class="form-check abc-radio abc-radio-primary">
+                                                                <div>
+                                                                    <input class="form-check-input radio-align-middle" value="exam" checked="checked" type="radio" name="exam_question_time_limit"
+                                                                        id="exam-time-limit">
+                                                                    <label for="exam-time-limit" class="fontStyle radio-align-middle">
+                                                                        答卷时长： </label>
+                                                                    <input id="tl" class="setting-default-input blue-border" v-model='exam.examTime' type="number" name="time_limit" maxlength="3" size="3" value="0">
+                                                                    <span>分钟</span>
+                                                                    <span class="hint" style="display: none;">
+                                                                        （限制考试时间 (留空或设置为0将无时间限制).）
+                                                                    </span>
+                                                                    <div class="clearheight5"></div>
+                                                                    
+                                                                    <div class="clearheight5"></div>
+                                                                </div>
+
+                                                               
+                                                            </div>
+
+                                                            <div class="clearheight5"></div>
+                                                            <div class="clearheight5"></div>
+                                                          
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix nex-line-margin"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                          
+                    </div>
+                </div>
+                
+
+
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        document.write('<script src="/seeyon/adminlayout/common/js/common.js?ver='+Math.random()+'"  type="text/javascript"><\/script>');
+     </script>
+     <script  type="text/javascript">
+         　　version("/seeyon/exammodule/exam-admin/js/examSetting1.js")
+     </script>   
+
+</body>
+
+</html>

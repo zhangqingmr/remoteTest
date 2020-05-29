@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="zh_CN" class="">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+  <style type="text/css">
+    .ps-container .ps-scrollbar-x-rail {
+      position: absolute;
+      bottom: 3px;
+      height: 8px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      opacity: 0;
+      filter: alpha(opacity=0);
+      -o-transition: background-color .2s linear, opacity .2s linear;
+      -webkit-transition: background-color.2s linear, opacity .2s linear;
+      -moz-transition: background-color .2s linear, opacity .2s linear;
+      transition: background-color .2s linear, opacity .2s linear
+    }
+
+    .ps-container:hover .ps-scrollbar-x-rail,
+    .ps-container.hover .ps-scrollbar-x-rail {
+      opacity: .6;
+      filter: alpha(opacity=60)
+    }
+
+    .ps-container .ps-scrollbar-x-rail:hover,
+    .ps-container .ps-scrollbar-x-rail.hover {
+      background-color: #eee;
+      opacity: .9;
+      filter: alpha(opacity=90)
+    }
+
+    .ps-container .ps-scrollbar-x-rail.in-scrolling {
+      opacity: .9;
+      filter: alpha(opacity=90)
+    }
+
+    .ps-container .ps-scrollbar-y-rail {
+      position: absolute;
+      right: 3px;
+      width: 8px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      opacity: 0;
+      filter: alpha(opacity=0);
+      -o-transition: background-color .2s linear, opacity .2s linear;
+      -webkit-transition: background-color.2s linear, opacity .2s linear;
+      -moz-transition: background-color .2s linear, opacity .2s linear;
+      transition: background-color .2s linear, opacity .2s linear
+    }
+
+    .ps-container:hover .ps-scrollbar-y-rail,
+    .ps-container.hover .ps-scrollbar-y-rail {
+      opacity: .6;
+      filter: alpha(opacity=60)
+    }
+
+    .ps-container .ps-scrollbar-y-rail:hover,
+    .ps-container .ps-scrollbar-y-rail.hover {
+      background-color: #eee;
+      opacity: .9;
+      filter: alpha(opacity=90)
+    }
+
+    .ps-container .ps-scrollbar-y-rail.in-scrolling {
+      opacity: .9;
+      filter: alpha(opacity=90)
+    }
+
+    .ps-container .ps-scrollbar-x {
+      position: absolute;
+      bottom: 0;
+      height: 8px;
+      background-color: #aaa;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -o-transition: background-color .2s linear;
+      -webkit-transition: background-color.2s linear;
+      -moz-transition: background-color .2s linear;
+      transition: background-color .2s linear
+    }
+
+    .ps-container.ie6 .ps-scrollbar-x {
+      font-size: 0
+    }
+
+    .ps-container .ps-scrollbar-x-rail:hover .ps-scrollbar-x,
+    .ps-container .ps-scrollbar-x-rail.hover .ps-scrollbar-x {
+      background-color: #999
+    }
+
+    .ps-container .ps-scrollbar-y {
+      position: absolute;
+      right: 0;
+      width: 8px;
+      background-color: #aaa;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -o-transition: background-color .2s linear;
+      -webkit-transition: background-color.2s linear;
+      -moz-transition: background-color .2s linear;
+      transition: background-color .2s linear
+    }
+
+    .ps-container.ie6 .ps-scrollbar-y {
+      font-size: 0
+    }
+
+    .ps-container .ps-scrollbar-y-rail:hover .ps-scrollbar-y,
+    .ps-container .ps-scrollbar-y-rail.hover .ps-scrollbar-y {
+      background-color: #999
+    }
+
+    .ps-container.ie .ps-scrollbar-x,
+    .ps-container.ie .ps-scrollbar-y {
+      visibility: hidden
+    }
+
+    .ps-container.ie:hover .ps-scrollbar-x,
+    .ps-container.ie:hover .ps-scrollbar-y,
+    .ps-container.ie.hover .ps-scrollbar-x,
+    .ps-container.ie.hover .ps-scrollbar-y {
+      visibility: visible
+    }
+  </style>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <title></title>
+
+
+
+  <link href="css/bootstrap.css"
+    rel="stylesheet">
+
+  <link href="css/main.css" rel="stylesheet">
+  <link href="css/main-v2.css" rel="stylesheet">
+
+
+  <link rel="stylesheet" media="screen" href="css/sggn.css">
+  <link rel="stylesheet" media="screen" href="css/june-blue.css">
+  <link rel="stylesheet" media="screen" href="css/header1.css">
+  <script src='js/jquery.min.js'></script>
+  <script type="text/javascript" src="../resource/ckplayer/ckplayer.js"></script>
+	<script src='js/vue.js'></script>
+	<link rel="stylesheet" href="css/layui.css">
+	<link rel="stylesheet" href="css/layout.css">
+	
+	<script src='js/layui.js'></script>
+  <style>
+    .cke {
+      visibility: hidden;
+    }
+  </style>
+</head>
+
+<body class="es-main-default es-nav-default " >
+
+
+  <div class="task-dashboard-page js-task-dashboard-page" id='course'>
+    <div class="dashboard-content" id="dashboard-content">
+      <div class="dashboard-header">
+        <a class="back-link" href="javascript:;" @click="stepLast()">
+          <i class="es-icon es-icon-chevronleft"></i>返回
+        </a>
+        {{name}}
+        
+            <div id="jishi" style='margin:0 auto;display: inline-block;float:right;display: none' >
+                <input type="hidden" id="start">
+                <input type="hidden" id="duzq">
+                <div style="display: inline-block;"><span id="min" style="color: rgb(230, 76, 101);" >0</span><h4 style="display: inline-block">分</h4></div>
+                <div  style="display: inline-block;"><span id="sec" style="color: rgb(230, 76, 101);"  >0</span><h4 style="display: inline-block">秒</h4></div>
+              
+            </div>
+        
+      </div>
+      <div class="dashboard-body">
+        <div class=" all-wrapper">
+          <div id="video" style="width:100%;height: 100%"></div>
+        </div>
+      </div>
+
+      <div class="dashboard-footer">
+        <div class="pull-left js-audio-convert-box">
+        </div>
+        <div class="btn-group pull-left visible-xs js-mobile-btn" role="group">
+          <a class="btn btn-default   disabled ">
+            <strong class="es-icon es-icon-chevronleft text-xlg"></strong>
+          </a>
+          <a class="btn btn-default js-next-mobile-btn  " href="javascript:;">
+            <strong class="es-icon es-icon-chevronright text-xlg"></strong>
+          </a>
+        </div>
+        
+
+      </div>
+    </div>
+  
+  </div>
+
+  <div id='tips' style="display: none">
+			<div style='margin:0 auto;text-align: center;margin-top:40px'>
+				视频播放暂停，学习已停止计时
+			</div>
+		
+			<div style="position: absolute;bottom: 0px;background-color: gray;height: 40px;width: 100%">
+					<button id='queding' type="button" class="btn btn-info" style='height: 25px;padding:0 0;margin-top: 8px;
+					width: 60px;margin-left: 30%;'>继续学习</button>
+					<button id='cancel' type="button" class="btn btn-info" style='height: 25px;padding:0 0;margin-top: 8px;
+					width: 45px;margin-left: 2%;'>取消</button>
+			</div>
+		</div>
+  
+  <script type="text/javascript">
+    document.write('<script src="/seeyon/adminlayout/common/js/common.js?ver='+Math.random()+'"  type="text/javascript"><\/script>');
+ </script>
+ <script  type="text/javascript">
+     　　version("/seeyon/studymodule/course-user/js/play3.js")
+ </script> 
+
+
+
+</body>
+
+</html>

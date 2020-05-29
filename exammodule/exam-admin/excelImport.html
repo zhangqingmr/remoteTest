@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://admin.youkaoshi.cn/qman/batch-import.html -->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="./css/simple-line-icons.min.css" rel="stylesheet" type="text/css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="./css/uniform.default.css" rel="stylesheet" type="text/css">
+    <link href="./css/bootstrap-switch.min.css" rel="stylesheet" type="text/css">
+    <link href="./css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="./css/fullcalendar.min.css" rel="stylesheet" type="text/css">
+    <link href="./css/tasks.css" rel="stylesheet" type="text/css">
+    <link href="./css/components.css" id="style_components" rel="stylesheet" type="text/css">
+    <link href="./css/plugins.css" rel="stylesheet" type="text/css">
+    <link href="./css/layout.css" rel="stylesheet" type="text/css">
+    <link href="./css/pricing-table.css" rel="stylesheet" type="text/css">
+    
+    <link href="./css/custom.css" rel="stylesheet" type="text/css">‘
+    
+    <title>批量导入 </title>
+
+    <link href="./css/common.css" rel="stylesheet" type="text/css">
+    <link href="./css/jBox.min.css" rel="stylesheet" type="text/css">
+    <link href="./css/style.min.css" rel="stylesheet" type="text/css">
+    <link href="./css/customstyle.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <style>
+        .page-content-wrapper .page-content {
+            margin-left: 0px;
+            margin-top: 0px;
+            
+          
+        }
+        .page-header-fixed .page-container {
+            margin-top: 0px;
+        }
+    </style>
+
+
+
+
+</head>
+
+<body class="page-header-fixed page-quick-sidebar-over-content page-style-square">
+    
+
+    <div class="page-container ">
+        <div class="page-content-wrapper">
+            <div class="page-content " style="min-height:809px">
+
+                <div class="page-bar">
+                </div>
+
+                <div id="system-message-container">
+                </div>
+
+                <style type="text/css">
+                    ul.duplicate-questions-list {
+                        margin: 0;
+                        padding: 0;
+                        list-style-type: none;
+                    }
+
+                    .duplicate-questions-list li {
+                        border: solid 1px #ccc;
+                        display: block;
+                        margin-bottom: 10px;
+                        padding: 10px;
+                    }
+
+                    .duplicate-questions-list li:last-child {
+                        margin-bottom: 0px;
+                    }
+
+
+                    .duplicate-questions-list span.nth {
+                        border: solid 1px #f21;
+                        padding: 3px;
+                    }
+
+                    .duplicate-questions-list li.still-import {
+                        background-color: #3a7;
+                        color: #fff;
+                    }
+
+                    .duplicate-questions-list li.still-import:hover {
+                        background-color: #3a7;
+                    }
+
+                    .duplicate-questions-list li.still-import span.badge {
+                        background-color: #146542;
+                    }
+
+                    .duplicate-questions-list li:hover {
+                        background-color: #ec6666;
+                        color: #ccc;
+                    }
+
+                    .questions {
+                        background-color: #37BC9B;
+                        height: 30px;
+                        line-height: 30px;
+                        width: 35px;
+                        float: right;
+                        color: white;
+                        border-radius: 16px !important;
+                        text-align: center;
+                        margin-top: -5px;
+                    }
+
+                    .counts {
+                        background-color: #009EE7;
+                        height: 30px;
+                        line-height: 30px;
+                        width: 35px;
+                        float: right;
+                        color: white;
+                        border-radius: 16px !important;
+                        text-align: center;
+                        margin-top: -5px;
+                    }
+
+                    .duplicated-question {
+                        border: solid 1px #ccc;
+                        display: block;
+                        margin-bottom: 10px;
+                        padding: 10px 0;
+                    }
+
+                    .wrong-question-msg-list {
+                        padding: 0;
+                        color: #F3565D;
+                        margin: 0 15px;
+                    }
+
+                    .wrong-question-msg-list li {
+                        margin-top: 15px;
+                    }
+                </style>
+
+                <div id="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="Metronic-alerts alert fade in alert-success">
+                                <h3 class="alert-heading">批量导入说明</h3>
+                                <p></p>
+                                <ol>
+                                    <li>支持批量导入的题型<br>单选题，多选题，不定项选择题，填空题，判断题，问答题<br><br>
+                                    </li>
+                                    <li>EXCEL模板<br>按照模板进行编写，题目、题型、分类、分数是必填项。<br><br></li>
+
+                                </ol>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>1. 请先下载模板</h1>
+                            <p></p>
+                            <ul>
+                                <li>建议按多次分批导入，导入前建议试题编好分类，方便题库管理</li>
+                                <li>请使用<strong>微软的2007或以上的Office版本编辑，不要使用WPS</strong></li>
+                            </ul>
+                            <p></p>
+                            <p>
+                                <a href="/seeyon/excel_upload/试题模板.xlsx" target="_self" onclick="javascript:void(0)" class="btn green"><i class="fa fa-download"></i>
+                                    下载EXCEL格式模板</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>2. 导入试题</h1>
+                            <div class="form">
+                                
+                                    <div class="form-body">
+                                        <div class="form-group">
+                                            <!-------------选择文件并上传----------->
+                                            <a href="javascript:;" class="btn">
+                                                <input class="form-control" type="text" readOnly id="filename" >
+                                               
+                                            </a>
+                                            <a href="javascript:;" class="btn blue file-upload">
+                                               
+                                                <input id="fileid" class="form-control" type="file" name="questions" id>
+                                                <span>选择文件</span>
+                                            </a>
+                                            <a href="javascript:;" class="btn blue file-upload" onclick="doUpload()">
+                                               
+                                                提交
+                                            </a>
+                                          
+                                        </div>
+                                    </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <style>
+                    .categories-tree-window {
+                        display: none;
+                    }
+
+                    .categories-tree-window div[name="categories-tree"] {
+                        height: 240px;
+                        overflow: auto;
+                    }
+
+                    .categories-tree-window .categories-search,
+                    .categories-tree-window [name="categories-tree"],
+                    .import-radio {
+                        margin-bottom: 12px;
+                    }
+
+                    .categories-manage {
+                        display: none;
+                    }
+
+                    .btn-outline-primary {
+                        color: #0275d8;
+                        background-image: none;
+                        background-color: transparent;
+                        border: 1px solid #0275d8;
+                    }
+
+                    .btn-outline-primary:hover,
+                    .radio-active {
+                        border-color: #0275d8;
+                    }
+
+                    .radio-active i:before {
+                        content: "\f192";
+                    }
+
+                    a:hover {
+                        text-decoration: none;
+                    }
+
+                    .adv-option {
+                        cursor: pointer;
+                    }
+
+                    .adv-option i {
+                        width: 12px;
+                    }
+
+                    .adv-active i:before {
+                        content: "\f0d7";
+                    }
+
+                    .adv-options {
+                        display: none;
+                    }
+                </style>
+
+
+
+            </div>
+        </div>
+        <!-- END CONTENT -->
+    </div>
+
+    <div class="page-footer text-center">
+        <div class="page-footer-inner" style="float: none">
+        </div>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+        </div>
+    </div>
+    <script>
+        $(document).on("change", "#fileid", function () {
+           
+                var filePath = $(this).val();
+                console.log(filePath)
+                if (filePath.indexOf("xls") != -1 || filePath.indexOf("xlsx") != -1) {
+                    var arr = filePath.split('\\');
+                    var fileName = arr[arr.length - 1];
+                    console.log(fileName)
+                    $("#filename").val(fileName);
+                    $("#filename").attr('title',fileName);
+                } else {
+                    alert("上传文件类型错误");
+                    return false
+                }
+            })
+        function doUpload() {
+            
+        var formData = new FormData();
+        formData.append('file',document.querySelector('[type=file]').files[0])
+      
+        $.ajax({
+            url:"/seeyon/questionController.do?method=importExcel" ,
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                 var a=JSON.parse(data)
+                 if(a.code==0){
+                    alert(a.mgs);
+                 }else{
+                     alert("导入excel失败。")
+                 }
+                
+            },
+            error: function (data) {
+                alert(data);
+            }
+        });
+        }
+    </script>
+
+</body>
+
+</html>

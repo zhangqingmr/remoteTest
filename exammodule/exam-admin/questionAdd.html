@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+
+<html lang="en" class="no-js windows desktop">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+     <meta http-equiv="Expires" content="0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <link href="css/components.css" id="style_components" rel="stylesheet" type="text/css">
+   
+
+    <title>试题组成</title>
+    <link href="css/common.css" rel="stylesheet" type="text/css">
+    
+    <link href="css/awesome-bootstrap-checkbox.min.css" rel="stylesheet" type="text/css">
+   
+    <link href="css/question-min.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/questionAdd.css" rel="stylesheet" type="text/css">
+    <script src='js/jquery.min.js'></script>
+    <script src='js/vue.js'></script>
+    <link href="css/layui.css" rel="stylesheet" type="text/css">
+    <script src="js/layui.js"></script>
+    
+
+    <style  type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<!--新的样式-->
+
+
+
+
+<body>
+
+    <div class="page-container ">
+
+        <div class="page-content-wrapper">
+            <div class="page-content " id='app'  style="min-height:922px" cloak>
+                
+
+
+                <!-- 头部信息-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="exam-title pull-left">添加试题到试卷: {{exam.title}}</p>
+                            <div style="width: 250px" class="pull-right">
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="select-question-panel">
+                                <div class="tabbable-line">
+                                    <div class="group-mode clearfix">
+                                        <span class="group-mode-title">
+                                            组卷方式 </span>
+                                        <ul class="nav nav-tabs questions-sources" data-standlone="0" style="float: left">
+                                            <li :class="type==0?'active':''" @click="changeType(0)" >
+                                                <a href="javasricpt:;">
+                                                    <img class="concentric-circle-checked" src="images/radio_checked.png" alt="">
+                                                    <img class="concentric-circle" src="images/radio_unchecked.png" alt=""> 固定试题组卷 </a>
+                                            </li>
+                                            <li :class="type==1?'active':''" @click="changeType(1)" >
+                                                <a href="javasricpt:;">
+                                                    <img class="concentric-circle-checked" src="images/radio_checked.png" alt="">
+                                                    <img class="concentric-circle" src="images/radio_unchecked.png" alt=""> 随机抽题组卷 </a>
+                                            </li> 
+                                            
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content" style="min-height: 671px;">
+                                        <!--    -->
+                                        <div class="tab-pane fade  in active " id="qs-pre-select">
+
+                                            <div class="qts-pre-select-question">
+
+                                                <div class="table-toolbar pre-exam-toolbar">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-xs-12 col-md-12">
+
+                                                            <div class="btn-groups show">
+                                                                <div class="pull-left">
+                                                                    <div class="checker" style="display: inline-block">
+                                                                        <span>
+                                                                            <input id='checkAll-zq' type="checkbox" class="group-checkable" data-set="" @change='checkedAll(),isSelected()'>
+                                                                        </span>
+                                                                    </div>
+                                                                    <a id='addQuestion' v-show="type==0" href="javascript:;"
+                                                                        class="btn yks-blue">
+                                                                        <i class="fa fa-plus fa-lg"></i>&nbsp; 添加试题 </a>
+
+
+                                                                    <a id='addSort' href="javascript:;" class="btn yks-blue" v-show="type==1">
+                                                                        <i class="fa fa-plus fa-lg"></i>&nbsp; 添加分类 </a>
+                                                                        
+                                                                    <!-- <div class="btn-group random-questions-sort" v-show="type==1">
+                                                                            <button type="button" class="btn yks-blue-default dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000"
+                                                                                data-close-others="true">
+                                                                                按题型排序
+                                                                                <i class="fa fa-angle-down" style="margin-left: 5px"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu" role="menu">
+                                                                                <li>
+                                                                                    <a href="#" class="sort-type-option sort-by-type" data-title="按题型排序" data-value="qt">
+                                                                                        按题型排序
+                                                                                        <span class="random-details">
+                                                                                            详情 </span>
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="#" class="sort-type-option" data-title="按分类排序" data-value="cate">
+                                                                                        按分类排序 </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="#" class="sort-type-option" data-title="按随机排序" data-value="random">
+                                                                                        按随机排序 </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                    </div> -->
+                                                                    <a href="#deleteCategories"   v-show="type==1" class="btn yks-red-default"  @click="deleteMany()">
+                                                                            <i class="fa fa-trash-o fa-lg"></i>
+                                                                            删除                                            </a>
+                                                                    <a id='deleteQuestion'  v-show="type==0" href="javascript:;"
+                                                                        class="btn yks-yellow-default" @click="deleteMany()">
+                                                                        <i class="fa fa-trash"></i>
+                                                                        删除试题 </a>
+                                                                    <a id='updateScore'  v-show="type==0" href="javascript:;"
+                                                                        class="btn yks-blue-default">
+                                                                        修改分数 </a>
+                                                                    <!-- <a id='distinctQuestion'  v-show="type==0" href="javascript:;" class="btn yks-blue-default" id="btn-check-duplicate">
+                                                                        试题查重 </a> -->
+                                                                    <!-- <span class="dropdown"  v-show="type==0">
+                                                                        <a href="javascript:;" class=" btn yks-blue-default" type="button" data-hover="dropdown" data-toggle="dropdown" style="background-color: #fff">
+                                                                            排序
+                                                                            <i class="fa fa-angle-down" style="color: #DCDCDC"></i>
+                                                                        </a>
+                                                                        <ul class="dropdown-menu" aria-labelledby="more-dropdown" id="order-questions">
+                                                                            <li data-value="1" desc="asc">
+                                                                                <a href="javascript:;">
+                                                                                    按试题分类 </a>
+                                                                            </li>
+                                                                            <li data-value="2">
+                                                                                <a href="javascript:;">
+                                                                                    按相同题型 </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </span> -->
+                                                                  
+                                                                    <div class="questions-options-choice-container">
+                                                                        <input type="checkbox" name="random_question" v-model='exam.randomQuestion' id="rq_2">
+                                                                        <label for="rq_2" class="hde">试题乱序
+                                                                            <a class="random-question-detail">详情</a>
+                                                                        </label>
+                                                                        <input type="checkbox" name="randomoption" v-model='exam.randomOptions'  id="rqo">
+                                                                        <label for="rqo">试题选项随机</label>
+                                                                        <i id='setTime' data-q-time="0" data-time="30" class="fa fa-clock-o operation-btn time-setting-btn" aria-hidden="true">
+                                                                            <span style="color: #666;font-size: 14px;margin-left: 5px;">时间设置</span>
+                                                                        </i>
+                                                                        <i class="fa fa-cogs operation-btn multiple-choice-setting-btn" aria-hidden="true"></i>
+                                                                    </div>
+                                                                </div>
+
+<!-- 
+                                                                <a href="javascript:;"
+                                                                    class="btn yks-grey pull-right" data-type="0">切换部分模式</a> -->
+
+                                                            </div>
+                                                            <div class="pre-high-level-btn-groups hidden">
+                                                                <a href="javascript:;"
+                                                                    class="btn yks-blue" style="margin-left: 12px">
+                                                                    <i class="fa fa-plus fa-lg"></i>
+                                                                    添加部分 </a>
+                                                                <a href="javascript:;" class="btn yks-blue-default" id="btn-check-duplicate">
+                                                                    试题查重 </a>
+                                                                <a href="javascript:;"
+                                                                    class="btn yks-grey pull-right" data-type="1">切换标准模式</a>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="row pre-select-question-tips show">
+                                                        <div class="col-md-12">
+                                                            <div class="dataTables_info">
+                                                                <span id="questionscount">现在共计
+                                                                    <b>{{allCount}}</b>题</span>
+                                                                <span class="totalscore">总共
+                                                                    <b>{{allScore}}</b>分.</span>
+                                                                <span class="sectionTipComment hidden">总用时
+                                                                    <b>30</b>分钟</span>
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+
+                                                </div>
+                                         <!--    固定试题  内容区域    -->      
+                                                <div class="dataTables_wrapper no-footer" style="overflow: hidden">
+                                                    
+                                                        <div class="table-responsive table-scrollable" style="overflow: hidden">
+                                                          
+                                                            <table class="table table-condensed table-hover" id="questionList" role="grid" aria-describedby="sample_1_info">
+                                                                <thead>
+
+                                                                </thead>
+                                                                <tbody id="questions-list">
+                                                                    <tr v-show="type==0" v-for='(question,index) in questions' >
+                                                                        <td width="30" style='padding-left:20px'>
+                                                                            <div class="checker">
+                                                                                <span class="">
+                                                                                    <input type="checkbox"  :id='question.qid' @change='checkedSome(question)' class="checkboxes"
+                                                                                        value="">
+                                                                                </span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="score" >
+                                                                            <div class="regular-ques" >
+                                                                                <div class="right-bottom-btns" :ti-index="index">
+                                                                                    <a type="button"
+                                                                                        class="btn operation-btn" title="向上排序"
+                                                                                        qid="" draggable="false" @click="tiUp(index)">
+                                                                                        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                                                                                    </a>
+                                                                                    <a   type="button"
+                                                                                        class="btn operation-btn" title="向下排序"
+                                                                                        qid="" draggable="false" @click="tiDown(index)">
+                                                                                        <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                                                                                    </a>
+                                                                                    <a  @click='deleteSingle(question)' type="button"
+                                                                                        class="btn operation-btn" title="删除试题"
+                                                                                        qid="" draggable="false">
+                                                                                        <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                                                                    </a>
+                                                                                    
+                                                                                </div>
+                                                                                <!-- <span class="right-top-tips">拖动可以改变试题显示顺序</span> -->
+                                                                                <div class="row question"
+                                                                                    qindex="1">
+                                                                                    <div class="col-xs-12  col-sm-12 col-md-12">
+                                                                                        <div class="row">
+                                                                                            <div class="col-xs-12">
+                                                                                                <div class="row-box row-ques-detail">
+                                                                                                    <p class="ques-title need-max-height">
+                                                                                                        <!--Regular if156-->
+                                                                                                        <span class="ques-number">{{index+1}}/{{allCount}}</span>
+
+                                                                                                        <span class="ques-type ques-single">{{question.qtypename}}</span>
+                                                                                                     
+                                                                                                        <span>
+                                                                                                            <span style="color:#333333">
+                                                                                                                <font size="2">
+                                                                                                                    <span style="font-family:arial" v-html="question.title"></span>
+                                                                                                                </font>
+                                                                                                            </span>
+                                                                                                        </span>
+
+                                                                                                        <span class="ques-score operation-btn" title="修改该题的分值" @mouseenter='viewInput(true,$event)' @mouseleave='viewInput(false,$event)'>
+                                                                                                            <input type="number" style="width: 60px;display: none" max="300" name="time_limit" min="0" v-model='question.score' >
+                                                                                                            <span>{{question.score}}分</span></span>
+                                                                                                       
+                                                                                                    </p>
+
+                                                                                                    <div class="question-option-list" style='display: none'>
+                                                                                                            <div>
+                                                                                                                <ol>
+                                                                                                                    <li v-for='(option,index) in question.options'>
+                                                                                                                        <span style="color:#333333"><font size="2"><span style="font-family:arial">{{option.sort}}.{{option.title}}</span></font></span>
+                                                                                                                    </li>
+                                                                                                                  
+                                                                                                                </ol>
+                                                                                                            </div>
+                                                                                                    </div>
+
+                                                                                                    <div class="ques-answers detail-dom">
+                                                                                                       
+
+                                                                                                        <a @click.stop='zhankai($event)'>展开
+                                                                                                            <i class="fa fa-angle-down"></i>
+                                                                                                        </a>
+                                                                                                        <div  class="detail_result wrong" style='display: none' >
+                                                                                                                    <div class="detailSetting">
+                                                                                                                        <p><ul class="settings">
+                                                                                                        
+                                                                                                                            </ul>
+                                                                                                                        </p>
+                                                                                                                    </div>
+                                                                                                                    <div class="detailAnswer">
+                                                                                                                        <p>正确答案: <strong>{{question.rightAnswer}}</strong></p>
+                                                                                                                    </div>
+                                                                                                                
+                                                                                                                <div style="clear: both;"></div>
+                                                                                                        </div>
+                                                                                                        <div class="question-analysis detail-analysis " style='display: none'>
+                                                                                                                题目解析:  <span>{{question.feedback}}</span>
+                                                                                                        </div>
+                                                                                                        <div class="detailLabel">
+                                                                                                            <p>
+                                                                                                                <span class="labels other"
+                                                                                                                    title="分类">{{question.catname}}</span>
+                                                                                                                <span
+                                                                                                                    class="labels other"
+                                                                                                                    title="作者">{{question.createUser}}</span>
+                                                                                                                <span
+                                                                                                                    class="labels other">更新于：{{question.updateTime}}</span>
+                                                                                                            </p>
+                                                                                                        </div>
+
+                                                                                                    </div>
+
+                                                                                                    <div class="pack-label">
+                                                                                                      
+                                                                                                    </div>
+
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                           
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr v-show="type==1" v-for='(ras,index) in randomCatS'>
+                                                                            <td width="30" style="padding-left: 20px;">
+                                                                                <div class="checker">
+                                                                                    <span>
+                                                                                        <input type="checkbox" :id='ras.catId' @change='checkedSome(ras)'  class="checkboxes">
+                                                                                    </span>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td style="border:1px solid rgba(230, 230, 230, 1);">
+                                                                            
+                                                                                <div class="random-cate-li">
+                                                                            
+                                                                                    <span class="qts-cate-name main">
+                                                                                        <i class="fa fa-bars" title="拖动可调整顺序"></i>
+                                                                                        分类: {{ras.catName}}
+                                                                                    </span>
+                                                                                    <span>抽选</span>
+                                                                                    <span class="qts-count first">
+                                                                                        <input value="0" type="number" min="0" max="9" class="form-control" style="display: none; width: 80px;">
+                                                                                        <strong>{{someCount(ras.randomQues)}}</strong>
+                                                                                    </span>
+                                                                                    <span>道试题</span>
+                                                                                    <span class="qt-lists"></span>
+                                                                                    <span class="category-total-score" style="padding-left: 28px;"> 总共{{someScore(ras.randomQues)}}分 </span>
+                                                                                    <span class="category-expand-collapse pull-right collapse" title="点击查看分类里各题型试题数量">
+                                                                                        <span class="span-expand" style="display: inline-block" @click.stop='zhankai2($event)'>展开</span>
+                                                                                        
+                                                                                        <i class="fa fa-angle-down" style="display: inline-block"></i>
+                                                                                       
+                                                                                    </span>
+                                                                                    <div class="selected-category-expand-details" style="display: none">
+                                                                                    
+                                                                                        <div class="tab-content">
+                                                                                            <div class="tab-pane active" data-type="0" id="selectQuestionFromBank0">
+                                                                                                <!-- <div class="can-selected-questions-count">1.选择筛选条件
+                                                                                                    <span class="all-count-tips">当前选择共包含
+                                                                                                        <span class="all-count-num">{{parseInt(question.buding)+parseInt(question.danxuan)+parseInt(question.duoxuan)+parseInt(question.panduan)+parseInt(question.wenda)+parseInt(question.tiankong)}}</span> 题</span>
+                                                                                                </div> -->
+                                                                                                <!-- <div class="selected-diff-level clearfix">
+                                                                                                    <div class="pull-left random-diff-level-select">
+                                                                                                        <span style="color: #666">请选择难易程度: </span>
+                                                                                                        <div class="btn-group btn-group-circle" data-toggle="buttons">
+                                                                                                            <label class="btn btn-default">
+                                                                                                                <input type="radio" class="toggle" value="1" name="randomDiffLevelSelect0"> 简单 </label>
+                                                                                                            <label class="btn btn-default">
+                                                                                                                <input type="radio" class="toggle" value="2" name="randomDiffLevelSelect0"> 较难 </label>
+                                                                                                            <label class="btn btn-default">
+                                                                                                                <input type="radio" class="toggle" value="3" name="randomDiffLevelSelect0"> 很难 </label>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                            
+                                                                                                    <div class="pull-left random-label-select">
+                                                                                                        <span style="color: #666">请选择标签: </span>
+                                                                                                        <input type="text"style='display:inline-block'>
+                                                                                                    </div>
+                                                                                                </div> -->
+                                                                                                <div>
+                                                                                                    <!-- <div class="selected-questions-count-and-points">1.选择抽取题型和分数
+                                                                                                        <span class="sele-tips">将随机抽取
+                                                                                                            <span class="select-count">{{allCount}}</span> 题，共
+                                                                                                            <span class="select-point">{{allScore}}</span> 分</span>
+                                                                                                    </div> -->
+                                                                                                    <div class="category-select-box">
+                                                                            
+                                                                                                        <div class="qt-counts-list" v-for="(ra,index) in ras.randomQues">
+                                                                                                            <div class="question-type-item">
+                                                                                                                <span class="qts-cate-name">{{ra.qtypName}}
+                                                                                                                    <span style="color:#999">({{ra.total}} 道试题)</span>
+                                                                                                                </span>
+                                                                                                                <span>抽选</span>
+                                                                                                                <span class="qts-count">
+                                                                                                                    <input value="0" type="number" min="0" :max="ra.total" v-model="ra.count" class="form-control" style="display:inline; width: 80px;">
+                                                                                                                </span>
+                                                                                                                <span>道试题</span>
+                                                                                                                <span style="padding-left: 28px;">每题 </span>
+                                                                                                                <span class="qts-score">
+                                                                                                                    <input type="number" class="form-control" style="display:inline-block; width:80px;" v-model="ra.score" min="1">
+                                                                                                                </span>
+                                                                                                                <span> 分</span>
+                                                                                                            </div>
+                                                                            
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                            
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                                
+                                                                    </tr>
+                                                                </tbody>
+                                                              
+                                                            </table>
+
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                        <!--   随机试题    内容区域   -->
+                                      
+                                            </div>
+                                        </div>
+                                      
+                                      
+                                       
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--   右侧面板    -->
+                            <div class="exam-info-panel" style="height: 500px;">
+                                <div class="info-box affix-top" data-spy="affix" data-offset-top="215">
+                                    <ul style="padding: 0px" class="exam-info">
+                                        <li style="font-size: 16px">
+                                            <b style="word-break: break-all">{{exam.title}}</b>
+                                        </li>
+                                        <li  class="exam-time">总时长：
+                                            <span>{{exam.examTime}}</span>分钟 &nbsp;
+                                            <a href="javascript:;" class="edit-exam-time">修改试卷时间
+                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="exam-score">总分值：
+                                            <span>{{allScore}}</span>分</li>
+                                        <li class="exam-questions">总试题：
+                                            <span>{{allCount}}</span>题</li>
+                                       
+                                    </ul>
+                                    
+
+                                    <!-- <div class="row" style="margin-top: 20px">
+                                        <div class="col-md-12" style="padding: 0px">
+                                            <div class="qs-actions" style="padding: 0px">
+                                                <a href="javascript:;" id="step" class="btn yks-blue"  style="width: 100%;margin-bottom: 10px">
+                                                    保存 </a>
+                                              
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!--   底部跳转试题    -->
+                    <div class="row" style="margin-top: 20px;padding-bottom: 20px">
+                        <div class="col-md-12">
+                            <div class="qs-actions">
+                                <a href="javascript:;"  class="btn yks-blue" id="step2">
+                                    <i class="fa fa-check fa-lg"></i>
+                                    保存 </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" id='timeSetting' style="display: none">
+                            <ul class="nav nav-tabs time-setting" style=''>
+                                <li class="">
+                                    <a href="#questions-time-settings">
+                                    <img class="concentric-circle-checked" src="images/radio_checked.png" alt="">
+                                    <img class="concentric-circle" src="images/radio_unchecked.png" alt="">
+                                    <span>单题时间设置</span>
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a href="#section-time-settings" >
+                                            <img class="concentric-circle-checked" src="images/radio_checked.png" alt="">
+                                            <img class="concentric-circle" src="images/radio_unchecked.png" alt="">
+                                        <span>试卷总时长设置</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane text-center" id="questions-time-settings">
+                                    批量设置每题用时                
+                                    <input type="number" style="width: 60px;" name="question_limit_time" max="3600" min="0" value='0'>
+                                     秒            </div>
+                                <div class="tab-pane text-center active" id="section-time-settings">
+                                    <span class="section-time-limit-tips">限制试卷总时长</span>
+                                    <input type="number" style="width: 60px;" max="300" name="time_limit" min="0"  v-model='exam.examTime'>
+                                     分钟            </div>
+                                <div class="row" style="margin-top:20px">
+                                    <div class="col-md-12 text-center">
+                                        <a type="button" class="btn yks-grey-default cancel">取消</a>
+                                        <a type="button" class="btn yks-blue-default confirm" style="margin-left:20px">确定</a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    
+            </div>
+        </div>
+
+
+        <script type="text/javascript">
+            document.write('<script src="/seeyon/adminlayout/common/js/common.js?ver='+Math.random()+'"  type="text/javascript"><\/script>');
+         </script>
+         <script  type="text/javascript">
+             　　version("/seeyon/exammodule/exam-admin/js/questionAdd2.js")
+         </script>   
+         <script  type="text/javascript">
+            　　version("/seeyon/exammodule/exam-admin/js/questionAdd.js")
+        </script>   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

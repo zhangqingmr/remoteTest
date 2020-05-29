@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/simple-line-icons.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    
+    <link href="css/fullcalendar.min.css" rel="stylesheet" type="text/css">
+    <link href="css/tasks.css" rel="stylesheet" type="text/css">
+    <link href="css/components.css" id="style_components" rel="stylesheet" type="text/css">
+    <link href="css/plugins.css" rel="stylesheet" type="text/css">
+    <link href="css/layout.css" rel="stylesheet" type="text/css">
+    <link href="css/pricing-table.css" rel="stylesheet" type="text/css">
+    <link href="css/darkblue.css" rel="stylesheet" type="text/css" id="style_color">
+    <link href="css/custom.css" rel="stylesheet" type="text/css">
+
+   
+    
+    <title>在线考试系统</title>
+    <link href="css/introjs.min.css" rel="stylesheet" type="text/css">
+    <link href="css/common.css" rel="stylesheet" type="text/css">
+    <link href="css/default.css" rel="stylesheet" type="text/css">
+    <link href="css/jBox.min.css" rel="stylesheet" type="text/css">
+    <link href="css/default.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/square.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/uploadifive.css" rel="stylesheet" type="text/css">
+    <link href="css/style.min.css" rel="stylesheet" type="text/css">
+    <link href="css/customstyle.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css">
+    <link href="css/perfect-scrollbar.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
+    <script async="" src="js/analytics.js"></script>
+    <link href="css/layui.css" rel="stylesheet" type="text/css">
+    <link href="css/jbox.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/layui.js"></script>
+    
+    
+    
+    
+    
+   
+
+    
+
+    <link rel="stylesheet" href="css/default/style.min.css" />
+    <link rel="stylesheet" href="css/zq.css" />
+    <script>
+            
+    </script>
+    
+    <script src="js/vue.js"></script>
+    <style>
+    .adminExam{
+        
+    }
+    .exam-info{
+        margin-bottom: 10px
+    }
+    .zq-box{
+       
+    }
+    .zq-page{
+            display: inline-block;
+    }
+    
+    .btn-new{
+        height: 36px;
+    width: 112px;
+    font-size: 14px;
+    /* line-height: 20px; */
+    font: inherit;
+    }
+    </style>
+       <style  type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+    <script>
+    function edit(){
+                   var e=window.event|| e
+                   var target=e.target
+                    var trid =$(target).attr("id");
+                    window.location.href='/seeyon/trainmodule/train-admin/trainAdd.html?trid='+trid
+                }
+                
+    </script>
+</head>
+
+<body class="">
+    
+    
+    
+    
+
+    <div class="page-container ">
+        
+        <div class="page-content-wrapper">
+            <div class="page-content " style="min-height:822px;margin-left: 0px">
+                
+                
+                <div class="row" style="margin-bottom: 100px">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      
+                        <div class="categories-panel" style="height: 759px;">
+                            <div class="portlet box grey-cascade affix-top" data-spy="affix" data-offset-top="215">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <strong>训练分类列表</strong>
+                                    </div>
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".category-list">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="portlet-body">
+                                    <div>
+                                        <div class="note note-success" style="margin-bottom: 10px; padding: 5px; font-size: 12px">提示：需要新建子分类、重命名、删除分类，请单击右键操作</div>
+                                       
+                                        <div class="v-spacing">
+                                            <button type="button" class="btn btn-block green" id="create-top-category">
+                                                <i class="fa fa-plus" aria-hidden="true"></i> 新建根分类 </button>
+                                        </div>
+                                        <div class="input-group v-spacing">
+                                            <input type="text" class="form-control" id="categories-search" placeholder="搜索分类">
+                                            <span class="input-group-btn">
+                                                <button class="btn grey-cascade" type="button">
+                                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div id="zq"></div>
+                                    
+                                </div>
+                                <div id="categories-panel-dragger"></div>
+                            </div>
+                        </div>
+                       
+                        <div class="exams-panel">
+                            <div class="portlet box grey-cascade">
+                                <div class="portlet-title">
+                                    <div class="caption category ">
+                                        <img  class="toolTip" src="images/cate-icon--1.png">
+                                        <strong>所有训练</strong>
+                                    </div>
+                                    <div class="tools">
+                                    </div>
+                                </div>
+                              
+                                <div class="portlet-body" id="app" v-cloak>
+                                    <div class="table-toolbar">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-9" style="padding: 0px">
+                                                <div class="btn-groups">
+                                                    
+                                                    <a id="newCourse" class="btn yks-blue btn-new" href="javascript:;">
+                                                        <i class="fa fa-plus"></i>
+                                                        新建训练 </a>
+                                                    <!-- <a style="" class="btn yks-default"  id="detail-exams">
+                                                            
+                                                            一周考试详情 </a> -->
+                                                   
+                                                    <a style="" href="javascript:;" id="move-trains" class="btn yks-default">
+                                                        移动到分类 </a>
+                                                    <a  id="delete-trains" style="" class="btn yks-default"  href="javascript:;">
+                                                        <i class="fa fa-trash"></i>
+                                                        删除训练 </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-3">
+                                                <div class="btn-group pull-right search-container">
+                                                    <div style="display: inline-block">
+                                                        <input id='searchmm' class="search-input table-group-action-input form-control input-inline input-small input-sm" name="search" placeholder="搜索标题">
+                                                        <button id='searchnn'  class="btn grey-cascade search-button" type="button">
+                                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                           
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="exams-list">
+                                        <div class="table-responsive table-container" v-show="hasData">
+                                            <div id="exams-list-table_wrapper" class="dataTables_wrapper dataTables_extended_wrapper no-footer">
+                                                <div class="row">
+                                                    <div class="col-md-8 col-sm-12">
+                                                        <div class="zq-page" >
+                                                            <input type="checkbox" class="page-checkbox" id='checkAll-zq' v-on:change="checkedAll(),isSelected()"  >
+                                                            <label>全选<label>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-12">
+                                                        <div class="table-group-actions pull-right">
+                                                            <div id="es-filters" style="display: block;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="table-scrollable">
+                                                    <table class="table table-hover table-bordered table-striped dataTable no-footer"
+                                                        id="exams-list-table" >
+                                                        <tbody>
+                                                            <tr class="odd" v-for="(juanzi,index) in entity.data">
+                                                                <td></td>
+                                                                <td class="sorting_1" >
+                                                                    <div class="row exams-list-container">
+                                                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px">
+                                                                            
+                                                                            <div class="check-inlinezq pull-left">
+                                                                                <span>
+                                                                                    <input  type="checkbox" :id="juanzi.trid" v-on:change="checkedSome(juanzi),isSelected()">
+                                                                                </span>
+                                                                            </div>
+                                                                            <!--  循环读数据  -->
+                                                                            <div  class="row exam-info-container">
+                                                                                <div class="row exam-info">
+                                                                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 exam-info-left">
+                                                                                        <!-- 头像 -->
+                                                                                        <div class="pull-left exam-image">
+                                                                                            <a title="点击编辑训练封面" href="">
+                                                                                                <img data-value="156001" src="images/others_10.png"
+                                                                                                    alt="" v-if="juanzi.imgUrl ==''">
+                                                                                                <img data-value="156002" :src="juanzi.imgUrl"
+                                                                                                    alt="" v-else>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <!-- 训练信息 -->
+                                                                                        <div class="row exam-info-left-details-row">
+                                                                                            <div class="row" style="height: 90px">
+                                                                                                <div class="pull-left exam-info-left-details col-md-12 col-sm-12 col-xs-12">
+                                                                                                    <div class="pull-left">
+
+                                                                                                        <div style="font-size: 30px;min-height: 40px;">{{juanzi.title}}</div>
+
+                                                                                                        <div class="exam-info-left-top">
+                                                                                                            <span>{{juanzi.catName}} | </span>
+                                                                                                            <span>共{{juanzi.questionNum}}道题 | </span>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <!-- 暂时隐藏 -->
+                                                                                                    <!-- <div class="text-right pull-right">
+                                                                                                        <div class="text-center release-btn">
+                                                                                                        <a href="" type="btn" class="btn btn-circle btn-default release-exam">发布</a>
+                                                                                                        </div>
+                                                                                                    </div> -->
+                                                                                                </div>
+                                                                                                
+                                                                                            </div>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-12">
+                                                                                                    <div class="pull-left">
+                                                                                                        <span class="text-left-bottom">
+                                                                                                            <span class="system-admin">{{juanzi.createUserName}}</span>&nbsp;&nbsp;
+                                                                                                            <span class="created-time" title="未发布">创建于{{juanzi.createTime}}</span>&nbsp;&nbsp;
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                    <div class="pull-right text-right-bottom text-right">
+                                                                                                       
+                                                                                                        <span   class="edit-page-zq btn btn-circle btn-default" :data-id='juanzi.trid' @click='openPage($event)'>编辑基础信息</span>
+                                                                                                        <span  :id='juanzi.trid' class="adminExam edit-page-zq btn btn-circle btn-default" onclick="edit()">管理试题</span>
+                                                                                                     </div>
+
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-8 col-sm-12">
+                                                        <div id="test1"></div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="nullData" v-show="!hasData">
+                                            该分类没有数据
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+
+                
+
+              
+
+                <style>
+                    .categories-tree-window {
+                        display: none;
+                    }
+
+                    .categories-tree-window div[name="categories-tree"] {
+                        height: 240px;
+                        overflow: auto;
+                    }
+
+                    .categories-tree-window .categories-search,
+                    .categories-tree-window [name="categories-tree"] {
+                        margin-bottom: 12px;
+                    }
+                </style>
+
+                <div id="group-tree-3" class="categories-tree-window">
+                    
+
+                    <!--category tree-->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div name="categories-tree"></div>
+                        </div>
+                    </div>
+                    <!--category tree-->
+
+                    <!--tagsinput-->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input type="text" name="tagsinput">
+                        </div>
+                    </div>
+                    <!--tagsinput-->
+
+                    <!--按钮-->
+                    <div class="row">
+                        <div class="col-xs-12" style="margin-top: 15px;">
+                            <a href="" class="btn default" id="newgroup" style="float: left;display: none">新建分组</a>
+                            <div class="pull-right">
+                                <button type="button" name="confirm" class="btn btn-primary">选择</button>
+                                <button type="button" name="cancel" class="btn btn-default">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--按钮-->
+                </div>
+
+                
+
+
+                
+      
+
+
+ 
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="page-footer text-center">
+        <div class="page-footer-inner" style="float: none">
+           </div>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+        </div>
+    </div>
+    <script>
+    
+     var app=new Vue({
+         el:"#app",
+         data:{
+             entity:{"data":[],"count":"","state":"","total":"",'code':''},
+             hasData:false,
+             selectId:[],
+             
+             sonId:"",//子页面传给父页面参数
+             isSelect:false,
+            
+             
+             
+         },
+         methods:{
+                 openPage:function(e){
+                     var target=e.target;
+                     var s=$(target).attr('data-id')
+                     window.location.href="/seeyon/trainmodule/train-admin/trainInfo.html?trainId="+s
+                 },
+                 checkedSome:function(juanzi){
+                     //点击checkbox，判断是不是对勾
+                    var is= $("#"+juanzi.trid).prop("checked")
+                   
+                    if(is){
+                        //是 push
+                        app.selectId.push(juanzi.trid);
+                    }else{
+                        $("#checkAll-zq").prop("checked",false);
+                        //不是，判断有这个Id吗，从id去掉
+                        if(app.selectId.indexOf(juanzi.trid)!=-1){
+                            for(var i=0;i<app.selectId.length;i++){
+                                if(app.selectId[i]==juanzi.trid){
+                                    app.selectId.splice(i,1)
+                                }
+                            }
+                           
+                        }
+                    }
+                   
+                 },
+                 isSelected:function(){
+                    if(app.selectId.length!=0){
+                        app.isSelect=true;
+                    }else{
+                        app.isSelect=false;
+                    }
+                 },
+                 checkedAll:function(){
+                     //全选
+                     var is=$("#checkAll-zq").prop("checked");
+                    
+                     if(is){
+                        
+                        for(var i=0;i<app.entity.data.length;i++){
+                            //改变所有对勾的状态为true
+                            $("#"+app.entity.data[i].trid).prop("checked",true);
+                            //在selectId中没有时候，才加入
+                            if(app.selectId.indexOf(app.entity.data[i].trid)==-1){
+                                app.selectId.push(app.entity.data[i].trid);
+                            }
+                     }
+                     }else{
+                        
+                        for(var i=0;i<app.entity.data.length;i++){
+                            //改变所有对勾状态为false
+                            $("#"+app.entity.data[i].trid).prop("checked",false);
+                            //在selectId中去掉
+                            app.selectId.splice(app.entity.data[i],1)
+                     }
+                     }
+                     console.log(app.selectId);
+                         
+                 },
+                
+                 
+             }
+     })
+    
+    </script>
+    
+   
+   
+   
+    <script src="js/jstree.min.js"></script>
+    <script src="js/trainList.js"></script>
+    
+</body>
+
+</html>

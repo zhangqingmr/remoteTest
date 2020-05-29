@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" class="windows desktop landscape">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+     <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta name="renderer" content="webkit">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/components.min.css" rel="stylesheet" id="style_components" type="text/css">
+    <link href="css/layout.min.css" rel="stylesheet" type="text/css">
+
+    <link href="css/style.min.css" rel="stylesheet" type="text/css">
+    
+
+
+    <link href="css/sweetalert.css" rel="stylesheet" type="text/css">
+   
+    <link href="css/zq.css" rel="stylesheet" type="text/css">
+
+
+    <title>在线学习系统</title>
+    <link href="css/layui.css" rel="stylesheet" type="text/css">
+    <script src="js/layui.js"></script>
+
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+
+    <script src="js/jstree.min.js"></script>
+    <link rel="stylesheet" href="css/default/style.min.css" />
+    <style>
+    .layui-form-checked[lay-skin=primary] i{
+        background-color: rgba(29, 141, 255, 1) !important;
+    }
+    .layui-laypage .layui-laypage-curr .layui-laypage-em{
+        background-color: rgba(29, 141, 255, 1) !important;
+
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="page-wrapper">
+            <input type="hidden" id="url">
+            
+            <div class="page-container" style="margin-top: 0px !important;">
+                
+                <div class="page-content-wrapper">
+                    <div class="page-content" style="margin-left: 0px !important; min-height: 900px !important; background-color: rgb(255, 255, 255);">
+                       
+                        <div>
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="up-left-menu">
+                                        <div class="up-menu-title">
+                                            <div class="up-title-label">
+                                                <span>所有资料</span>
+                                            </div>
+                                        </div>
+                                        <div class="up-menu-body">
+                                            <div class="up-menubody-prompt">
+                                                <p>提示：</p>
+                                                <p>1.新建子分类、重命名、删除分类，请单击右键操作...</p>
+                                                <div class="up-menubody-prompt-block">
+                                                    <p>提示：</p>
+                                                    <p>1.新建子分类、重命名、删除、授权分类，请单击右键操作</p>
+                                                    <p>2.移动单个分类：单击选中分类上下拖动</p>
+                                                    <p>3.批量移动分类：按住shift键，选中多个，一起拖动</p>
+                                                    <p>4.删除单个分类：单击右键，点击删除</p>
+                                                    <p>5.批量删除分类：按住shift键，选中多个，一起删除</p>
+                                                    <p>6.授权只有顶级菜单有授权的权限。</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="up-menubody">
+                                                <!--Regular if7-->
+                                                <a class="btn btn-primary newroot">新建根分类</a>
+                                                <div class="search-box">
+                                                    <input type="text" id="search-input" class="search">
+                                                    
+                                                </div>
+                                                <div id="folder_tree" >
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="up-main-panel">
+                                        <div class="up-panel-title">
+                                            <div class="up-title-label">
+                                                <span>资料文件</span>
+                                            </div>
+                                        </div>
+                                        <div class="up-panel-body">
+                                                    <div class="up-btn-tool">
+                                                        
+                                                            <div id="container" style="display: inline-block;">
+                                                                <a id="uploadBtn" class="btn btn-primary upload">
+                                                                    <img src="images/upload.png" alt="" height="22px" width="22px" style="margin-top: -2px;"> 上传新文件
+                                                                </a>
+                                                            </div>
+                                                            <a class="btn btn-default" style="color: rgb(29, 141, 255);" id='renameBtn'>
+                                                                <img src="images/icon-update.png" height="22px" width="22px" style="margin-top: -2px;"> 重命名
+                                                            </a>
+                                                            <a class="btn btn-default" id='deleteBtn' style="border: 1px solid rgb(255, 65, 49); color: rgb(255, 65, 49);">
+                                                                <img src="images/icon-delete.png" height="22px" width="22px" style="margin-top: -2px;"> 删除
+                                                            </a>
+                                                            <a class="btn btn-default" style="color: rgb(29, 141, 255);" id='moveBtn'>
+                                                                <img src="images/icon-move.png" height="22px" width="22px" style="margin-top: -2px;"> 移动
+                                                            </a>
+                                                            <a class="btn btn-default" style="color: rgb(29, 141, 255);" id='setBtn'>
+                                                                    <img src="images/icon-update.png" height="22px" width="22px" style="margin-top: -2px;"> 积分时长设置
+                                                            </a>
+                                                            <!-- <div style="display: inline;">
+                                                                <div class="dropdown">
+                                                                    <a class="btn btn-default dropbtn" style="color: rgb(29, 141, 255);" id='sortBtn'>
+                                                                        <img src="images/icon-sort.png" height="22px" width="22px" style="margin-top: -2px;"> 排序
+                                                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                                                    </a>
+                                                                    <div class="dropdown-content " style="padding: 0px;z-index: 10000">
+                                                                        <a>文件大小(升序)</a>
+                                                                        <a>上传时间(升序)</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+            
+                                                            <div style="display: inline;">
+                                                                <div class="dropdown">
+                                                                    <a class="btn btn-default dropbtn" style="color: rgb(29, 141, 255);" id='typeBtn'>
+                                                                        课件类型
+                                                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                                                    </a>
+                                                                    <div class="dropdown-content" style="z-index: 10000">
+                                                                        <a>
+                                                                            <span>视频</span>
+                                                                            
+                                                                        </a>
+                                                                        <a>
+                                                                            <span>音频</span>
+                                                                        
+                                                                        </a>
+                                                                        <a>
+                                                                            <span>文档</span>
+                                                                        
+                                                                        </a>
+                                                                        <a>
+                                                                            <span>图片</span>
+                                                                            
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div> -->
+                                                        
+                                                            <div class="search-box" style="float: right;">
+                                                                <input type="text" class="search" id="searchresource">
+                                                                <div class="search-button" id="searchResBtn">
+                                                                    <div class="up-icon">
+                                                                        <img src="images/search-icon.png">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <div class="up-panel-count">
+                                                        
+                                                    </div>
+                                                    <div class="up-panel-main"  >
+                                                        <table id="datalist" lay-filter="test"></table>
+                                                    </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+              
+         
+            </div>
+            <div class="page-footer" style="display: none;">
+                <div class="page-footer-inner"> 在线学习平台
+
+                </div>
+                <div class="scroll-to-top">
+                    <i class="icon-arrow-up"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.write('<script src="/seeyon/adminlayout/common/js/common.js?ver='+Math.random()+'"  type="text/javascript"><\/script>');
+     </script>
+     <script  type="text/javascript">
+         　　version("/seeyon/studymodule/course-admin/js/resourceAdmin.js")
+     </script> 
+   
+    
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+   <script src="js/sweetalert.min.js" type="text/javascript"></script>
+    <script src="js/ui-sweetalert.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap-switch.min.js" type="text/javascript"></script>
+</body>
+</html>

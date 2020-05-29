@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html ng-app="mxyWeb" class="ng-scope">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+     <meta http-equiv="Expires" content="0">
+	<title>我的训练</title>
+
+	<link rel="stylesheet" href="css/iconfont.css">
+	<link href="css/common.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/home.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/ng-img-crop.css">
+	
+	<link rel="stylesheet" type="text/css" href="css/coursemore.css">
+	<link href="css/course_index.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/course_online.css">
+	<link rel="stylesheet" href="css/layui.css">
+	<link rel="stylesheet" href="css/layout.css">
+	<script src='js/vue.js'></script>
+	<script src='js/layui.js'></script>
+	<script src='js/jquery.min.js'></script>
+	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/simple-line-icons.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+ 
+    <link href="css/layout.css" rel="stylesheet" type="text/css">
+    <link href="css/layui.css" rel="stylesheet" type="text/css">
+    
+    
+              
+    <link rel="stylesheet" href="css/jBox.css">
+ 
+	<link rel="stylesheet" href="css/examRecord.css ">
+	<style>
+			.dropdown {
+			  position: relative;
+			  display: inline-block;
+			}
+			.dropdown-content {
+			  display: none;
+			  z-index:2000;
+			  position: absolute;
+			  background-color: #f9f9f9;
+			  min-width: 140px;
+			  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			
+			}
+			.dropdown:hover .dropdown-content {
+			  display: block;
+			}
+			.headpiece222{
+				
+				position: fixed;
+				left: 30px;
+				top: 400px;
+				z-index: 99;
+			}
+			.zqColor{
+		
+    line-height: 50px;
+    font-size: 18px;
+    color: #fff;
+    width: 140px;
+    text-align: center;
+			}
+			.zqColor:hover{
+				background-color: rgb(230, 76, 101);
+				color: #fff !important
+			}
+			
+			.stu-record-table{
+				width:100% !important;
+			}
+			.page-content{
+				padding: 25px 0px 10px 0px !important;
+			}
+			.stu-record-info, .stu-record-table {
+				position: relative;
+				width: 100%;
+				margin: 0 auto;
+				 padding: 0px !important; 
+				margin-bottom: 20px;
+				overflow: hidden;
+				background-color: #fff;
+				border-radius: 2px !important;
+			}
+			</style>
+	<style  type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+
+		
+    </style>
+</head>
+
+<body class="ng-scope" style="background-color: white">
+	<div id="course-online">
+		<!-- 导航栏-->
+		<div class="ng-scope">
+			<div class="mxy-logo-header public-header m-w-12 ng-scope">
+					<div class="head-logo">
+							<a href="#" style="font-size: 24px;font-weight: 600;color: #000;"><img src="images/logo.png" style='height: 40px;width: 50px' alt="" title="">&nbsp;&nbsp;&nbsp;&nbsp;训练学习平台</a>
+					</div>
+			
+			</div>
+			<div class="mxy-header b65 ng-scope" style="background:#E64C65;min-width:1200px">
+				<div class="header-main">
+						
+
+					<!--导航改造完成-->
+					<div class="nav">
+							<ul>
+									<li class="mcp nav-hover active"  style="background: rgb(230, 76, 101) ;">
+											<a href="/seeyon/studymodule/course-user/courseMain.html" target="_self">首页</a>
+										</li>
+										<li class="mcp nav-hover " style="background: rgb(230, 76, 101) ;">
+											<a href="/seeyon/studymodule/course-user/courseMore.html" target="_self">线上课程</a>
+										</li>
+										<li class="mcp nav-hover " style="background: rgb(230, 76, 101);">
+												<a href="/seeyon/studymodule/course-user/courseMoreRecord.html" target="_self">线上考试</a>
+										</li>
+										<li class="mcp nav-hover " style="background: rgb(230, 76, 101) ;">
+											<a href="/seeyon/studymodule/course-user/courseKnowledge.html" target="_self">知识库</a>
+										</li>
+										<li class="mcp nav-hover " style="background: rgb(230, 76, 101) ;">
+												<a href="/seeyon/studymodule/course-user/courseMyGrade.html" target="_self">我的成绩</a>
+										</li>
+										<li class="mcp nav-hover " style="background: rgb(230, 76, 101) ;">
+												<a href="/seeyon/studymodule/course-user/courseMyCourse.html" target="_self">我的课程</a>
+										</li>
+										<li class="mcp nav-hover " style="background: rgb(230, 76, 101) ;">
+												<a href="/seeyon/studymodule/course-user/courseMyHistory.html" target="_self">我的历史</a>
+										</li>
+										<li class="mcp nav-hover dropdown " style="background: #C94056 ;">
+												<a href="/seeyon/trainmodule/train-user/trainOnline.html"  target="_self" >模拟训练</a>
+
+												<div class="dropdown-content">
+														
+														<div  class="zqColor" style="color:#000;border: 1px solid rgb(230, 76, 101)" onclick="window.location.href='/seeyon/trainmodule/train-user/trainMy2.html'" target="_self">我的训练</div>
+												</div>
+										</li>
+		
+							</ul>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		<!-- 主体-->
+		<div class="course-main-content">
+				
+			<div class="course-box bf7 m-w-12" style="min-height:650px ;">
+					<div class="page-content-wrapper" id='app' v-cloak>
+							<div class="page-content " style="min-height:1000px">
+								
+								
+								<div class="row">
+									<div class="col-md-12" >
+										<div class="stu-record-table" style="padding-top:20px !important">
+											<!-- 考試記錄行 -->
+								
+										<div class="col-md-12">
+											<div class="stu-wrong-title"  style="margin-left:40px;font-size:14px;color:#999;font-weight: bolder">训练记录</div>
+										</div>
+									
+											<div class="search">
+												<input type="text" name="search" id="search" placeholder="输入关键字">
+												<i id='searchTitle' class="fa fa-search" aria-hidden="true"></i>
+											</div>
+											<div class="table-responsive">
+												<table class="table table-hover table-bordered table-striped">
+													<thead>
+														<tr>
+															<th width="3%" style="color: #000;">#</th>
+															<th style="color: #32adf7;">训练</th>
+															<th width="16%">
+																状态 </th>
+															<th width="9%">
+																完成比例 </th>
+															
+															<th width="17%">
+																开始时间 </th>
+															
+															<th width="12%">
+																用时 </th>
+															<th width="10%">
+																操作 </th>
+														</tr>
+													</thead>
+													<tbody id="main-taken">
+														<tr v-for="(exam,index) in examAll">
+															<td>{{index+1}}</td>
+															<td>{{exam.title}}</td>
+															<td>
+																<span v-if="exam.trainState=='0'" style="color: #e6d7d7">
+																	<i class="fa fa-circle" aria-hidden="true"></i> 未训练</span>
+																<span v-if="exam.trainState=='1'" style="color: #89ff72">
+																	<i class="fa fa-circle" aria-hidden="true"></i> 正在训练</span>
+																<span v-if="exam.trainState=='2'" style="color: #ff7472">
+																	<i class="fa fa-circle" aria-hidden="true"></i> 训练完毕</span>
+															</td>
+															<td>
+																<span>{{exam.finishRate}}</span>
+															</td>
+															
+															<td>{{exam.createTime}}</td>
+															
+															<td style="color: #32adf7;">{{gsTime(exam.useTime)}}</td>
+															<td>
+																<a v-if="exam.trainState=='0'" :id='exam.trid' class="btn green linkBtn" target="_blank" href='javascript:;' :reid='exam.reid' @click='getUrl($event,exam)' >继续训练</a>
+																<a v-if="exam.trainState=='1'" :id='exam.trid' class="btn green linkBtn" target="_blank" href='javascript:;' :reid='exam.reid' @click='getUrl($event,exam)' >继续训练</a>
+																<a v-if="exam.trainState=='2'" :id='exam.trid' class="btn green linkBtn" target="_blank" href='javascript:;' :reid='exam.reid' @click='getUrl($event,exam)' >查看详情</a>
+															</td>
+														</tr>
+				
+				
+													 
+													</tbody>
+												</table>
+											</div>
+											<div class="row">
+												<div class="col-md-5 col-sm-12">
+													<div class="dataTables_info" id="sample_1_info" role="state" aria-live="polite">
+				
+													</div>
+												</div>
+												<div class="col-md-7 col-sm-12">
+													<div class="dataTables_paginate paging_bootstrap_full_number" id="sample_1_paginate">
+				
+														<div id='fenye' class="paginations">
+														   
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+				
+								
+				
+							</div>
+						</div>
+			
+			
+				<!-- 向上回滚-->
+				<div class="headpiece ng-scope">
+					<div class="headpiece1 ng-scope">
+						<ul>
+							<a class="head333 iconfont icon-top_icon" href="javascript:scroll(0,0)"></a>
+						</ul>
+					</div>
+				</div>
+				<!-- 分页-->
+				
+			</div>
+			<div class="footer ng-scope">
+				 <div class="mxy-footer b33">
+						
+				</div> 
+			</div>
+		</div>
+	</div>
+	
+    <script type="text/javascript">
+        document.write('<script src="/seeyon/adminlayout/common/js/common.js?ver='+Math.random()+'"  type="text/javascript"><\/script>');
+     </script>
+     <script  type="text/javascript">
+         　　version("/seeyon/trainmodule/train-user/js/trainMy.js")
+     </script>   
+	
+	
+</body>
+
+</html>

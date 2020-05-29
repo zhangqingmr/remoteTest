@@ -1,0 +1,15 @@
+$("input[name='demo_vertical']").TouchSpin({
+    initval:0
+});
+$("input[name='demo_vertical1']").TouchSpin({
+    initval:0
+});
+$("input[name='demo_vertical2']").TouchSpin({
+    initval:0
+});
+$("input[name='demo1']").TouchSpin({
+    initval:0
+});
+$("input[name='demo2']").TouchSpin({
+    initval:0
+});

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Typecontent='text/html; charset=UTF-8'" />
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../../common/easyUi/css/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../common/easyUi/css/mobile.css">
+	<link rel="stylesheet" type="text/css" href="../../common/easyUi/css/icon.css">
+	<script type="text/javascript" src="../../common/easyUi/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../common/easyUi/js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../common/easyUi/js/jquery.easyui.mobile.js"></script>
+
+	  <script type="text/javascript">
+		function getSelPeople(){
+			var result = new Map();
+			var id = "";
+			var name = "";
+			var selObj = $("#slMem").datagrid('getRows')
+			for(var i in selObj){
+				id = id+"Member|"+selObj[i]["id"]+",";
+				name = name+selObj[i]["name"]+"、";
+			}
+			result.set("id",id);
+			result.set("name",name);
+			var r = new Object();
+			r.id=id;
+			r.name =name;
+			return r;
+		}
+	  </script>
+</head>
+<body>
+<div style="margin:20px 0;"></div>
+<div class="easyui-layout" style="width:700px;height:350px;">
+	<div data-options="region:'east',split:true,border:true" style="width:50%;">
+		<div id="selDep"></div>
+	</div>
+
+	<div data-options="region:'west',split:true,border:true"  style="width:50%;">
+		<input id="account" style="width:350px;" />
+		<!-- 
+		<select id="cc" class="easyui-combotree"  data-options="url:'/seeyon/selectOrg.do?method=accountTree',required:true"></select>
+		 -->
+		<div class="easyui-panel" style="padding:5px">
+			<ul id="dep"></ul>
+		 </div>
+	</div>
+
+</div>
+</body>
+<script>
+	$('#account').combotree({
+	    url: '/seeyon/selectOrg.do?method=accountTree',
+	    required: true,
+		onClick :function(node){
+			$('#dep').tree({
+				url:'/seeyon/selectOrg.do?accountId='+node.id
+			});
+		}
+	});
+	$('#dep').tree({
+		url:'/seeyon/selectOrg.do',
+		lines:true,
+		checkbox:true,
+		onClick :function(node){
+			
+		},
+		onCheck:function(node, checked){
+			
+		}
+	});
+	function loadMember(depId){
+		$("#member").datagrid({
+			loadMsg: '数据加载中....',
+			url: '/seeyon/selectOrg.do?method=person',
+			queryParams: {
+				depId: depId
+			},
+			fit: true,
+			fitColumns: true,
+			border: false,
+			pagination: false,
+			nowrap: true,
+			border: true,
+			striped: true,
+			showHeader:true,
+			showFooter:false,
+			frozenColumns: [[{
+				field: 'id',
+				title: 'id',
+				checkbox:true,
+				align:'center',
+				width:55
+			},{
+				field: 'name',
+				title: '姓名',
+				align:'center',
+				width:120,
+				sortable: true,
+			}, {
+				field: 'postName',
+				title: '岗位',
+				width:128,
+				align:'right',
+				sortable: true,
+			}]],
+			onLoadSuccess: function() {
+				
+			},
+			onRowContextMenu: function(e, rowIndex, rowData) {
+				
+			},
+			onDblClickRow: function(rowIndex, rowData){
+				
+			},
+			onSelect:function(rowIndex, rowData){
+				var addFlag = true;
+				var selObj = $("#slMem").datagrid('getRows')
+				for(var i in selObj){
+					if(selObj[i]["id"] == rowData.id){
+						addFlag =false;
+					};
+				}
+				if(addFlag){
+					 $("#slMem").datagrid('insertRow',{row:rowData});
+				}
+			},
+			onUnselect:function(rowIndex, rowData){
+				var selObj = $("#slMem").datagrid('getRows')
+				for(var i in selObj){
+					if(selObj[i]["id"] == rowData.id){
+						//alert(i);
+						$("#slMem").datagrid('deleteRow',i);
+						
+					};
+				}
+			},
+			onSelectAll:function(rows){
+				var m = new Map();
+				var addFlag = true;
+				var selObj = $("#slMem").datagrid('getRows')
+				for(var i in selObj){
+					m.set(selObj[i]["id"],selObj[i]);
+				}
+				for(var i in rows){
+					if(!m.get(rows[i]["id"])){
+						 $("#slMem").datagrid('insertRow',{row:rows[i]});
+					}
+				}
+			},
+			onUnselectAll:function(rows){
+				var m = new Map();
+				var addFlag = true;
+				var selObj = $("#slMem").datagrid('getRows')
+				for(var i in selObj){
+					m.set(selObj[i]["id"],selObj[i]);
+				}
+				for(var i in rows){
+					if(m.get(rows[i]["id"])){
+						 var index = $('#slMem').datagrid('getRowIndex',m.get(rows[i]["id"]));
+						 $("#slMem").datagrid('deleteRow',index);
+					}
+				}
+			}
+			
+		});
+	}
+	
+		var sel = $("#slMem").datagrid({
+			fit: true,
+			fitColumns: true,
+			border: false,
+			pagination: false,
+			nowrap: true,
+			border: true,
+			striped: true,
+			showHeader:false,
+			showFooter:false,
+			frozenColumns: [[{
+				field: 'name',
+				title: '姓名',
+				align:'center',
+				width:100,
+				sortable: true,
+			}]],
+			onDblClickRow: function(rowIndex, rowData){
+				var sel = $("#slMem").datagrid('deleteRow',rowIndex);
+		
+			}
+		});
+
+	
+
+	function result(){
+		var r = getSelPeople();
+		alert(r);
+		for(var i in r){
+		 alert(i+"    "+r[i])
+		}
+	}
+	
+</script>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../../common/easyUi/css/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../common/easyUi/css/mobile.css">
+	<link rel="stylesheet" type="text/css" href="../../common/easyUi/css/icon.css">
+	<script type="text/javascript" src="../../common/easyUi/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../common/easyUi/js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../common/easyUi/js/jquery.easyui.mobile.js"></script>
+
+	  <script type="text/javascript">
+		function getSelPeople(){
+			return $("#slMem").datagrid('getRows')
+		}
+	  </script>
+</head>
+<body>
+<div class="easyui-layout" fit="true">
+<div data-options="region:'east',split:true,border:true" style="width:30%;">
+	 <div id="slMem"></div>
+</div>
+
+<div data-options="region:'west',split:true,border:true"  style="width:30%;">
+	<input id="cc" style="width:100%;" />
+	<div class="easyui-panel" style="padding:5px">
+		<ul id="tt"></ul>
+	 </div>
+</div>
+
+<div data-options="region:'center'">
+<div id="member" >
+
+</div>
+</div>
+</div>
+</body>
+<script>
+	$('#cc').combotree({
+	    url: '/seeyon/selectOrg.do?method=accountTree',
+	    required: true,
+		onClick :function(node){
+			$('#tt').tree({
+				url:'/seeyon/selectOrg.do?accountId='+node.id
+			});
+		}
+	});
+	$('#tt').tree({
+		url:'/seeyon/selectOrg.do',
+		onClick :function(node){
+			loadMember(node.id);
+		}
+	});
+	function loadMember(depId){
+		$("#member").datagrid({
+			loadMsg: '数据加载中....',
+			url: '/seeyon/selectOrg.do?method=person',
+			queryParams: {
+				depId: depId
+			},
+			fit: true,
+			fitColumns: true,
+			border: false,
+			pagination: false,
+			nowrap: true,
+			border: true,
+			striped: true,
+			showHeader:true,
+			showFooter:false,
+			frozenColumns: [[{
+				field: 'id',
+				title: 'id',
+				checkbox:true,
+				align:'center',
+				width:55
+			},{
+				field: 'name',
+				title: '姓名',
+				align:'center',
+				width:120,
+				sortable: true,
+			}, {
+				field: 'postName',
+				title: '岗位',
+				width:128,
+				align:'right',
+				sortable: true,
+			}]],
+			onLoadSuccess: function() {
+				
+			},
+			onRowContextMenu: function(e, rowIndex, rowData) {
+				
+			},
+			onDblClickRow: function(rowIndex, rowData){
+				
+			},
+			onSelect:function(rowIndex, rowData){
+				var addFlag = true;
+				var selObj = $("#slMem").datagrid('getRows')
+				for(var i in selObj){
+					if(selObj[i]["id"] == rowData.id){
+						addFlag =false;
+					};
+				}
+				if(addFlag){
+					$("#slMem").datagrid('appendRow',rowData);
+					//$("#slMem").datagrid('insertRow',{index:selObj.length,row:rowData});
+				}
+			},
+			onUnselect:function(rowIndex, rowData){
+				var index = $("#slMem").datagrid('getRowIndex',rowData);
+				$("#slMem").datagrid('deleteRow',index);
+			},
+			onSelectAll:function(rows){
+				var m = new Map();
+				var addFlag = true;
+				var selObj = $("#slMem").datagrid('getRows')
+				for(var i in selObj){
+					m.set(selObj[i]["id"],selObj[i]);
+				}
+				for(var i in rows){
+					if(!m.get(rows[i]["id"])){
+						$("#slMem").datagrid('appendRow',rows[i]);
+					}
+				}
+			},
+			onUnselectAll:function(rows){
+				for(var i in rows){
+					var index = $("#slMem").datagrid('getRowIndex',rows[i]);
+					$("#slMem").datagrid('deleteRow',index);
+				}
+			}
+			
+		});
+	}
+	
+		var sel = $("#slMem").datagrid({
+			fit: true,
+			fitColumns: true,
+			border: false,
+			pagination: false,
+			nowrap: true,
+			border: true,
+			striped: true,
+			showHeader:false,
+			showFooter:false,
+			frozenColumns: [[{
+				field: 'name',
+				title: '姓名',
+				align:'center',
+				width:100,
+				sortable: true,
+			}]],
+			onDblClickRow: function(rowIndex, rowData){
+				var sel = $("#slMem").datagrid('deleteRow',rowIndex);
+		
+			}
+		});
+
+	
+
+	function result(){
+		var r = getSelPeople();
+		alert(r);
+		for(var i in r){
+		 alert(i+"    "+r[i])
+		}
+	}
+	
+</script>
+</html>

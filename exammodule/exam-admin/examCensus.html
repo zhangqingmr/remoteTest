@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+     <meta http-equiv="Expires" content="0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/components.css" id="style_components" rel="stylesheet" type="text/css">
+    <link href="css/common.css" rel="stylesheet" type="text/css">
+    <link href="css/viewDetail.css" rel="stylesheet" type="text/css">
+
+    <script src='js/vue.js'></script>
+
+
+    <script src="js/layui.js"></script>
+    <link href="css/layui.css" rel="stylesheet" type="text/css">
+    <script src='js/jquery.min.js'></script>
+    <style>
+        .table-container{
+            min-height: 650px;
+            position: relative;
+        }
+        .portlet-body{
+                margin-top:25px !important
+            }
+    </style>
+</head>
+
+<body class="">
+    
+
+    <div class="page-container " style='margin-top: 0px'>
+        <div class="page-content-wrapper">
+            <div class="page-content " style="min-height:960px;margin-left: 0px; ">
+                <div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!--试卷统计分析信息 开始-->
+                            
+                            <div class="portlet">
+
+                                <div class="portlet-body" id="pageMainPortletBody">
+
+                                    <div class="statistic-tabs margin-top-20">
+                                        <div class="tabbable-custom ">
+                                              <!--     导航栏    -->
+                                            <div class="exam-analyze-ul" style="border-bottom: 1px solid #e6e6e6;margin-bottom: 10px;margin-left: 10px">
+                                                <ul class="nav nav-tabs" id="statistic-tabs">
+                                                    <li class="basic-analyze active">
+                                                        <a href=""
+                                                            data-toggle="tab" aria-expanded="true">
+                                                            试卷分析 </a>
+                                                    </li>
+                                                 
+                                                    
+                                                </ul>
+                                              
+                                                <div class="pull-right stastic-exam-datepick" style="margin-right: 20px">
+                                                   
+                                                        <label for="datetime">检索时间：</label>
+                                                        <div class="input-daterange" id="datetime" style="display: inline-block">
+                                                                <input style="display: inline-block" type="text" class="layui-input" id="test1">
+                                                        </div>
+                                                        <span>&nbsp;—&nbsp;</span>
+                                                        <div class="input-daterange" id="datetime" style="display: inline-block">
+                                                                <input style="display: inline-block" type="text" class="layui-input" id="test2">
+                                                        </div>
+                                                        <input id='queding' type="button" style="background-color: #999999;border-radius: 4px!important;    color: white;padding: 4px 10px;    border: none;"
+                                                            value="确定">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div id='app' class="tab-content statistic-tabs-content basic" style="">
+                                            
+                                                <!-- 信息收集项统计 -->
+                                                <div class="tab-pane active " id="statistic-collectioninfo">
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                           
+                                                            <div class="tabbable-custom ">
+                                                                <ul class="nav nav-tabs">
+                                                                    <li id='name' :class="type==1?'active':''" @click.stop="changeType(1)">
+                                                                        <a href=""
+                                                                            data-toggle="tab"  onclick="return false">
+                                                                            姓名 </a>
+                                                                    </li>
+                                                                    <li  id='depar' :class="type==2?'active':''" @click.stop="changeType(2)">
+                                                                        <a href=""
+                                                                            data-toggle="tab" onclick="return false" >
+                                                                            部门 </a>
+                                                                    </li>
+                                                                </ul>
+                                                                <div class="tab-content collection-statistic" >
+                                                                    <div  :class="[type==1?'active':'','tab-pane']"  id="tab_1">
+                                                                            <div id='table1'> </div>
+                                                                    </div>
+                                                                    <div :class="[type==2?'active':'','tab-pane']" id="tab_1">
+                                                                            <div id='table2'> </div>
+                                                                     </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane" id="statistic-category">
+                                                    <div class="row">
+                                                        <div class="md-col-12">
+                                                            当前无数据 </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+
+
+
+      
+            </div>
+        </div>
+        
+    </div>
+    
+    <script type="text/javascript">
+        document.write('<script src="/seeyon/adminlayout/common/js/common.js?ver='+Math.random()+'"  type="text/javascript"><\/script>');
+     </script>
+     <script  type="text/javascript">
+         　　version("/seeyon/exammodule/exam-admin/js/examCensus.js")
+     </script>   
+   </body>
+
+</html>

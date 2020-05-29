@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)http://192.168.0.115:5858/dashboard.html?view=gradetaken&tid=1168785379126415360 -->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+     <meta http-equiv="Expires" content="0">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <link href="css/components.css" id="style_components" rel="stylesheet" type="text/css">
+
+    <link href="css/layout.css" rel="stylesheet" type="text/css">
+  
+
+    <title>批阅试卷</title>
+
+   
+    <link href="css/common.css" rel="stylesheet" type="text/css">
+    <link href="css/doexam.css" rel="stylesheet" type="text/css">
+
+
+    <style type="text/css">
+        .ie8 .page-sidebar.navbar-collapse.collapse {
+            width: 180px;
+        }
+
+        .ie8 .page-content {
+            margin-left: 180px !important;
+        }
+    </style>
+       <style type="text/css">
+        .questions-details {
+            margin-top: 20px;
+        }
+
+        p.user-answer {
+            padding: 10px;
+            border: solid 1px #e5e5e5;
+        }
+
+        .questions-details .question {
+            margin-top: 40px;
+        }
+
+        .question-number,
+        .question-content {
+            display: inline-block;
+        }
+
+        .question-number {
+            width: 20px;
+            float: left;
+        }
+
+        .question-content {
+            margin-left: 20px;
+
+        }
+
+        .referAnswer {
+            margin-bottom: 10px;
+            color: #36aafd;
+            font-size: 16px;
+        }
+
+        .eassy_grading_answer {
+            margin-top: 20px;
+        }
+
+        .question.right .question-content {
+            border-left: 4px solid #3a9c95;
+            padding-left: 10px;
+        }
+
+        .question.wrong .question-content {
+            border-left: 4px solid #F3565D;
+            padding-left: 10px;
+        }
+
+        .form-actions {
+            margin-top: 40px;
+        }
+
+        input.getscore {
+            width: 100px;
+            display: inline-block;
+        }
+
+        .score-label {
+            cursor: pointer;
+            padding: 5px 8px 5px 8px;
+        }
+
+        .score-label:hover {
+            background-color: #1d7580;
+        }
+
+
+        .essayAsImg,
+        .essayAsAudio {
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .essayAsImg a.img-show {
+            display: block;
+            width: 160px;
+            float: left;
+            margin: 0 10px 10px 0;
+            border: 1px solid #5a6676;
+            padding: 5px;
+        }
+
+        .essayAsImg a.img-show img {
+            width: 150px;
+            height: 112px;
+            margin: 0;
+        }
+
+        .audio-cell {
+            margin-bottom: 10px;
+        }
+
+
+        .pp_social {
+            display: none !important;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            /* css3.0 */
+            white-space: -moz-pre-wrap;
+            /* Firefox */
+            white-space: -pre-wrap;
+            /* Opera 4-6 */
+            white-space: -o-pre-wrap;
+            /* Opera 7 */
+            word-wrap: break-word;
+            /* Internet Explorer 5.5+ */
+        }
+
+        .file-cell {
+            margin-bottom: 20px;
+        }
+
+        .file-cell .yks-default {
+            width: 76%;
+            text-align: left;
+            margin-right: 10px;
+        }
+
+        .file-cell a {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+       <style  type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="">
+
+
+    <div class="page-container " id='app' v-cloak>
+            
+        <div class="page-content-wrapper">
+            <div class="page-content " style="min-height:822px;">
+             
+
+
+
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>
+                            <i>批改</i> {{exam.title}}</h1>
+                        <p>
+
+                            <span>考试者: {{exam.userName}}</span>
+                            <span>|</span>
+                            <!-- <span>用时(分): {{gsTime(exam.)}}</span> -->
+                           
+                            <span>开始于: {{exam.startTime}}</span>
+                            <span>|</span>
+                            <span>完成:{{exam.endTime}}</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row" v-for="(question,index) in questionAll">
+                    <div class="col-md-8 col-sm-12 col-md-offset-2">
+                        <div id="grade-form">
+                            <div class="form-body">
+                                <div class="questions-details">
+                                    <div class="question result" qid="16">
+                                        <div class="ques-title">
+
+                                            <span class="ques-type ques-qa">{{question.qtypName}}</span>
+
+                                            <div class="qcotent" v-html="question.title"></div>
+                                            <span class="ques-score">({{question.score}}分)</span>
+
+                                        </div>
+
+                                        <div class="eassy_grading_answer">
+                                            <div class="grading-user-answer">考生答案: </div>
+                                            <div class="user-answer">
+                                             
+                                                <pre>{{question.userAnswer}}</pre>
+                                            </div>
+                                            <div class="essayAsImg"></div>
+                                            <div class="essayAsAudio"></div>
+                                        </div>
+                                        <div class="referAnswer">
+                                            参考答案: {{question.rightAnswer}} </div>
+
+                                        <div class="form-group grade-score" data-isgrade="0" data-qid="16">
+                                            <label style="font-size: 12px;">分数:</label>
+                                            <input id="16_scoreInput" class="form-control getscore" type="number" step='0.1' name="16_score"  :max="question.score" min="0" v-model='question.userScore'>
+                                            <span class="label score-label label-success" title="点击设置分数" @click="changeScore($event,question)">{{parseFloat(question.score)*0}}</span>
+                                            <span class="label score-label label-success" title="点击设置分数" @click="changeScore($event,question)">{{(parseFloat(question.score)/3).toFixed(1)}}</span>
+                                            <span class="label score-label label-success" title="点击设置分数"  @click="changeScore($event,question)">{{(parseFloat(question.score)/3*2).toFixed(1)}}</span>
+                                            <span class="label score-label label-success" title="点击设置分数" @click="changeScore($event,question)">{{parseFloat(question.score).toFixed(1)}}</span>
+                                        </div>
+
+                                        <div class="question-grading" data-qid="16">
+                                            <a href="javascript:;" id='right' class="btn btn-circle green-haze btn-sm"   @click="judgeQuestion($event,question)">
+                                                <i class="fa fa-check"></i> 回答正确 </a>
+                                            <a href="javascript:;" id="wrong" class="btn btn-circle btn-danger btn-sm did-wrong" @click="judgeQuestion($event,question)"
+                                                title="如果考生回答错误，如果您没有修改上面的考生试题得分，则本题考生将得0分，否则为您修改的分数">
+                                                <i class="fa fa-times"></i> 回答错误 </a>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                        <div class="form-actions col-md-8 col-sm-12 col-md-offset-2" style="">
+                                <a href="#finishandnext" id='finishandnext' class="btn green">完成批卷</a>
+                                <!-- <a href="#finish" class="btn default">完成批卷</a> -->
+                        
+                        </div>
+                </div>
+               
+
+                
+
+
+
+                
+            </div>
+        </div>
+
+    </div>
+<script src='js/vue.js'></script>
+<script src='js/jquery.min.js'></script>
+
+       
+    <script type="text/javascript">
+        document.write('<script src="/seeyon/adminlayout/common/js/common.js?ver='+Math.random()+'"  type="text/javascript"><\/script>');
+     </script>
+     <script  type="text/javascript">
+         　　version("/seeyon/exammodule/exam-admin/js/examPyDetail.js")
+     </script>   
+   
+
+</body>
+
+</html>

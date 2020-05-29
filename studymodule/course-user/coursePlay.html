@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)https://e25423.study.moxueyuan.com/course/detail/id/165835.html?id=165835 -->
+<html  class="ng-scope">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+	<title>视频播放</title>
+
+
+	<link rel="stylesheet" href="css/iconfont.css">
+	<link href="css/common.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/home.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/ng-img-crop.css">
+	<link rel="stylesheet" type="text/css" href="css/coursePlay.css">
+	<link href="css/course_detail.css" rel="stylesheet">
+	<script src='js/jquery.min.js'></script>
+	<script type="text/javascript" src="../resource/ckplayer/ckplayer.js"></script>
+	<script src='js/vue.js'></script>
+	<link rel="stylesheet" href="css/layui.css">
+	<link rel="stylesheet" href="css/layout.css">
+	
+	<script src='js/layui.js'></script>
+	<style>
+		.style-zq{
+			width: 100%;
+			height: 48px;
+			text-align: center;
+			line-height: 48px;
+			border-bottom: 1px solid #e5e5e5;
+		}
+	</style>
+
+
+	<body class="ng-scope" >
+		
+
+
+		<!-- 导航栏-->
+		<div class="ng-scope">
+			<div class="mxy-logo-header public-header m-w-12 ng-scope">
+				<div class="head-logo">
+					<a href="#" style="font-size: 24px;font-weight: 600;color: #000;">
+						<img src="images/logo.png" style='height: 40px;width: 50px' alt="" title="">在线视频平台</a>
+				</div>
+
+			</div>
+			<div class="mxy-header b65 ng-scope" style="background:#E64C65;min-width:1200px">
+				<div class="header-main">
+
+
+					<!--导航改造完成-->
+					<div class="nav">
+						<ul>
+							
+
+
+						</ul>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		<div id="course" class="box-body">
+			<!--视频-->
+			<div class="course-main b4d" style='background: #f7f7f7;'>
+				<div class="course-middle" style="width: 80%">
+					<div class="main-header">
+						<div class="header-title">
+							
+							<span class="f18" style="color: black">{{name}}</span>
+							
+						</div>
+						
+					</div>
+					<div class="main-course">
+						<!--课件模块-->
+						<div class="course-chapter-play exam-ceping-body" style="height: 633px;width: 75%">
+							<!--视频名字-->
+							<div class="sectiotitle c33 f14  ng-binding">{{name}}</div>
+							<!--视频插件-->
+							<div class="courselist ng-scope">
+								<div class="courseTerm course-vidio ng-scope" id="mediaplayer">
+									<div class="course-vidio-con">
+											<div id="video" style="width:100%;height: 633px"></div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<!--评论模块-->
+						<div class="course-comment" id='videoTime' style='display: none;width: 20%;'>
+							<div class="comment-title c33 bf2 f16" style='background-color: gray;color: white'>基本信息</div>
+							<input type="hidden" id="start">
+							<input type="hidden" id="duzq">
+							
+							<div class="row" style="margin-top:20px;text-align: center">
+									<div  style='margin:0 auto;display: inline-block;' >
+								
+											<div style="display: inline-block;"><span id="min" >0</span><h4 style="display: inline-block">分</h4></div>
+											<div  style="display: inline-block;"><span id="sec"  >0</span><h4 style="display: inline-block">秒</h4></div>
+										
+									</div>
+							</div>
+							<div class="row" style="margin-top:20px;padding-left:30px">
+								
+									<div class='col-lg-6' style='display: inline-block' title='已学时长'>
+											<img src="images/icon-minute.png" alt="">
+											<span>0时42分</span>
+										  </div>
+									<div class='col-lg-6'  style='display: inline-block' title='视频时长'>
+											<img src="images/icon-period.png" alt="">
+											<span>1.0学时</span>
+									</div>
+							</div>
+							<div class="row" style="margin-top:20px;padding-left:30px">
+								<div  class='col-lg-6' style='display: inline-block'  title='学习人数'>
+										<img src="images/icon-people.png" alt="">
+										<span>5432人</span>
+								</div>
+								<div  class='col-lg-6' style='display: inline-block'  title='上传时间'>
+										<img src="images/icon-minute.png" alt="">
+										<span>20190603</span>
+								</div>
+							</div>
+							<div class="row" style="margin-top:20px;padding-left:30px">
+									<div class="style-zq">
+											视频排行
+									</div>
+							</div>
+							
+
+							
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<div style="height: 40px;width: 100%;background-color: rgb(247, 247, 247)"></div>
+		</div>
+		<div class="footer ng-scope" ui-view="footer" >
+			<div class="mxy-footer b33" style="height:60px">
+				
+			</div>
+		</div>
+		<div id='tips' style="display: none">
+			<div style='margin:0 auto;text-align: center;margin-top:40px'>
+				<h3>视频播放暂停，学习已停止计时</h3>
+			</div>
+		
+			<div style="position: absolute;bottom: 0px;background-color: gray;height: 40px;width: 100%">
+					<button id='queding' type="button" class="btn btn-info" style='height: 25px;padding:0 0;margin-top: 8px;
+					width: 60px;margin-left: 30%;'>继续学习</button>
+					<button id='cancel' type="button" class="btn btn-info" style='height: 25px;padding:0 0;margin-top: 8px;
+					width: 45px;margin-left: 2%;'>取消</button>
+			</div>
+		</div>
+	
+		 <script type="text/javascript">
+			document.write('<script src="/seeyon/adminlayout/common/js/common.js?ver='+Math.random()+'"  type="text/javascript"><\/script>');
+		 </script>
+		 <script  type="text/javascript">
+			 　　version("/seeyon/studymodule/course-user/js/coursePlay.js")
+		 </script> 
+
+
+
+	</body>
+
+</html>

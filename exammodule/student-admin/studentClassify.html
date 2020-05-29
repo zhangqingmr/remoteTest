@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" class=" windows desktop"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta http-equiv="X-UA-Compatible" content="IE=9">
+            <meta name="renderer" content="webkit">
+            <meta content="width=device-width, initial-scale=1" name="viewport">
+
+            <link href="css/bootstrap.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="css/default/style.min.css" />
+
+            <script src="js/jquery.min.js" type="text/javascript"></script>
+            <link href="css/layui.css" rel="stylesheet" type="text/css">
+            <script src="js/layui.js"></script>
+            <script src="js/vue.js"></script>
+
+            
+            <style>
+                .mainPage{
+
+                }
+                .mainSearch{
+                    margin-top:15px;
+                    margin-bottom: 15px;
+                }
+                .mainTree{
+
+                }
+            </style>
+    </head>
+    <body class="container">
+        <input type="hidden" id="sonId">
+        <input type="hidden" id="sonText">
+        <div class="mainPage row">
+            <div class="mainSearch col-md-12 form-group">
+                    <input type="text" id="search_ay"  class="form-control"/> 
+            </div>
+            <div class="mainTree col-md-12" id="zq">
+
+
+            </div>
+        </div>
+        
+      
+        
+        <script src="js/jquery-noconflict.js" type="text/javascript"></script>
+        <script src="js/jquery-migrate.min.js" type="text/javascript"></script>
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/jstree.min.js"></script>
+        <script>
+            var sel=[];
+            var selName=''
+            $(function(e){
+                
+                
+                var id="";
+                $('#zq').jstree({
+                        "core" : {
+                            "animation" : 0,
+                            "themes" : { "dots": false,"icons":true ,"stripes":false},
+                            "check_callback" : true,
+                          
+                            'data' : {
+                                'url':"/seeyon/examineeCategory.do?method=getAllCategoryTree&flag=false",
+                            }
+                        },
+                        "types" : { 
+                            "#" : { "max_children" : -1,//无穷多个           #代表根节点id
+                                "max_depth" : -1 ,
+                                
+                            },
+                            "default" : {
+                                "icon" : "jstree-folder",           //所有没设定的属性都按照default来.
+                                "valid_children" : ["default","text"]
+                            },
+                            "text" : {
+                                "icon" : "false",
+                                "valid_children" : []
+                            }
+                        },
+                        'checkbox': {  // 去除checkbox插件的默认效果
+                            'tie_selection': true,
+                            'keep_selected_style': true,
+                            'whole_node': true
+                        },
+                        "plugins" : [  "types", "wholerow","search",'checkbox'],
+                        
+                        
+                    });
+                    //节点北被调用，传给父页面
+                $('#zq').bind("activate_node.jstree", function (obj, e) {
+                //     id=e.node.id;
+                //     text=e.node.text
+                 
+                //    layui.use('layer', function(){
+                //     //获取父页面的值
+                    
+                //     $("#sonId").val(id);
+                //     $("#sonText").val(text);
+                   
+
+                // })
+                var ref = $('#zq').jstree(true);//获得整个树
+                 sel = ref.get_selected(false);//获得所有选中节点，返回值为数组
+                 nodeObj = ref.get_selected(true);//获得所有选中节点，返回值为数组
+                         selName='';
+                        for(var i=0;i<nodeObj.length;i++){
+                            if(i==nodeObj.length-1){
+                                selName=selName+ nodeObj[i].original.text
+                            }else{
+                                selName=selName+ nodeObj[i].original.text+","
+                            }
+                          
+                        }
+                   
+
+                 
+                    });
+                //点击jstree子项，控制该节点展开、收缩等：
+                $("#zq").bind("select_node.jstree", function (e, data) { 
+                        if(data.node.id !="all"||data.node.id !="0"){    //排除第一个节点(2011民事案由) 
+                        data.instance.toggle_node(data.node); //单击展开下面的节点 
+                        } 
+                });
+                //使用插件search搜索（jstree自带的插件）
+                var to = false; 
+                $('#search_ay').keyup(function () { 
+                if(to) { 
+                clearTimeout(to); 
+                } 
+                
+                to = setTimeout(function () { 
+                $('#zq').jstree(true).search($('#search_ay').val()); 
+                
+                }, 250); 
+                });
+                
+          
+                
+                
+            })
+               
+               
+ 
+        
+        </script>
+
+        
+    </body>
+
+</html>

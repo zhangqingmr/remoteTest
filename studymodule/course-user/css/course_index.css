@@ -1,0 +1,454 @@
+
+/*课程视频*/
+
+.course-main-content{
+	background: #F7F7F7;
+}
+.course-main-content .course-box{
+	overflow: hidden;
+	clear: both;
+}
+.course-main-content .course-box-left{
+	float: left;
+	width: 954px;
+	padding-top: 10px;
+}
+.course-main-content .course-select select{
+	border: 1px solid #CCCCCC;
+	height: 26px;
+	width: 100px;
+}
+.course-main-content .course-select i{
+	color: #E64C65;
+}
+.course-main-content .course-classify{
+	width: 954px;
+	height: auto;
+	border: 1px solid #e5e5e5;
+	overflow:hidden;
+	clear: both;
+	margin: 14px 0;
+	padding: 0 26px;
+}
+.course-main-content .course-classify ul{
+	overflow: hidden;
+    clear: both;
+    margin-bottom: 0;
+}
+.course-main-content .course-classify li{
+	float: left;
+    /*width: 100px;*/
+   	text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: :10px;
+    padding: 10px;
+}
+.course-main-content .course-classify a{
+	font-size: 14px;
+	color: #333333;
+}
+.course-main-content .course-classify a:hover{
+	color: #E64C65;
+	text-decoration: none;
+	border-bottom: 2px solid #E64C65;
+}
+.course-main-content .course-sort{
+	width: 954px;
+    height: 36px;
+    border: 1px solid #e5e5e5;
+    overflow: hidden;
+    background: #FFFFFF;
+}
+.course-main-content .course-sort ul li{
+	float: left;
+    width: 100px;
+   	text-align: center;
+    border-right: 1px solid #CCCCCC;
+    color: #666666;
+    cursor: pointer;
+}
+.course-main-content .course-sort .shaixuan{
+	float: right;
+	padding: 8px 20px;
+	border: 0;
+	color: #666666;
+	cursor: pointer;
+}
+
+.icon-takeUp{
+    width: 12px;
+    height: 6px;
+    float: right;
+ 
+}
+.screenColor{
+	color: #e64c65;
+}
+.course-main-content .course-sort ul li:nth-child(4){
+	border-right: 0;
+}
+.course-main-content .course-sort ul li.active{
+	 color: #666666;
+}
+.course-main-content .course-sort ul li.bgColor{
+	background: #E64C65;
+    color: #FFFFFF;
+    padding: 7px 0 10px 0;
+    margin: 0;
+}
+.course-main-content .course-sort ul li a{
+	display: inline-block;
+	height: 18px;
+	width: 100%;
+	margin-top: 9px;
+	text-decoration: none;
+}
+.course-sort .sort_icon{
+    background: url(../../../images/course/kc_paixuxia_icon.png) no-repeat;
+	width: 10px;
+    height: 13px;
+    display: inline-block;
+	margin-left: 8px;
+   vertical-align: middle;
+}
+.course-sort .active{
+	margin: 8px 0;
+}
+ .course-sort .active input[type=radio] {
+    display: none;
+}
+.course-main-content .course-type-status{
+	overflow: hidden;
+    padding: 10px 20px;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    height: 72px;
+   	position: absolute;
+    width: 954px;
+    margin-top: 10px;
+    border-radius: 5px;
+    z-index: 999;
+}
+.course-container{
+	margin-top: 10px;
+}
+.course-screenBtn .reset-btn, .course-screenBtn .finish-btn{
+	text-align: center;
+    background: #e64c65;
+    color: #ffffff;
+    border-radius: 2px;
+    margin-top: 25px;
+    cursor: pointer;
+    padding: 5px 10px;
+    display: inline-block;
+}
+.course-screenBtn .finish-btn{
+	background: #e6e6e6;
+	color: #666666;
+	margin-left: 10px;
+}
+.course-type input[type=checkbox]{
+    vertical-align: middle;
+    margin: 0;
+}
+ .course-status input[type=checkbox]{
+	    vertical-align: middle;
+	    margin: 0;
+}
+.course-main-content .course-type-status label{
+    width:65px;
+	font-size: 12px !important;
+	color: #666666 !important;
+	margin-left: 20px;
+	font-weight: normal;
+}
+.course-main-content .course-type{
+	float: left;
+}
+.course-main-content .course-status{
+	float: left;
+	margin-left: 106px;
+}
+.course-main-content .course-container .new-course-content li{
+	margin-right:19px;
+}
+.course-main-content .course-container .new-course-content li:nth-child(4n){
+	margin-right:0;
+}
+.course-main-content .course-container .new-course-content .course-count{
+	max-width: 100px;
+	float: right;
+	text-align: right;
+}
+.course-main-content .course-container .new-course-content .course-tag {
+    width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.course-main-content .course-box-right{
+  	width: 224px;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid #e5e5e5;
+    margin-top: 21px;
+}
+.course-main-content .course-recommend{
+	padding: 0 20px;
+}
+.course-main-content .course-recommend-list{
+	margin-top: 12px;
+}
+.course-main-content .course-recommend-title{
+	width: 100%;
+	height: 48px;
+	text-align: center;
+	line-height: 48px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.upload-r{
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-line-clamp: 1;
+    display: block;
+    width: 95px;
+}
+.course-main-content .course-recommend-list li{
+	width: 100%;
+	margin-bottom: 10px;
+	cursor:pointer;
+}
+.new-course-content-ul li:hover{
+	box-shadow: 0px 0px 25px #c5aeae;
+	transition: .3s;
+}
+.course-main-content .course-recommend-list li:nth-child(4n){
+	width: 100%;
+	margin-bottom:0;
+}
+.course-main-content .course-recommend-list li .course-img{
+	width: 100%;
+    height: 106px;
+    position: relative;
+}
+.course-main-content .course-recommend-list li .course-img img{
+	width: 100%;
+    height: 100%;
+}
+.course-main-content .course-recommend-list li .course-msg-top{
+	padding-top:6px;
+}
+.course-main-content .course-recommend-list li .course-tag {
+    width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.course-main-content .course-recommend-list li .course-count{
+
+    max-width: 90px;
+    display: inline-block;
+    float: right;
+    text-align: right;
+}
+ .course-main-content .course-recommend-list li .course-img .course-ischarge {
+    height: 35px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+	background: rgba(255,255,255,0.5);
+    border-top-right-radius: 8px;
+    padding: 0 15px 0 10px;
+    line-height: 35px;
+    color: #ff0000;
+}
+ .course-main-content .course-recommend-list li .course-img .course-ischarge i{
+ 	background: #ff0000;
+	padding: 1px;
+	margin-left: 6px;
+ }
+.course-main-content .course-recommend-list li .course-img .course-status {
+    height: 24px;
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+    background: rgba(0,0,0,.3);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    text-align: center;
+    line-height: 24px;
+    padding: 0 5px 0 10px;
+}
+.course-msg{
+	padding: 5px;
+}    
+.course-title{
+    width: 160px;
+	overflow: hidden;
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #333333;
+}
+.bg-red{
+	background:red;
+}
+.course-img .share{
+	position: absolute;
+	width: 50px;
+    height: 50px;
+	background-image: url("../../../images/my/grzx_fenxiangjiaobiao_bg.png");
+	left: 0;
+    top: 0;
+}
+/*课程点赞预览样式*/	
+.course-count {
+   width: 108px;
+}
+.course-clickcount {
+    background: url(../../../images/home/eye.png) no-repeat left center;
+    /* padding-left: 15px; */
+}
+.course-praise {
+    background: url(../../../images/home/good.png) no-repeat left center;
+    /* padding-left: 15px; */
+    margin-left:5px;
+}
+/*底部分页*/
+.course-main-content .course-btm {
+    width: 1050px;
+    padding-bottom: 90px;
+    margin: 0 auto;
+}
+.course-main-content .course-btm .fenye {
+    position: relative;
+    width:1200px;
+    float: right;
+    margin: 10px 0 80px 0;
+}
+.course-main-content .course-btm .fenye .fenye-box {
+    position: absolute;
+    left: 45%;
+    transform: translateX(-45%);
+}
+.pagination {
+    margin: initial !important;
+}
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+.pagination>li {
+    display:inline-block;
+ }
+.course-container .course-btm .fenye .fenye-box .allPage {
+    display: inline-block;
+    margin-left: 10px;
+    position: relative;
+    top: -10px;
+}
+/* 暂无数据 */
+.new-course-content .default-msg {
+    min-height: 500px;
+    text-align: center;
+    line-height: 400px;
+}
+/*课程排行*/
+.course-right-list{
+	float: right;
+}
+#course-online .course-phb-right {
+	padding: 0 12px;
+	margin-top: 10px;
+    width: 222px;
+    height: 417px;
+    border: 1px solid #E5E5E5;
+}
+#course-online .course-phb-title {
+	text-align: center;
+	border-bottom: 2px solid #E64C65
+}
+#course-online .course-phb-list {
+	line-height: 23px;
+}
+#course-online .course-phb-list li {
+	clear: both;
+}
+#course-online .course-phb-list li:first-child,
+#course-online .course-phb-list li:nth-child(2),
+#course-online .course-phb-list li:nth-child(3) {
+	line-height: 30px;
+	font-size: 14px;
+}
+#course-online .course-phb-list i {
+	position: relative;
+	top: 3px;
+	float: left;
+	text-align: center;
+	color: #999;
+	width: 16px;
+	height: 16px;
+	line-height: 14px;
+	border: 1px solid #999;
+	margin: 0 8px;
+}
+#course-online .course-phb-list i span {
+	transform: scale(.5);
+	-webkit-transform: scale(.5);
+}
+#course-online .course-phb-list a {
+	float: left;
+	display: block;
+	color: #333;
+	width: 163px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+#course-online .course-phb-list a:hover{
+    color: #E64C65;
+}
+#course-online .course-phb-list li:first-child i,
+#course-online .course-phb-list li:nth-child(2) i,
+#course-online .course-phb-list li:nth-child(3) i {
+    border: 0;
+    color: #fff;
+    display: block;
+    width: 21px;
+    margin: 0 6px;
+    height: 28px;
+    line-height: 28px;
+}
+#course-online .course-phb-list li:first-child i {
+	background: url(../../../images/home/no1.png) no-repeat;
+}
+#course-online .course-phb-list li:nth-child(2) i {
+	background: url(../../../images/home/no2.png) no-repeat;
+}
+#course-online .course-phb-list li:nth-child(3) i {
+	background: url(../../../images/home/no3.png) no-repeat;
+}
+/*置顶*/
+.course-top_time {
+    position: absolute;
+    right: 3px;
+    top:3px;
+    min-width:35px;
+    height:18px;
+    font-size:12px;
+    line-height:9px;
+    text-align: center;
+    padding:5px;
+    border-radius:2px;
+    background: -webkit-linear-gradient(#F7E65B,#fca40d);
+    background: -o-linear-gradient(#F7E65B,#fca40d);
+    background: -moz-linear-gradient(#F7E65B,#fca40d);
+    background: linear-gradient(#F7E65B, #fca40d);
+    color: #333;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+		<title>SCEditor Demo</title>
+
+		<link rel="stylesheet" href="test/jquery.sceditor.default.min.css" id="theme-style" />
+		  
+		<script src="test/jquery.1.9.1.min.js"></script>
+		<script src="test/jquery.sceditor.bbcode.min.js"></script>
+		<script src="test/cmd.js"></script>
+	
+
+		<style>
+			html {
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 13px;
+			}
+			form div {
+				padding: .5em;
+			}
+			code:before {
+				position: absolute;
+				content: 'Code:';
+				top: -1.35em;
+				left: 0;
+			}
+			code {
+				margin-top: 1.5em;
+				position: relative;
+				background: #eee;
+				border: 1px solid #aaa;
+				white-space: pre;
+				padding: .25em;
+				min-height: 1.25em;
+			}
+			code:before, code {
+				display: block;
+				text-align: left;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="" method="post">
+			<div>
+				<textarea id="example" style="height:300px;width:600px;">111111</textarea>
+			</div>
+
+
+		</form>
+
+
+		<script>
+			var textarea = document.getElementById('example');
+			var options = {
+						init:'sdfasdfafa',
+						plugins: 'bbcode',
+						toolbar: "bold,italic,underline,strike,color,size|orderedlist,bulletlist,table|link,image,youtube|superscript,subscript,pastetext",
+						emoticonsEnabled: false,
+						resizeEnabled: true,
+						disablePasting: false,
+						enablePasteFiltering: true,
+						parserOptions:{
+							removeEmptyTags:false,
+						},
+						bbcodeTrim: true,
+						style: 'test/jquery.sceditor.default.min.css',
+						autoUpdate: true,
+						width: 530,
+					}
+			
+			 $('#example').sceditor(options);
+
+		</script>
+
+		<p>SCEditor is licensed under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT</a></p>
+	</body>
+</html>
